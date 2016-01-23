@@ -18,4 +18,37 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ));
     }
+
+    /**
+     * @Route("/quotes/topics.{_format}", name="topicspage")
+     */
+    public function topicsAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/topics.html.twig', array(
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ));
+    }
+
+    /**
+     * @Route("/profession.{_format}", name="professionpage")
+     */
+    public function professionAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/profession.html.twig', array(
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ));
+    }
+
+    /**
+     * @Route("/birthdays.{_format}", name="birthdayspage")
+     */
+    public function birthdaysAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/birthdays.html.twig', array(
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ));
+    }
 }

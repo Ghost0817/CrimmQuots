@@ -1,13 +1,107 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+              <a id="logo-container" href="#" class="brand-logo">
+                <object id="front-page-logo" height="64" type="image/svg+xml" data="http://materializecss.com/res/materialize.svg">Logo</object>
+              </a>
+              <ul class="left hide-on-med-and-down">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Authors</a></li>
+                <li><a href="#">Topics</a></li>
+                <li><a href="#">Quote of the Day</a></li>
+              </ul>
+
+              <ul class="right hide-on-med-and-down">
+                <li><a>
+                  <form>
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+                </a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Login</a></li>
+              </ul>
+
+              <ul id="nav-mobile" class="side-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Authors</a></li>
+                <li><a href="#">Topics</a></li>
+                <li><a href="#">Quote of the Day</a></li>
+              </ul>
+              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+              <div class="container">
+                <br><br>
+                <div class="row center">
+                  <h5 class="header col s12 light">A forest bird never wants a cage.</h5>
+                </div>
+                <div class="row center">
+                  <p>Henrik Ibsen</p>
+                </div>
+                <br><br>
+
+              </div>
+            </div>
+            <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"></div>
+        </div>
+
         {% block body %}{% endblock %}
+        <footer class="page-footer teal">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">BrainyQuote Desktop</h5>
+              <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+            </div>
+            <div class="col l3 s12">
+              <h5 class="white-text">Site</h5>
+              <ul>
+                <li><a class="white-text" href="#!">Home</a></li>
+                <li><a class="white-text" href="#!">Authors</a></li>
+                <li><a class="white-text" href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
+                <li><a class="white-text" href="#!">Quote of the Day</a></li>
+                <li><a class="white-text" href="{{ path('professionpage',{'_format':'html'}) }}">Professions</a></li>
+                <li><a class="white-text" href="{{ path('birthdayspage',{'_format':'html'}) }}">Birthdays</a></li>
+              </ul>
+            </div>
+            <div class="col l3 s12">
+              <h5 class="white-text">About</h5>
+              <ul>
+                <li><a class="white-text" href="#!">About Us</a></li>
+                <li><a class="white-text" href="#!">Inquire</a></li>
+                <li><a class="white-text" href="#!">Submit</a></li>
+                <li><a class="white-text" href="#!">Privacy</a></li>
+                <li><a class="white-text" href="#!">Terms</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+          </div>
+        </div>
+    </footer>
+
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

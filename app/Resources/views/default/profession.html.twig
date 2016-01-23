@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profession - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row sf_content">
+      <div class="col s12 m12 l8">
+        <div class="col s12 m12 l6">
+          <h5>Popular Topics</h5>
+          <p>Browse quotations by topic:</p>
+          <div class="col s12 m6 l6">
+            <ul>
+              <li><a href="#!">Motivational</a></li>
+              <li><a href="#!">Inspirational</a></li>
+              <li><a href="#!">Life</a></li>
+              <li><a href="#!">Love</a></li>
+              <li><a href="#!">Funny</a></li>
+              <li><a href="#!">Positive</a></li>
+              <li><a href="#!">Friendship</a></li>
+              <li><a href="#!">Success</a></li>
+              <li><a href="#!">Happiness</a></li>
+            </ul>
+          </div>
+          <div class="col s12 m6 l6">
+            <ul>
+              <li><a href="#!">Education</a></li>
+              <li><a href="#!">Wisdom</a></li>
+              <li><a href="#!">Birthday</a></li>
+              <li><a href="#!">Family</a></li>
+              <li><a href="#!">Change</a></li>
+              <li><a href="#!">Smile</a></li>
+              <li><a href="#!">Work</a></li>
+              <li><a href="#!">Best</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col s12 m12 l6">
+          <h5>Popular Authors</h5>
+          <p>Browse by author:</p>
+          <div class="col s12 m6 l6">
+            <ul>
+              <li><a href="#!">Martin Luther King, Jr.</a></li>
+              <li><a href="#!">Albert Einstein</a></li>
+              <li><a href="#!">William Shakespeare</a></li>
+              <li><a href="#!">Dr. Seuss</a></li>
+              <li><a href="#!">Mahatma Gandhi</a></li>
+              <li><a href="#!">Buddha</a></li>
+              <li><a href="#!">David Bowie</a></li>
+              <li><a href="#!">Mark Twain</a></li>
+              <li><a href="#!">Confucius</a></li>
+            </ul>
+          </div>
+          <div class="col s12 m6 l6">
+            <ul>
+              <li><a href="#!">Winston Churchill</a></li>
+              <li><a href="#!">Abraham Lincoln</a></li>
+              <li><a href="#!">Mother Teresa</a></li>
+              <li><a href="#!">Maya Angelou</a></li>
+              <li><a href="#!">Heinrich Heine</a></li>
+              <li><a href="#!">Steve Jobs</a></li>
+              <li><a href="#!">Oscar Wilde</a></li>
+              <li><a href="#!">Aristotle</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col s12 m12 l12">
+          <h5>Authors to Explore</h5>
+          <div class="col s12 m6 l6">
+            <ul>
+              <li><a href="#!">A. P. J. Abdul Kalam</a></li>
+              <li><a href="#!">Alan Rickman</a></li>
+              <li><a href="#!">Albert Camus</a></li>
+              <li><a href="#!">Aristotle</a></li>
+              <li><a href="#!">Audrey Hepburn</a></li>
+              <li><a href="#!">Barack Obama</a></li>
+              <li><a href="#!">Benjamin Franklin</a></li>
+              <li><a href="#!">Bill Gates</a></li>
+              <li><a href="#!">Bob Marly</a></li>
+              <li><a href="#!">Bruce Lee</a></li>
+              <li><a href="#!">C. S. Lewis</a></li>
+              <li><a href="#!">Carl Sagan</a></li>
+              <li><a href="#!">Coco Chanel</a></li>
+              <li><a href="#!">Conor McGregor</a></li>
+              <li><a href="#!">Dalai Lama</a></li>
+              <li><a href="#!">Donald Trump</a></li>
+              <li><a href="#!">Edgar Allan Poe</a></li>
+              <li><a href="#!">Eleanor Roosevelt</a></li>
+              <li><a href="#!">Eminem</a></li>
+              <li><a href="#!">Ernest Hemingway</a></li>
+              <li><a href="#!">Francis Bacon</a></li>
+              <li><a href="#!">Franklin D. Roosevelt</a></li>
+              <li><a href="#!">Frederick Douglass</a></li>
+              <li><a href="#!">Friedrich Nietzsche</a></li>
+              <li><a href="#!">George Bernard Shaw</a></li>
+              <li><a href="#!">George Carlin</a></li>
+              <li><a href="#!">George Orwell</a></li>
+              <li><a href="#!">George Washington</a></li>
+              <li><a href="#!">Groucho Marx</a></li>
+              <li><a href="#!">Helen Keller</a></li>
+              <li><a href="#!">Henry David Thoreau</a></li>
+              <li><a href="#!">Henry Ford</a></li>
+              <li><a href="#!">Isaac Newton</a></li>
+              <li><a href="#!">Jackie Robinson</a></li>
+              <li><a href="#!">Jesus Christ</a></li>
+              <li><a href="#!">John F. Kennedy</a></li>
+              <li><a href="#!">John Lennon</a></li>
+              <li><a href="#!">John Locke</a></li>
+            </ul>
+          </div>
+          <div class="col s12 m6 l6">
+            <ul>
+              <li><a href="#!">John Wooden</a></li>
+              <li><a href="#!">Julius Caesar</a></li>
+              <li><a href="#!">Kanye West</a></li>
+              <li><a href="#!">Karl Marx</a></li>
+              <li><a href="#!">Khalil Gibran</a></li>
+              <li><a href="#!">Kurt Cobain</a></li>
+              <li><a href="#!">Lao Tzu</a></li>
+              <li><a href="#!">Leonardo da Vinci</a></li>
+              <li><a href="#!">Malala Yousafzai</a></li>
+              <li><a href="#!">Malcolm X</a></li>
+              <li><a href="#!">Marcus Aurelius</a></li>
+              <li><a href="#!">Marilyn Monroe</a></li>
+              <li><a href="#!">Martin Luther</a></li>
+              <li><a href="#!">Michael Jordan</a></li>
+              <li><a href="#!">Muhammad Ali</a></li>
+              <li><a href="#!">Napoleon Bonaparte</a></li>
+              <li><a href="#!">Nelson Mandela</a></li>
+              <li><a href="#!">Niccolo Machiavelli</a></li>
+              <li><a href="#!">Plato</a></li>
+              <li><a href="#!">Pope Francis</a></li>
+              <li><a href="#!">Publilius Syrus</a></li>
+              <li><a href="#!">Ralph Waldo Emerson</a></li>
+              <li><a href="#!">Robert Frost</a></li>
+              <li><a href="#!">Ronald Reagan</a></li>
+              <li><a href="#!">Rosa Parks</a></li>
+              <li><a href="#!">Rumi</a></li>
+              <li><a href="#!">Socrates</a></li>
+              <li><a href="#!">Sun Tzu</a></li>
+              <li><a href="#!">Swami Vivekananda</a></li>
+              <li><a href="#!">Theodore Roosevelt</a></li>
+              <li><a href="#!">Thomas A. Edison</a></li>
+              <li><a href="#!">Thomas Jefferson</a></li>
+              <li><a href="#!">Tupac Shakur</a></li>
+              <li><a href="#!">Vince Lombardi</a></li>
+              <li><a href="#!">Voltaire</a></li>
+              <li><a href="#!">Warren Buffett</a></li>
+              <li><a href="#!">Yogi Berra</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m12 l4">
+        <h5>Today's Birthdays</h5>
+        <ul>
+          <li>1788 - <a href="#!">Thomas A. Edison</a></li>
+          <li>1894 - <a href="#!">Thomas Jefferson</a></li>
+          <li>1965 - <a href="#!">Tupac Shakur</a></li>
+          <li>1906 - <a href="#!">Vince Lombardi</a></li>
+          <li>1849 - <a href="#!">Voltaire</a></li>
+          <li><a href="#!">Birthdays on January 22nd</a> | <a href="#!">All Birthdays</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+{% endblock %}

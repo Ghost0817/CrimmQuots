@@ -24,9 +24,17 @@ class DefaultController extends Controller
      */
     public function topicsAction(Request $request)
     {
+        
+        $topics = $this->getDoctrine()
+        ->getRepository('AppBundle:Topics')
+        ->findAll();
+        
+        if (!$topics) {
+            throw $this->createNotFoundException('The product does not exist');
+        }
         // replace this example code with whatever you need
         return $this->render('default/topics.html.twig', array(
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'topics' => $topics,
         ));
     }
 

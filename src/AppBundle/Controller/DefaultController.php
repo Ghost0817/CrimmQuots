@@ -28,10 +28,11 @@ class DefaultController extends Controller
         $topics = $this->getDoctrine()
         ->getRepository('AppBundle:Topics')
         ->findAll();
-        
+
         if (!$topics) {
             throw $this->createNotFoundException('The product does not exist');
         }
+
         // replace this example code with whatever you need
         return $this->render('default/topics.html.twig', array(
             'topics' => $topics,
@@ -43,9 +44,17 @@ class DefaultController extends Controller
      */
     public function professionAction(Request $request)
     {
+        $profession = $this->getDoctrine()
+        ->getRepository('AppBundle:Profession')
+        ->findAll();
+
+        if (!$profession) {
+            throw $this->createNotFoundException('The product does not exist');
+        }
+        
         // replace this example code with whatever you need
         return $this->render('default/profession.html.twig', array(
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'profession' => $profession,
         ));
     }
 

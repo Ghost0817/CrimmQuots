@@ -15,4 +15,9 @@ AppBundle\Entity\Profession:
             nullable: false
             length: 255
             fixed: false
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
     lifecycleCallbacks: {  }

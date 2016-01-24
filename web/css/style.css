@@ -32,6 +32,15 @@ p {
   font-size: 13.5px;
 }
 
+.sf_content blockquote{
+  line-height: 40px;
+  border-radius: 3px;
+}
+
+.sf_content blockquote a{
+  color: #333;
+}
+
 .parallax-container {
   /*min-height: 380px;*/
   line-height: 0;
@@ -40,6 +49,24 @@ p {
 }
   .parallax-container .section {
     width: 100%;
+  }
+  .parallax-container a {
+    color: #fff;
+  }
+  .parallax-container a:hover {
+    text-decoration: underline;
+  }
+  .parallax-container h5 {
+    font-weight: bold;
+    text-shadow: 3px 2px 3px #000000;
+  }
+  .parallax-container a:hover h5 {
+    text-decoration: underline;
+  }
+  .parallax-container p {
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 3px 2px 3px #000000;
   }
 
 @media only screen and (max-width : 992px) {

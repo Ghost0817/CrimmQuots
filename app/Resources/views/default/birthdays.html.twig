@@ -17,121 +17,29 @@
         <div class="col s12 m12 l8">
         	<div class="row">
 
-<div class="well pull-left" style="margin:10px 20px 6px 0px; width:270px; background-color: #F1F1F1">
+{% for item in cal_days %}
+<div class="well pull-left" style="margin:10px 20px 6px 0px; width:270px; background-color: #F1F1F1;float: left;display: inline-block;">
 <table class="moCalendar">
-<thead><tr>
-<td colspan="7"><h2 class="bq_calmon">January</h2></td>
-</tr></thead>
+<thead>
+<tr><th colspan="7"><h2 class="bq_calmon">{{ item.month }}</h2></th></tr>
+</thead>
 <tbody>
+{% set week = 0 %}
+{% for i in 1..item.lday %}
+{% if(week == 0) %}
 <tr>
-<td>
-<a href="/birthdays/january_1" class="active">1</a>
-</td>
-<td>
-<a href="/birthdays/january_2">2</a>
-</td>
-<td>
-<a href="/birthdays/january_3">3</a>
-</td>
-<td>
-<a href="/birthdays/january_4">4</a>
-</td>
-<td>
-<a href="/birthdays/january_5">5</a>
-</td>
-<td>
-<a href="/birthdays/january_6">6</a>
-</td>
-<td>
-<a href="/birthdays/january_7">7</a>
-</td>
+{% endif %}
+<td><a href="#">{{ i }}</a></td>
+{% set week = week + 1 %}
+{% if(week == 7) %}
 </tr>
-<tr>
-<td>
-<a href="/birthdays/january_8">8</a>
-</td>
-<td>
-<a href="/birthdays/january_9">9</a>
-</td>
-<td>
-<a href="/birthdays/january_10">10</a>
-</td>
-<td>
-<a href="/birthdays/january_11">11</a>
-</td>
-<td>
-<a href="/birthdays/january_12">12</a>
-</td>
-<td>
-<a href="/birthdays/january_13">13</a>
-</td>
-<td>
-<a href="/birthdays/january_14">14</a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="/birthdays/january_15">15</a>
-</td>
-<td>
-<a href="/birthdays/january_16">16</a>
-</td>
-<td>
-<a href="/birthdays/january_17">17</a>
-</td>
-<td>
-<a href="/birthdays/january_18">18</a>
-</td>
-<td>
-<a href="/birthdays/january_19">19</a>
-</td>
-<td>
-<a href="/birthdays/january_20">20</a>
-</td>
-<td>
-<a href="/birthdays/january_21">21</a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="/birthdays/january_22">22</a>
-</td>
-<td>
-<a href="/birthdays/january_23">23</a>
-</td>
-<td>
-<a href="/birthdays/january_24">24</a>
-</td>
-<td>
-<a href="/birthdays/january_25">25</a>
-</td>
-<td>
-<a href="/birthdays/january_26">26</a>
-</td>
-<td>
-<a href="/birthdays/january_27">27</a>
-</td>
-<td>
-<a href="/birthdays/january_28">28</a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="/birthdays/january_29">29</a>
-</td>
-<td>
-<a href="/birthdays/january_30">30</a>
-</td>
-<td>
-<a href="/birthdays/january_31">31</a>
-</td>
-<td class="bigbold"><br></td>
-<td class="bigbold"><br></td>
-<td class="bigbold"><br></td>
-<td class="bigbold"><br></td>
-</tr>
+{% set week = 0 %}
+{% endif %}
+{% endfor %}
 </tbody></table>
 </div>
+{% endfor %}
+
 
         	</div>
         </div>

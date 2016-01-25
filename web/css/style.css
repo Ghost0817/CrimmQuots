@@ -32,6 +32,13 @@ p {
 .sf_content ul li a{
   font-size: 13.5px;
 }
+.sf_content blockquote{
+  line-height: 40px;
+  border-radius: 3px;
+}
+.sf_content blockquote a{
+  color: #333;
+}
 
 .parallax-container {
   /*min-height: 380px;*/
@@ -41,6 +48,24 @@ p {
 }
   .parallax-container .section {
     width: 100%;
+  }
+  .parallax-container a {
+    color: #fff;
+  }
+  .parallax-container a:hover {
+    text-decoration: underline;
+  }
+  .parallax-container h5 {
+    font-weight: bold;
+    text-shadow: 3px 2px 3px #000000;
+  }
+  .parallax-container a:hover h5 {
+    text-decoration: underline;
+  }
+  .parallax-container p {
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 3px 2px 3px #000000;
   }
 
 nav .input-field label i {
@@ -66,19 +91,26 @@ table.moCalendar{
   margin-left:auto;margin-right:auto;border-collapse:collapse;
 }
 table.moCalendar thead{
-  background-color: #00B7ED;color: #fff;font-size: 19px;
+  background-color: #00B7ED;color: #fff;font-size: 19px;padding-left: 9px;
+    padding-right: 9px;
+    display: block;
 }
 table.moCalendar thead h2{
   font-size: 19px;
   margin: 0px;
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-table.moCalendar tbody{margin-top: 4px;}
+table.moCalendar thead tr th{
+  padding: 0px;display: inline-block;width: 36px;
+}
+table.moCalendar tbody{margin-top: 4px;padding-left: 9px;padding-right: 9px;display: block;}
 table.moCalendar tbody tr td{
   padding: 0px;
 }
 table.moCalendar tbody tr td a{    
-  line-height: 35px;height: 35px;width: 35px;text-align: center;display: inline-block;
+  line-height: 36px;height: 36px;width: 36px;text-align: center;display: inline-block;
 }
 table.moCalendar tbody tr td a:hover{
   background-color: #00B7ED;color: #fff;border-radius: 25px;

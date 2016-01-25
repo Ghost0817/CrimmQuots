@@ -31,9 +31,9 @@
                 <object id="front-page-logo" type="image/svg+xml" data="/logo.svg">Logo</object>
               </a>
               <ul class="left hide-on-med-and-down">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
                 <li><a href="#">Authors</a></li>
-                <li><a href="#">Topics</a></li>
+                <li><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
                 <li><a href="#">Quote of the Day</a></li>
               </ul>
 

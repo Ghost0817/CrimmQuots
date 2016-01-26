@@ -102,9 +102,10 @@ table.moCalendar thead h2{
   padding-top: 10px;
   padding-bottom: 10px;
 }
-table.moCalendar thead tr th{
-  padding: 0px;display: inline-block;width: 36px;
+table.moCalendar thead tr th,{
+  padding: 0px;display: inline-block;
 }
+table.moCalendar thead tr td{padding: 0px;display: inline-block;width: 36px;}
 table.moCalendar tbody{margin-top: 4px;padding-left: 9px;padding-right: 9px;display: block;}
 table.moCalendar tbody tr td{
   padding: 0px;
@@ -113,7 +114,7 @@ table.moCalendar tbody tr td a{
   line-height: 36px;height: 36px;width: 36px;text-align: center;display: inline-block;
 }
 table.moCalendar tbody tr td a:hover{
-  background-color: #00B7ED;color: #fff;border-radius: 25px;
+  background-color: #00B7ED;color: #fff;/*border-radius: 25px;*/
 }
 @media only screen and (max-width : 992px) {
   .parallax-container .section {

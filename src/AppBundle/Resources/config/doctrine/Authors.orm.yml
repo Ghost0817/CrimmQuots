@@ -38,12 +38,7 @@ AppBundle\Entity\Authors:
             nullable: false
             length: 255
             fixed: false
-        lastname:
-            type: string
-            nullable: false
-            length: 255
-            fixed: false
-        firstname:
+        name:
             type: string
             nullable: false
             length: 255

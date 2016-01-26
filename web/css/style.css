@@ -87,6 +87,13 @@ nav .input-field input[type=search]{
   margin-bottom: 4px;
 }
 
+table thead{
+  background-color: #00B7ED;color: #fff;
+}
+table thead tr th,table thead tr td{
+  border-radius: 0px;
+}
+
 table.moCalendar{
   margin-left:auto;margin-right:auto;border-collapse:collapse;
 }
@@ -102,7 +109,7 @@ table.moCalendar thead h2{
   padding-top: 10px;
   padding-bottom: 10px;
 }
-table.moCalendar thead tr th,{
+table.moCalendar thead tr th{
   padding: 0px;display: inline-block;
 }
 table.moCalendar thead tr td{padding: 0px;display: inline-block;width: 36px;}

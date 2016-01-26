@@ -118,15 +118,19 @@ class DefaultController extends Controller
      */
     public function birthdaysonAction(Request $request, $date)
     {
-        $em = $this->getDoctrine()->getManager();
+        #$em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery(
-            "SELECT p
-            FROM AppBundle:Authors p
-            WHERE CONCAT(MONTHNAME(p.born),'_',DAY(p.born)) = :date"
-        )->setParameter('date', $date);
+        #$query = $em->createQuery(
+        #    "SELECT p
+        #    FROM AppBundle:Authors p
+        #    WHERE CONCAT(MONTHNAME(p.born),'_',DAY(p.born)) = :date"
+        #)->setParameter('date', $date);
 
-        $authors = $query->getResult();
+        #$authors = $query->getResult();
+
+        $authors = $this->getDoctrine()
+        ->getRepository('AppBundle:Authors')
+        ->findAll();
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
 

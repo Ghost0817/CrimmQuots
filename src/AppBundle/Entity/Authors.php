@@ -61,14 +61,7 @@ class Authors
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
      */
-    private $lastname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
-     */
-    private $firstname;
+    private $name;
 
     /**
      * @var \AppBundle\Entity\Nationality
@@ -218,14 +211,14 @@ class Authors
     }
 
     /**
-     * Set lastname
+     * Set name
      *
-     * @param string $lastname
+     * @param string $name
      * @return Authors
      */
-    public function setLastname($lastname)
+    public function setName($name)
     {
-        $this->lastname = $lastname;
+        $this->name = $name;
 
         return $this;
     }
@@ -235,32 +228,9 @@ class Authors
      *
      * @return string 
      */
-    public function getLastname()
+    public function getName()
     {
-        return $this->lastname;
-    }
-
-    /**
-     * Set firstname
-     *
-     * @param string $firstname
-     * @return Authors
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * Get firstname
-     *
-     * @return string 
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
+        return $this->name;
     }
 
     /**

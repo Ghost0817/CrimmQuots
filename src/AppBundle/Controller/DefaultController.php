@@ -113,6 +113,7 @@ class DefaultController extends Controller
             'cal_days' => $cal_days,
         ));
     }
+
     /**
      * @Route("/birthdays/{date}.{_format}", name="birthdaysonpage")
      */
@@ -138,6 +139,38 @@ class DefaultController extends Controller
         return $this->render('default/birthdayson.html.twig', array(
             'date' => $date,
             'authors' => $authors
+        ));
+    }
+
+    /**
+     * @Route("/quotes/authors/{slug}.{_format}", name="quotesbyauthor")
+     */
+    public function quotesbyauthorAction(Request $request, $slug)
+    {
+        #$em = $this->getDoctrine()->getManager();
+        
+        #$query = $em->createQuery(
+        #    "SELECT p
+        #    FROM AppBundle:Authors p
+        #    WHERE CONCAT(MONTHNAME(p.born),'_',DAY(p.born)) = :date"
+        #)->setParameter('date', $date);
+
+        #$authors = $query->getResult();
+
+        $author = $this->getDoctrine()
+        ->getRepository('AppBundle:Authors')
+        ->findOneBy(array('slug' => $slug));
+
+        $quotes = $this->getDoctrine()
+        ->getRepository('AppBundle:Quotes')
+        ->findBy(array('author' => $author));        
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+
+        // replace this example code with whatever you need
+        return $this->render('default/quotesbyauthor.html.twig', array(
+            'author' => $author,
+            'quotes' => $quotes
         ));
     }
 }

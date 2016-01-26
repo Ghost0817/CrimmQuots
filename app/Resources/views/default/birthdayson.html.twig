@@ -28,7 +28,7 @@
           <tbody>
             {% for author in authors %}
             <tr>
-              <td>{{ author.name }}</td>
+              <td><a href="{{ path('quotesbyauthor',{'slug': author.slug, '_format':'html'}) }}">{{ author.name }}</td>
               <td>{{ author.profession.name }}</td>
               <td>{{ author.born|date("Y") }}</td>
             </tr>

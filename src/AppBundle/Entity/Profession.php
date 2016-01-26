@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Profession
  *
- * @ORM\Table(name="profession")
+ * @ORM\Table(name="profession", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})})
  * @ORM\Entity
  */
 class Profession
@@ -74,7 +74,7 @@ class Profession
      * Set slug
      *
      * @param string $slug
-     * @return Topics
+     * @return Profession
      */
     public function setSlug($slug)
     {

@@ -57,6 +57,20 @@ class Authors
     private $slug;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
+     */
+    private $firstname;
+
+    /**
      * @var \AppBundle\Entity\Nationality
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Nationality")
@@ -201,6 +215,52 @@ class Authors
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return Authors
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string 
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return Authors
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
     }
 
     /**

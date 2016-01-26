@@ -25,7 +25,6 @@ class DefaultController extends Controller
      */
     public function topicsAction(Request $request)
     {
-        
         $topics = $this->getDoctrine()
         ->getRepository('AppBundle:Topics')
         ->findAll();
@@ -45,7 +44,6 @@ class DefaultController extends Controller
      */
     public function onetopicAction(Request $request, $slug)
     {
-        
         $topics = $this->getDoctrine()
         ->getRepository('AppBundle:Topics')
         ->findOneBy(array('slug' => $slug, ));
@@ -113,6 +111,29 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/birthdays.html.twig', array(
             'cal_days' => $cal_days,
+        ));
+    }
+    /**
+     * @Route("/birthdays/{date}.{_format}", name="birthdaysonpage")
+     */
+    public function birthdaysonAction(Request $request, $date)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery(
+            "SELECT p
+            FROM AppBundle:Authors p
+            WHERE CONCAT(MONTHNAME(p.born),'_',DAY(p.born)) = :date"
+        )->setParameter('date', $date);
+
+        $authors = $query->getResult();
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+
+        // replace this example code with whatever you need
+        return $this->render('default/birthdayson.html.twig', array(
+            'date' => $date,
+            'authors' => $authors
         ));
     }
 }

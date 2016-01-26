@@ -1,10 +1,10 @@
-AppBundle\Entity\Profession:
+AppBundle\Entity\Quotes:
     type: entity
-    table: profession
-    uniqueConstraints:
-        name:
+    table: quotes
+    indexes:
+        author_id:
             columns:
-                - name
+                - author_id
     id:
         id:
             type: integer
@@ -14,14 +14,24 @@ AppBundle\Entity\Profession:
             generator:
                 strategy: IDENTITY
     fields:
-        name:
+        quote:
             type: string
             nullable: false
             length: 255
             fixed: false
-        slug:
+        image:
             type: string
             nullable: false
             length: 255
             fixed: false
+    manyToOne:
+        author:
+            targetEntity: Authors
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                author_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

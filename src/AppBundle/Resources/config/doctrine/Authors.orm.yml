@@ -38,6 +38,16 @@ AppBundle\Entity\Authors:
             nullable: false
             length: 255
             fixed: false
+        lastname:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        firstname:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
     manyToOne:
         nationality:
             targetEntity: Nationality

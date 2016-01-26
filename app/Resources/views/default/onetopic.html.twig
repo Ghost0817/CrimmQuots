@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quote Topics - BrainyQuote{% endblock %}
+{% block title %}{{ topics.name }} Quotes - BrainyQuote{% endblock %}
 
 {% block stylesheets %}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,30 +11,8 @@
 {% block body %}
   <div class="container">
     <div class="row sf_content">
-        <h5>Quote Topics</h5>
+        <h5>{{ topics.name }} Quotes</h5>
         <p>Looking for a quote from your favorite topic? Our quote collections are organized by topic to help you find the perfect quote. Enjoy quotes on popular topics like: Love, Life, Friendship, Success, Wisdom.</p>
-        {% set myrow = 0 %}
-        {% for item in topics %}
-          {% set myrow = myrow + 1 %}
-          {% if ( myrow == 1)%}
-            <div class="col s12 m6 l2">
-              <div class="row">
-                <ul>
-          {% endif %}
-          <li><a href="{{ path('onetopicpage',{'_format':'html','slug': item.slug}) }}">{{ item.name }}</a></li>
-          {% if ( myrow == 31) %}
-                </ul>
-              </div>
-            </div>
-            {% set myrow = 0 %}
-          {% endif %}
-        {% endfor %}
-        {% if ( myrow != 0) %}
-              </ul>
-            </div>
-          </div>
-          {% set myrow = 0 %}
-        {% endif %}
     </div>
   </div>
 {% endblock %}

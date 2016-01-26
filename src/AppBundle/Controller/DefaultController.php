@@ -41,6 +41,26 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/quotes/topics/{slug}.{_format}", name="onetopicpage")
+     */
+    public function onetopicAction(Request $request, $slug)
+    {
+        
+        $topics = $this->getDoctrine()
+        ->getRepository('AppBundle:Topics')
+        ->findOneBy(array('slug' => $slug, ));
+
+        if (!$topics) {
+            throw $this->createNotFoundException('The topic does not exist');
+        }
+
+        // replace this example code with whatever you need
+        return $this->render('default/onetopic.html.twig', array(
+            'topics' => $topics,
+        ));
+    }
+
+    /**
      * @Route("/profession.{_format}", name="professionpage")
      */
     public function professionAction(Request $request)

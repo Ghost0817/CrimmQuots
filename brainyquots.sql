@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2016 at 12:11 PM
+-- Generation Time: Jan 29, 2016 at 11:14 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -29,25 +29,58 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `authors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nationality` int(11) NOT NULL,
-  `born` date NOT NULL,
-  `died` date NOT NULL,
+  `born` varchar(15) NOT NULL,
+  `died` varchar(15) NOT NULL,
   `description` varchar(255) NOT NULL,
   `body` text NOT NULL,
   `slug` varchar(255) NOT NULL,
   `profession` int(11) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `hits` bigint(20) NOT NULL COMMENT 'Дарагдсан тоо',
   PRIMARY KEY (`id`),
   KEY `nationality` (`nationality`),
   KEY `profession` (`profession`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `authors`
 --
 
-INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body`, `slug`, `profession`, `lastname`, `firstname`) VALUES
-(1, 1, '1929-05-04', '1993-01-20', '', '', 'audrey_hepburn', 3, 'Audrey', 'Hepburn');
+INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body`, `slug`, `profession`, `name`, `hits`) VALUES
+(1, 1, '1929-05-04', '1993-01-20', '', '', 'audrey_hepburn', 3, 'Audrey Hepburn', 1),
+(2, 2, '1929-01-15', '1968-04-04', '', '', 'martin_luther_king_jr', 39, 'Martin Luther King, Jr.', 1),
+(3, 3, '1879-03-14', '1955-04-18', '', '', 'albert_einstein', 46, 'Albert Einstein', 1),
+(4, 2, '1904-03-02', '1991-09-24', '', '', 'dr_seuss', 65, 'Dr. Seuss', 1),
+(5, 4, '1869-10-02', '1948-01-30', '', '', 'mahatma_gandhi', 39, 'Mahatma Gandhi', 1),
+(6, 5, '1564-04-23', '1616-04-23', '', '', 'william_shakespeare', 25, 'William Shakespeare', 1),
+(7, 2, '1835-11-30', '1910-04-21', '', '', 'mark_twain', 8, 'Mark Twain', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `authorshits`
+--
+
+CREATE TABLE IF NOT EXISTS `authorshits` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `ip` varchar(50) NOT NULL,
+  `create_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `author_id` (`author_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `authorshits`
+--
+
+INSERT INTO `authorshits` (`id`, `author_id`, `ip`, `create_at`) VALUES
+(1, 2, '192.168.8.32', '2016-01-29 04:35:18'),
+(2, 3, '192.168.8.32', '2016-01-29 04:35:25'),
+(3, 4, '192.168.8.32', '2016-01-29 04:35:41'),
+(4, 5, '192.168.8.32', '2016-01-29 04:35:45'),
+(5, 6, '192.168.8.32', '2016-01-29 04:35:49'),
+(6, 1, '192.168.8.32', '2016-01-29 06:15:47');
 
 -- --------------------------------------------------------
 
@@ -59,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `nationality` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `nationality`
@@ -67,7 +100,10 @@ CREATE TABLE IF NOT EXISTS `nationality` (
 
 INSERT INTO `nationality` (`id`, `name`) VALUES
 (1, 'Belgian'),
-(2, 'American');
+(2, 'American'),
+(3, 'German'),
+(4, 'Indian'),
+(5, 'English');
 
 -- --------------------------------------------------------
 
@@ -176,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `quotes` (
 INSERT INTO `quotes` (`id`, `quote`, `image`, `author_id`) VALUES
 (1, 'The most important thing is to enjoy your life - to be happy - it''s all that matters.', 'audreyhepburn413489.jpg', 1),
 (2, 'Nothing is impossible, the word itself says ''I''m possible''!', 'audreyhepburn413479.jpg', 1),
-(3, 'The best thing to hold onto in life is each other.', 'audreyhepburn378280', 1),
+(3, 'The best thing to hold onto in life is each other.', 'audreyhepburn378280.jpg', 1),
 (4, 'The beauty of a woman must be seen from in her eyes, because that is the doorway to her heart, the place where love resides.', '', 1),
 (7, 'For beautiful eyes, look for the good in others; for beautiful lips, speak only words of kindness; and for poise, walk with the knowledge that you are never alone.', '', 1),
 (8, 'I was born with an enormous need for affection, and a terrible need to give it.', 'audreyhepburn126741.jpg', 1),
@@ -250,6 +286,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
+  `hits` bigint(20) NOT NULL COMMENT 'Дарагдсан тоо',
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='this is topics. Just like as category.' AUTO_INCREMENT=243 ;
@@ -258,128 +295,151 @@ CREATE TABLE IF NOT EXISTS `topics` (
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `name`, `slug`) VALUES
-(122, 'Age', 'age'),
-(123, 'Alone', 'alone'),
-(124, 'Amazing', 'amazing'),
-(125, 'Anger', 'anger'),
-(126, 'Anniversary', 'anniversary'),
-(127, 'Architecture', 'architecture'),
-(128, 'Art', 'art'),
-(129, 'Attitude', 'attitude'),
-(130, 'Beauty', 'beauty'),
-(131, 'Best', 'best'),
-(132, 'Birthday', 'birthday'),
-(133, 'Brainy', 'brainy'),
-(134, 'Business', 'business'),
-(135, 'Car', 'car'),
-(136, 'Chance', 'chance'),
-(137, 'Change', 'change'),
-(138, 'Christmas', 'christmas'),
-(139, 'Communication', 'communication'),
-(140, 'Computers', 'computers'),
-(141, 'Cool', 'cool'),
-(142, 'Courage', 'courage'),
-(143, 'Dad', 'dad'),
-(144, 'Dating', 'dating'),
-(145, 'Death', 'death'),
-(146, 'Design', 'design'),
-(147, 'Diet', 'diet'),
-(148, 'Dreams', 'dreams'),
-(149, 'Easter', 'easter'),
-(150, 'Education', 'education'),
-(151, 'Environmental', 'environmental'),
-(152, 'Equality', 'equality'),
-(153, 'Experience', 'experience'),
-(154, 'Failure', 'failure'),
-(155, 'Faith', 'faith'),
-(156, 'Family', 'family'),
-(157, 'Famous', 'famous'),
-(158, 'Father''s Day', 'fathers_day'),
-(159, 'Fear', 'fear'),
-(160, 'Finance', 'finance'),
-(161, 'Fitness', 'fitness'),
-(162, 'Food', 'food'),
-(163, 'Forgiveness', 'forgiveness'),
-(164, 'Freedom', 'freedom'),
-(165, 'Friendship', 'friendship'),
-(166, 'Funny', 'funny'),
-(167, 'Future', 'future'),
-(168, 'Gardening', 'gardening'),
-(169, 'God', 'god'),
-(170, 'Good', 'good'),
-(171, 'Government', 'government'),
-(172, 'Graduation', 'graduation'),
-(173, 'Great', 'great'),
-(174, 'Happiness', 'happiness'),
-(175, 'Health', 'health'),
-(176, 'History', 'history'),
-(177, 'Home', 'home'),
-(178, 'Hope', 'hope'),
-(179, 'Humor', 'humor'),
-(180, 'Imagination', 'imagination'),
-(181, 'Independence', 'independence'),
-(182, 'Inspirational', 'inspirational'),
-(183, 'Intelligence', 'intelligence'),
-(184, 'Jealousy', 'jealousy'),
-(185, 'Knowledge', 'knowledge'),
-(186, 'Leadership', 'leadership'),
-(187, 'Learning', 'learning'),
-(188, 'Legal', 'legal'),
-(189, 'Life', 'life'),
-(190, 'Love', 'love'),
-(191, 'Marriage', 'marriage'),
-(192, 'Medical', 'medical'),
-(193, 'Memorial Day', 'memorial_day'),
-(194, 'Men', 'men'),
-(195, 'Mom', 'mom'),
-(196, 'Money', 'money'),
-(197, 'Morning', 'morning'),
-(198, 'Mother''s Day', 'mothers_day'),
-(199, 'Motivational', 'motivational'),
-(200, 'Movies', 'movies'),
-(201, 'Moving On', 'moving_on'),
-(202, 'Music', 'music'),
-(203, 'Nature', 'nature'),
-(204, 'New Year''s', 'new_years'),
-(205, 'Parenting', 'parenting'),
-(206, 'Patience', 'patience'),
-(207, 'Patriotism', 'patriotism'),
-(208, 'Peace', 'peace'),
-(209, 'Pet', 'pet'),
-(210, 'Poetry', 'poetry'),
-(211, 'Politics', 'politics'),
-(212, 'Positive', 'positive'),
-(213, 'Power', 'power'),
-(214, 'Relationship', 'relationship'),
-(215, 'Religion', 'religion'),
-(216, 'Respect', 'respect'),
-(217, 'Romantic', 'romantic'),
-(218, 'Sad', 'sad'),
-(219, 'Saint Patrick''s Day', 'saint_patricks_day'),
-(220, 'Science', 'science'),
-(221, 'Smile', 'smile'),
-(222, 'Society', 'society'),
-(223, 'Sports', 'sports'),
-(224, 'Strength', 'strength'),
-(225, 'Success', 'success'),
-(226, 'Sympathy', 'sympathy'),
-(227, 'Teacher', 'teacher'),
-(228, 'Technology', 'technology'),
-(229, 'Teen', 'teen'),
-(230, 'Thankful', 'thankful'),
-(231, 'Thanksgiving', 'thanksgiving'),
-(232, 'Time', 'time'),
-(233, 'Travel', 'travel'),
-(234, 'Trust', 'trust'),
-(235, 'Truth', 'truth'),
-(236, 'Valentine''s Day', 'valentines_day'),
-(237, 'Veterans Day', 'veterans_day'),
-(238, 'War', 'war'),
-(239, 'Wedding', 'wedding'),
-(240, 'Wisdom', 'wisdom'),
-(241, 'Women', 'women'),
-(242, 'Work', 'work');
+INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
+(122, 'Age', 'age', 1),
+(123, 'Alone', 'alone', 0),
+(124, 'Amazing', 'amazing', 0),
+(125, 'Anger', 'anger', 0),
+(126, 'Anniversary', 'anniversary', 0),
+(127, 'Architecture', 'architecture', 0),
+(128, 'Art', 'art', 0),
+(129, 'Attitude', 'attitude', 0),
+(130, 'Beauty', 'beauty', 0),
+(131, 'Best', 'best', 0),
+(132, 'Birthday', 'birthday', 0),
+(133, 'Brainy', 'brainy', 0),
+(134, 'Business', 'business', 0),
+(135, 'Car', 'car', 0),
+(136, 'Chance', 'chance', 0),
+(137, 'Change', 'change', 0),
+(138, 'Christmas', 'christmas', 0),
+(139, 'Communication', 'communication', 0),
+(140, 'Computers', 'computers', 0),
+(141, 'Cool', 'cool', 0),
+(142, 'Courage', 'courage', 0),
+(143, 'Dad', 'dad', 0),
+(144, 'Dating', 'dating', 0),
+(145, 'Death', 'death', 0),
+(146, 'Design', 'design', 0),
+(147, 'Diet', 'diet', 0),
+(148, 'Dreams', 'dreams', 0),
+(149, 'Easter', 'easter', 0),
+(150, 'Education', 'education', 0),
+(151, 'Environmental', 'environmental', 0),
+(152, 'Equality', 'equality', 0),
+(153, 'Experience', 'experience', 0),
+(154, 'Failure', 'failure', 0),
+(155, 'Faith', 'faith', 0),
+(156, 'Family', 'family', 0),
+(157, 'Famous', 'famous', 0),
+(158, 'Father''s Day', 'fathers_day', 0),
+(159, 'Fear', 'fear', 0),
+(160, 'Finance', 'finance', 0),
+(161, 'Fitness', 'fitness', 0),
+(162, 'Food', 'food', 0),
+(163, 'Forgiveness', 'forgiveness', 0),
+(164, 'Freedom', 'freedom', 0),
+(165, 'Friendship', 'friendship', 0),
+(166, 'Funny', 'funny', 0),
+(167, 'Future', 'future', 0),
+(168, 'Gardening', 'gardening', 0),
+(169, 'God', 'god', 0),
+(170, 'Good', 'good', 0),
+(171, 'Government', 'government', 0),
+(172, 'Graduation', 'graduation', 0),
+(173, 'Great', 'great', 0),
+(174, 'Happiness', 'happiness', 0),
+(175, 'Health', 'health', 0),
+(176, 'History', 'history', 0),
+(177, 'Home', 'home', 0),
+(178, 'Hope', 'hope', 0),
+(179, 'Humor', 'humor', 0),
+(180, 'Imagination', 'imagination', 0),
+(181, 'Independence', 'independence', 0),
+(182, 'Inspirational', 'inspirational', 0),
+(183, 'Intelligence', 'intelligence', 0),
+(184, 'Jealousy', 'jealousy', 0),
+(185, 'Knowledge', 'knowledge', 0),
+(186, 'Leadership', 'leadership', 0),
+(187, 'Learning', 'learning', 0),
+(188, 'Legal', 'legal', 0),
+(189, 'Life', 'life', 1),
+(190, 'Love', 'love', 0),
+(191, 'Marriage', 'marriage', 0),
+(192, 'Medical', 'medical', 0),
+(193, 'Memorial Day', 'memorial_day', 0),
+(194, 'Men', 'men', 0),
+(195, 'Mom', 'mom', 0),
+(196, 'Money', 'money', 0),
+(197, 'Morning', 'morning', 0),
+(198, 'Mother''s Day', 'mothers_day', 0),
+(199, 'Motivational', 'motivational', 0),
+(200, 'Movies', 'movies', 0),
+(201, 'Moving On', 'moving_on', 0),
+(202, 'Music', 'music', 0),
+(203, 'Nature', 'nature', 0),
+(204, 'New Year''s', 'new_years', 0),
+(205, 'Parenting', 'parenting', 0),
+(206, 'Patience', 'patience', 0),
+(207, 'Patriotism', 'patriotism', 0),
+(208, 'Peace', 'peace', 0),
+(209, 'Pet', 'pet', 0),
+(210, 'Poetry', 'poetry', 0),
+(211, 'Politics', 'politics', 0),
+(212, 'Positive', 'positive', 0),
+(213, 'Power', 'power', 0),
+(214, 'Relationship', 'relationship', 0),
+(215, 'Religion', 'religion', 0),
+(216, 'Respect', 'respect', 0),
+(217, 'Romantic', 'romantic', 0),
+(218, 'Sad', 'sad', 0),
+(219, 'Saint Patrick''s Day', 'saint_patricks_day', 0),
+(220, 'Science', 'science', 0),
+(221, 'Smile', 'smile', 0),
+(222, 'Society', 'society', 0),
+(223, 'Sports', 'sports', 0),
+(224, 'Strength', 'strength', 0),
+(225, 'Success', 'success', 0),
+(226, 'Sympathy', 'sympathy', 0),
+(227, 'Teacher', 'teacher', 0),
+(228, 'Technology', 'technology', 0),
+(229, 'Teen', 'teen', 0),
+(230, 'Thankful', 'thankful', 0),
+(231, 'Thanksgiving', 'thanksgiving', 0),
+(232, 'Time', 'time', 0),
+(233, 'Travel', 'travel', 0),
+(234, 'Trust', 'trust', 0),
+(235, 'Truth', 'truth', 0),
+(236, 'Valentine''s Day', 'valentines_day', 0),
+(237, 'Veterans Day', 'veterans_day', 0),
+(238, 'War', 'war', 0),
+(239, 'Wedding', 'wedding', 0),
+(240, 'Wisdom', 'wisdom', 0),
+(241, 'Women', 'women', 0),
+(242, 'Work', 'work', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topicshits`
+--
+
+CREATE TABLE IF NOT EXISTS `topicshits` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic_id` int(11) NOT NULL,
+  `ip` varchar(50) NOT NULL,
+  `create_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `quote_id` (`topic_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `topicshits`
+--
+
+INSERT INTO `topicshits` (`id`, `topic_id`, `ip`, `create_at`) VALUES
+(1, 122, '192.168.8.32', '2016-01-29 04:20:12'),
+(2, 189, '192.168.8.32', '2016-01-29 05:49:20');
 
 --
 -- Constraints for dumped tables
@@ -393,6 +453,12 @@ ALTER TABLE `authors`
   ADD CONSTRAINT `authors_ibfk_3` FOREIGN KEY (`profession`) REFERENCES `profession` (`id`);
 
 --
+-- Constraints for table `authorshits`
+--
+ALTER TABLE `authorshits`
+  ADD CONSTRAINT `authorshits_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`);
+
+--
 -- Constraints for table `quotes`
 --
 ALTER TABLE `quotes`
@@ -404,6 +470,12 @@ ALTER TABLE `quotes`
 ALTER TABLE `quotesandtopics`
   ADD CONSTRAINT `quotesandtopics_ibfk_1` FOREIGN KEY (`quote_id`) REFERENCES `quotes` (`id`),
   ADD CONSTRAINT `quotesandtopics_ibfk_2` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`);
+
+--
+-- Constraints for table `topicshits`
+--
+ALTER TABLE `topicshits`
+  ADD CONSTRAINT `topicshits_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

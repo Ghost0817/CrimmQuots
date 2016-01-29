@@ -1,0 +1,74 @@
+AppBundle\Entity\Authors:
+    type: entity
+    table: authors
+    indexes:
+        nationality:
+            columns:
+                - nationality
+        profession:
+            columns:
+                - profession
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        born:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+        died:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+        description:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        body:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        hits:
+            type: bigint
+            nullable: false
+            unsigned: false
+            comment: 'Дарагдсан тоо'
+    manyToOne:
+        nationality:
+            targetEntity: Nationality
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                nationality:
+                    referencedColumnName: id
+            orphanRemoval: false
+        profession:
+            targetEntity: Profession
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                profession:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

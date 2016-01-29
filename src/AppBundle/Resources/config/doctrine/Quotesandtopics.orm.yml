@@ -1,0 +1,42 @@
+AppBundle\Entity\Quotesandtopics:
+    type: entity
+    table: quotesandtopics
+    indexes:
+        quote_id:
+            columns:
+                - quote_id
+                - topic_id
+        topic_id:
+            columns:
+                - topic_id
+        IDX_E53EC688DB805178:
+            columns:
+                - quote_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        quote:
+            targetEntity: Quotes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                quote_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        topic:
+            targetEntity: Topics
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                topic_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

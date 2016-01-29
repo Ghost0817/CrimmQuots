@@ -1,0 +1,49 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Quotes
+ *
+ * @ORM\Table(name="quotes", indexes={@ORM\Index(name="author_id", columns={"author_id"})})
+ * @ORM\Entity
+ */
+class Quotes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quote", type="string", length=255, nullable=false)
+     */
+    private $quote;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var \AppBundle\Entity\Authors
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Authors")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     * })
+     */
+    private $author;
+
+
+}

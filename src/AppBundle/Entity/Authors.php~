@@ -1,0 +1,94 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Authors
+ *
+ * @ORM\Table(name="authors", indexes={@ORM\Index(name="nationality", columns={"nationality"}), @ORM\Index(name="profession", columns={"profession"})})
+ * @ORM\Entity
+ */
+class Authors
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="born", type="string", length=15, nullable=false)
+     */
+    private $born;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="died", type="string", length=15, nullable=false)
+     */
+    private $died;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="body", type="text", length=65535, nullable=false)
+     */
+    private $body;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="hits", type="bigint", nullable=false)
+     */
+    private $hits;
+
+    /**
+     * @var \AppBundle\Entity\Nationality
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Nationality")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nationality", referencedColumnName="id")
+     * })
+     */
+    private $nationality;
+
+    /**
+     * @var \AppBundle\Entity\Profession
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Profession")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="profession", referencedColumnName="id")
+     * })
+     */
+    private $profession;
+
+
+}

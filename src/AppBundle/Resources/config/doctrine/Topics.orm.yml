@@ -1,0 +1,32 @@
+AppBundle\Entity\Topics:
+    type: entity
+    table: topics
+    uniqueConstraints:
+        slug:
+            columns:
+                - slug
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        hits:
+            type: bigint
+            nullable: false
+            unsigned: false
+            comment: 'Дарагдсан тоо'
+    lifecycleCallbacks: {  }

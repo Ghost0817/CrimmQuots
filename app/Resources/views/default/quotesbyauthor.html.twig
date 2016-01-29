@@ -17,10 +17,39 @@
           <div class="row">
           slider
           </div>
+
+          <!-- start pagenation -->
+
+          <div class="row">
+            <ul class="pagination left">
+              <li {% if(page == 1) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
+                <a {% if(page == 1) %}{% else %}href="{{ path('quotesbyauthor', {'slug' :author.slug,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
+                  <span aria-hidden="true">«</span>
+                </a>
+              </li class="waves-effect">
+              {% for i in 1..total_page %}
+                 <li{% if(page == i) %} class="active"{% else %} class="waves-effect"{% endif %}>
+                 <a {% if(page == i) %}{% else %}href="{{ path('quotesbyauthor', { 'page' : i ,'slug' :author.slug,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
+                 </li>
+              {% endfor %}
+              <li {% if(page == total_page) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
+                <a {% if(page == total_page) %}{% else %}href="{{ path('quotesbyauthor', {'page': total_page ,'slug' :author.slug,'_format':'html' }) }}"{% endif %} aria-label="Next">
+                  <span aria-hidden="true">»</span>
+                </a>
+              </li>
+            </ul>
+            <div class="right">
+              <a class="btn waves-effect waves-light green">Cart View<i class="Small material-icons">view_modulet</i></a>
+              <a class="btn-flat waves-effect">List View<i class="Small material-icons">view_list</i></a>
+            </div>
+          </div>
+
+          <!-- end pagenation -->
+
         	<div class="row">
 
       {% for item in quotes %}
-        <div class="col s12 m4" style="float: left;vertical-align: top;display: inline;">
+        <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
           <div class="card">
             {% if(item.image) %}
               <div class="card-image">
@@ -31,6 +60,9 @@
               <p>{{ item.quote }}</p>
               <a href="">{{ author.name }}</a>
             </div>
+            <div class="card-tags">
+              <a href="#">Life, Point, Easy</a>
+            </div>
             <div class="card-action">
               <a href="#">This is a link</a>
             </div>
@@ -40,6 +72,30 @@
 
 
         	</div>
+
+          <!-- start pagenation -->
+
+          <div class="row">
+            <ul class="pagination">
+              <li {% if(page == 1) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
+                <a {% if(page == 1) %}{% else %}href="{{ path('quotesbyauthor', {'slug' :author.slug,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
+                  <span aria-hidden="true">«</span>
+                </a>
+              </li class="waves-effect">
+              {% for i in 1..total_page %}
+                 <li{% if(page == i) %} class="active"{% else %}{% endif %}>
+                 <a {% if(page == i) %}{% else %}href="{{ path('quotesbyauthor', { 'page' : i ,'slug' :author.slug,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
+                 </li>
+              {% endfor %}
+              <li {% if(page == total_page) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
+                <a {% if(page == total_page) %}{% else %}href="{{ path('quotesbyauthor', {'page': total_page ,'slug' :author.slug,'_format':'html' }) }}"{% endif %} aria-label="Next">
+                  <span aria-hidden="true">»</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- end pagenation -->
         </div>
 		<div class="col s12 m12 l3">
 			<h5>Biography</h5>

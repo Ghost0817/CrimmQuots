@@ -1,0 +1,36 @@
+AppBundle\Entity\Authorshits:
+    type: entity
+    table: authorshits
+    indexes:
+        author_id:
+            columns:
+                - author_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ip:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+        createAt:
+            type: datetime
+            nullable: false
+            column: create_at
+    manyToOne:
+        author:
+            targetEntity: Authors
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                author_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

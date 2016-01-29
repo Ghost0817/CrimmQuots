@@ -2593,7 +2593,7 @@ ul {
 }
 
 a {
-  color: #039be5;
+  color: #00B7ED;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -2728,7 +2728,7 @@ video.responsive-video {
 }
 
 .pagination li.active {
-  background-color: #ee6e73;
+  background-color: #00B7ED;
 }
 
 .pagination li.disabled a {
@@ -7844,7 +7844,13 @@ small {
 
 .card .card-action {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
-  padding: 20px;
+  padding: 8px 20px 8px 20px;
+  font-size: 13px;
+}
+.card .card-tags {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 8px 20px 8px 20px;
+  font-size: 13px;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {

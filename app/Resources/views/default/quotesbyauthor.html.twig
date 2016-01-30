@@ -40,8 +40,10 @@
               </li>
             </ul>
             <div class="right">
-              <a class="btn waves-effect waves-light green">Cart View<i class="Small material-icons">view_modulet</i></a>
-              <a class="btn-flat waves-effect">List View<i class="Small material-icons">view_list</i></a>
+              <div class="btn-group">
+                <a type="button" class="btn"><i class="fa fa-th"></i></a>
+                <a type="button" class="btn-flat"><i class="fa fa-th-list"></i></a>
+              </div>
             </div>
           </div>
 
@@ -65,7 +67,16 @@
               <a href="#">Life, Point, Easy</a>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
+              <a class="left-align" href="#" style="color:#00B7ED;"><i class="fa fa-facebook-official fa-2x"></i></a>
+              <a class="left-align" href="#" style="color:#803591;"><i class="fa fa-twitter-square fa-2x"></i></a>
+              {% if(item.image) %}
+                <a class="left-align" href="#" style="color:#F52422;"><i class="fa fa-pinterest-square fa-2x"></i></a>
+              {% else%}
+                <a class="left-align" href="#" style="color:#85C243;"><i class="fa fa-camera fa-2x"></i></a>
+              {% endif %}
+
+              <a class="right-align right" href="#" style="color:#333;"><i class="fa fa-plus-square-o fa-2x"></i></a>
+              <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
             </div>
           </div>
         </div>

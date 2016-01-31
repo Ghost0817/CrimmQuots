@@ -36,6 +36,13 @@ class Quotes
     private $image;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="keywords", type="string", length=255, nullable=false)
+     */
+    private $keywords;
+
+    /**
      * @var \AppBundle\Entity\Authors
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Authors")
@@ -101,6 +108,29 @@ class Quotes
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set keywords
+     *
+     * @param string $keywords
+     * @return Quotes
+     */
+    public function setKeywords($keywords)
+    {
+        $this->keywords = $keywords;
+
+        return $this;
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return string 
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 
     /**

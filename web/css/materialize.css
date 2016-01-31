@@ -7851,6 +7851,7 @@ small {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 8px 20px 8px 20px;
   font-size: 13px;
+  background-color:#F9F9F9;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {

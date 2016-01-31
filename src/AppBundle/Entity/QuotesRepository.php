@@ -14,6 +14,7 @@ class QuotesRepository extends EntityRepository
             ->from('AppBundle:Quotes', 'a')
             ->where('a.author = :author')
             ->setParameter('author', $author)
+            ->orderBy('a.id', 'ASC')
             ->setMaxResults($limit)
             ->setFirstResult($limit * $offset)
         ;

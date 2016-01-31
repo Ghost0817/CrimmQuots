@@ -18,8 +18,7 @@
           <div class="row">
           <i class="fa fa-home fa-fw"></i>&nbsp; slider
           </div>
-
-          <!-- start pagenation -->
+          <!-- start top pagenation -->
 
           <div class="row">
             <ul class="pagination left">
@@ -47,42 +46,50 @@
             </div>
           </div>
 
-          <!-- end pagenation -->
+          <!-- end top pagenation -->
 
         	<div class="row">
+            {% set line_c = 0 %}
+            {% for item in quotes %}
+              {% set line_c = line_c + 1 %}
+              {% if(line_c == 1) %}
+                <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
+              {% endif %}
+                <div class="card">
+                  {% if(item.image) %}
+                    <div class="card-image">
+                      <img src="/uploads/{{ item.image }}">
+                    </div>
+                  {% endif %}
+                  <div class="card-content">
+                    <p>{{ item.quote }}</p>
+                    <a href="">{{ author.name }}</a>
+                  </div>
+                  <div class="card-tags">
+                    <a href="#">{{ item.keywords }}</a>
+                  </div>
+                  <div class="card-action">
+                    <a class="left-align" href="#" style="color:#00B7ED;"><i class="fa fa-facebook-official fa-2x"></i></a>
+                    <a class="left-align" href="#" style="color:#803591;"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    {% if(item.image) %}
+                      <a class="left-align" href="#" style="color:#F52422;"><i class="fa fa-pinterest-square fa-2x"></i></a>
+                    {% else%}
+                      <a class="left-align" href="#" style="color:#85C243;"><i class="fa fa-camera fa-2x"></i></a>
+                    {% endif %}
 
-      {% for item in quotes %}
-        <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
-          <div class="card">
-            {% if(item.image) %}
-              <div class="card-image">
-                <img src="/uploads/{{ item.image }}">
+                    <a class="right-align right" href="#" style="color:#333;"><i class="fa fa-plus-square-o fa-2x"></i></a>
+                    <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
+                  </div>
+                </div>
+              {% if(line_c == 9)%}
+                {% set line_c = 0 %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {% if(line_c != 9)%}
               </div>
             {% endif %}
-            <div class="card-content">
-              <p>{{ item.quote }}</p>
-              <a href="">{{ author.name }}</a>
-            </div>
-            <div class="card-tags">
-              <a href="#">Life, Point, Easy</a>
-            </div>
-            <div class="card-action">
-              <a class="left-align" href="#" style="color:#00B7ED;"><i class="fa fa-facebook-official fa-2x"></i></a>
-              <a class="left-align" href="#" style="color:#803591;"><i class="fa fa-twitter-square fa-2x"></i></a>
-              {% if(item.image) %}
-                <a class="left-align" href="#" style="color:#F52422;"><i class="fa fa-pinterest-square fa-2x"></i></a>
-              {% else%}
-                <a class="left-align" href="#" style="color:#85C243;"><i class="fa fa-camera fa-2x"></i></a>
-              {% endif %}
-
-              <a class="right-align right" href="#" style="color:#333;"><i class="fa fa-plus-square-o fa-2x"></i></a>
-              <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-
-
         	</div>
 
           <!-- start pagenation -->
@@ -109,46 +116,46 @@
 
           <!-- end pagenation -->
         </div>
-		<div class="col s12 m12 l3">
-			<h5>Biography</h5>
-      <p>Nationality: <a href="#">{{ author.nationality.name }}</a></p>
-      <p>Type: <a href="#">{{ author.profession.name }}</a></p>
-      <p>Born: </p>
-      <p>Died: </p>
+	      <div class="col s12 m12 l3">
+      		<h5>Biography</h5>
+          <p>Nationality: <a href="#">{{ author.nationality.name }}</a></p>
+          <p>Type: <a href="#">{{ author.profession.name }}</a></p>
+          <p>Born: </p>
+          <p>Died: </p>
 
-            <blockquote class="z-depth-1" style="border-color:#00B7ED;">
-              <a href="#"><b>Biography</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#00B7ED;">
+            <a href="#"><b>Biography</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#803591;">
-              <a href="#"><b>Inspirational</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#803591;">
+            <a href="#"><b>Inspirational</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#F52422;">
-              <a href="#"><b>Life</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#F52422;">
+            <a href="#"><b>Life</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#FFAE1D;">
-              <a href="#"><b>Love</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#FFAE1D;">
+            <a href="#"><b>Love</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#85C243;">
-              <a href="#"><b>Funny</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#85C243;">
+            <a href="#"><b>Funny</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#00B7ED;">
-              <a href="#"><b>Positive</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#00B7ED;">
+            <a href="#"><b>Positive</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#803591;">
-              <a href="#"><b>Friendship</b> Quotes</a>
-            </blockquote>
+          <blockquote class="z-depth-1" style="border-color:#803591;">
+            <a href="#"><b>Friendship</b> Quotes</a>
+          </blockquote>
 
-            <blockquote class="z-depth-1" style="border-color:#F52422;">
-              <a href="#"><b>Success</b> Quotes</a>
-            </blockquote>
-		</div>
-    </div>
+          <blockquote class="z-depth-1" style="border-color:#F52422;">
+            <a href="#"><b>Success</b> Quotes</a>
+          </blockquote>
+	      </div>
+      </div>
 </div>
 {% endblock %}
 

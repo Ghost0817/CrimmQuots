@@ -218,7 +218,7 @@ class DefaultController extends Controller
         }
 
         # start pagenation
-        $pageshow = 26;
+        $pageshow = 27;
         $quotes = $this->getDoctrine()
         ->getRepository('AppBundle:Quotes')
         ->findBy(array('author' => $author));

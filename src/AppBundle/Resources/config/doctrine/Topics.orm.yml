@@ -1,5 +1,6 @@
 AppBundle\Entity\Topics:
     type: entity
+    repositoryClass: AppBundle\Entity\TopicsRepository
     table: topics
     uniqueConstraints:
         slug:

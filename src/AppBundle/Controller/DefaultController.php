@@ -81,7 +81,7 @@ class DefaultController extends Controller
             $topicshits->setTopic($topic);
             $em = $this->getDoctrine()->getManager();
             $em->persist($topicshits);
-            $topics->setHits($topic->getHits() + 1);
+            $topic->setHits($topic->getHits() + 1);
             $em->persist($topic);
             $em->flush();
         }

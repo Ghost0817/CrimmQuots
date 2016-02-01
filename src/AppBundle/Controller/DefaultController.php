@@ -42,16 +42,27 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/quotes/topics/{slug}.{_format}", name="onetopicpage")
+     * @Route("/quotes/topics/{slug}{page}.{_format}", 
+     * name="onetopicpage",
+     * defaults={"page": "1"},
+     * requirements={"page": "\d+"}
+     * )
      */
-    public function onetopicAction(Request $request, $slug)
+    public function onetopicAction(Request $request, $slug, $page)
     {
         $topics = $this->getDoctrine()
         ->getRepository('AppBundle:Topics')
+        ->findAll();
+
+        $topic = $this->getDoctrine()
+        ->getRepository('AppBundle:Topics')
         ->findOneBy(array('slug' => $slug, ));
 
-        if (!$topics) {
+        if (!$topic) {
             throw $this->createNotFoundException('The topic does not exist');
+        }
+        if (!$topics) {
+            throw $this->createNotFoundException('The topics does not exist');
         }
 
         # get ip address
@@ -59,7 +70,7 @@ class DefaultController extends Controller
 
         $mycount = $this->getDoctrine()
         ->getRepository('AppBundle:Topicshits')
-        ->findOneBy(array('topic' => $topics, 'ip' => $ip));
+        ->findOneBy(array('topic' => $topic, 'ip' => $ip));
 
         $topicshits = new Topicshits();
         if($mycount){
@@ -67,17 +78,74 @@ class DefaultController extends Controller
         } else {
             $topicshits->setIp($ip);
             $topicshits->setCreateAt();
-            $topicshits->setTopic($topics);
+            $topicshits->setTopic($topic);
             $em = $this->getDoctrine()->getManager();
             $em->persist($topicshits);
-            $topics->setHits($topics->getHits() + 1);
-            $em->persist($topics);
+            $topics->setHits($topic->getHits() + 1);
+            $em->persist($topic);
             $em->flush();
         }
+
+        $pageshow = 27;
+        $quotes = $this->getDoctrine()
+        ->getRepository('AppBundle:Quotes')
+        ->findByTopic($topic->getName());
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+
+        $total_page= ceil( count($quotes) / $pageshow);
+
+        $quotes = $this->getDoctrine()
+        ->getRepository('AppBundle:Quotes')
+        ->findByTopicPage( $topic->getName(), $pageshow, $page - 1);
 
         // replace this example code with whatever you need
         return $this->render('default/onetopic.html.twig', array(
             'topics' => $topics,
+            'topic' => $topic,
+            'quotes' => $quotes,
+            'total_page' => $total_page,
+            'page' => $page
+        ));
+    }
+
+    /**
+     * @Route("/quotes/keywords/{slug}{page}.{_format}", 
+     * name="onekeywordpage",
+     * defaults={"page": "1"},
+     * requirements={"page": "\d+"}
+     * )
+     */
+    public function onekeywordAction(Request $request, $slug, $page)
+    {
+        $topics = $this->getDoctrine()
+        ->getRepository('AppBundle:Topics')
+        ->findAll();
+
+        if (!$topics) {
+            throw $this->createNotFoundException('The topics does not exist');
+        }
+
+        $pageshow = 27;
+        $quotes = $this->getDoctrine()
+        ->getRepository('AppBundle:Quotes')
+        ->findByKeyword($slug);
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+
+        $total_page= ceil( count($quotes) / $pageshow);
+
+        $quotes = $this->getDoctrine()
+        ->getRepository('AppBundle:Quotes')
+        ->findByKeywordPage( $slug, $pageshow, $page - 1);
+
+        // replace this example code with whatever you need
+        return $this->render('default/onekeyword.html.twig', array(
+            'topics' => $topics,
+            'keyword' => $slug,
+            'quotes' => $quotes,
+            'total_page' => $total_page,
+            'page' => $page
         ));
     }
 
@@ -192,8 +260,15 @@ class DefaultController extends Controller
         ->getRepository('AppBundle:Authors')
         ->findOneBy(array('slug' => $slug));
 
+        $topics = $this->getDoctrine()
+        ->getRepository('AppBundle:Topics')
+        ->findAll();
+
         if (!$author) {
             throw $this->createNotFoundException('The author does not exist');
+        }
+        if (!$topics) {
+            throw $this->createNotFoundException('The topics does not exist');
         }
         
         # get ip address
@@ -236,6 +311,7 @@ class DefaultController extends Controller
 
         // replace this example code with whatever you need
         return $this->render('default/quotesbyauthor.html.twig', array(
+            'topics' => $topics,
             'author' => $author,
             'quotes' => $quotes,
             'total_page' => $total_page,

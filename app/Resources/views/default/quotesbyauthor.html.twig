@@ -136,37 +136,13 @@
           <p>Born: </p>
           <p>Died: </p>
 
-          <blockquote class="z-depth-1" style="border-color:#00B7ED;">
-            <a href="#"><b>Biography</b> Quotes</a>
-          </blockquote>
+          <h5>Popular Topics</h5>
 
-          <blockquote class="z-depth-1" style="border-color:#803591;">
-            <a href="#"><b>Inspirational</b> Quotes</a>
-          </blockquote>
+          {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+          
+          <h5>Popular Authors</h5>
 
-          <blockquote class="z-depth-1" style="border-color:#F52422;">
-            <a href="#"><b>Life</b> Quotes</a>
-          </blockquote>
-
-          <blockquote class="z-depth-1" style="border-color:#FFAE1D;">
-            <a href="#"><b>Love</b> Quotes</a>
-          </blockquote>
-
-          <blockquote class="z-depth-1" style="border-color:#85C243;">
-            <a href="#"><b>Funny</b> Quotes</a>
-          </blockquote>
-
-          <blockquote class="z-depth-1" style="border-color:#00B7ED;">
-            <a href="#"><b>Positive</b> Quotes</a>
-          </blockquote>
-
-          <blockquote class="z-depth-1" style="border-color:#803591;">
-            <a href="#"><b>Friendship</b> Quotes</a>
-          </blockquote>
-
-          <blockquote class="z-depth-1" style="border-color:#F52422;">
-            <a href="#"><b>Success</b> Quotes</a>
-          </blockquote>
+          {{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
 	      </div>
       </div>
 </div>

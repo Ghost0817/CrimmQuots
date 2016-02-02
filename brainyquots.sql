@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2016 at 01:27 AM
+-- Generation Time: Feb 01, 2016 at 11:34 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -221,8 +221,9 @@ CREATE TABLE IF NOT EXISTS `quotes` (
   `author_id` int(11) NOT NULL,
   `keywords` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `quote` (`quote`),
   KEY `author_id` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=115 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=164 ;
 
 --
 -- Dumping data for table `quotes`
@@ -286,29 +287,72 @@ INSERT INTO `quotes` (`id`, `quote`, `image`, `author_id`, `keywords`) VALUES
 (59, 'There is nothing either good or bad but thinking makes it so.', '', 6, 'Good, Thinking, Either'),
 (60, 'To thine own self be true, and it must follow, as the night the day, thou canst not then be false to any man.', '', 6, 'Thine, True, Night'),
 (61, 'Cowards die many times before their deaths; the valiant never taste of death but once.', '', 6, 'Death, Valiant, Die'),
-(62, 'False face must hide what the false heart doth know.', '', 6, '\r\nHide, Heart, Face\r\n'),
-(63, 'Better a witty fool than a foolish wit.', 'williamshakespeare100137.jpg', 6, '\r\nFool, Foolish, Wit\r\n'),
-(64, 'This life, which had been the tomb of his virtue and of his honour, is but a walking shadow; a poor player, that struts and frets his hour upon the stage, and then is heard no more: it is a tale told by an idiot, full of sound and fury, signifying nothing', '', 6, '\r\nLife, Idiot, Shadow\r\n'),
-(65, 'Better three hours too soon than a minute too late.', 'williamshakespeare139153.jpg', 6, '\r\nTime, Late, Three\r\n'),
-(66, 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.', '', 6, '\r\nFool, Wise, Himself\r\n'),
-(67, 'If music be the food of love, play on.', 'williamshakespeare109521.jpg', 6, '\r\nMusic, Love, Food\r\n'),
-(68, 'If you prick us do we not bleed? If you tickle us do we not laugh? If you poison us do we not die? And if you wrong us shall we not revenge?', '', 6, '\r\nRevenge, Wrong, Bleed\r\n'),
-(69, 'Hell is empty and all the devils are here.', '', 6, '\r\nHell, Devils, Here\r\n'),
-(70, 'All the world''s a stage, and all the men and women merely players: they have their exits and their entrances; and one man in his time plays many parts, his acts being seven ages.', '', 6, '\r\nTime, Women, Men\r\n'),
-(71, 'What''s in a name? That which we call a rose by any other name would smell as sweet.', '', 6, '\r\nName, Rose, Call\r\n'),
-(72, 'When a father gives to his son, both laugh; when a son gives to his father, both cry.', 'williamshakespeare118143.jpg', 6, '\r\nFather''s Day, Father\r\n'),
-(73, 'It is not in the stars to hold our destiny but in ourselves.', '', 6, '\r\nFuture, Destiny, Stars\r\n'),
-(74, 'Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.', '', 6, '\r\nDating, Good, Parting\r\n'),
-(75, 'Ignorance is the curse of God; knowledge is the wing wherewith we fly to heaven.', '', 6, '\r\nKnowledge, God, Ignorance\r\n'),
-(76, 'Some are born great, some achieve greatness, and some have greatness thrust upon them.', '', 6, '\r\nGreat, Born, Achieve\r\n'),
-(77, 'The course of true love never did run smooth.', '', 6, '\r\nLove, True, Run\r\n'),
-(78, 'Doubt thou the stars are fire, Doubt that the sun doth move. Doubt truth to be a liar, But never doubt I love.', '', 6, '\r\nValentine''s Day, Love, Truth\r\n'),
-(79, 'Brevity is the soul of wit.', 'williamshakespeare109518.jpg', 6, '\r\nCommunication, Soul\r\n'),
-(80, 'Give thy thoughts no tongue.', '', 6, '\r\nThoughts, Tongue, Thy\r\n'),
-(81, 'Let me embrace thee, sour adversity, for wise men say it is the wisest course.', '', 6, '\r\nMen, Adversity, Wise\r\n'),
-(82, 'Now is the winter of our discontent.', '', 6, '\r\nDiscontent, Winter\r\n'),
-(83, 'Love looks not with the eyes, but with the mind, And therefore is winged Cupid painted blind.', '', 6, '\r\nLove, Blind, Eyes\r\n'),
-(84, 'There is no darkness but ignorance.', '', 6, '\r\nIgnorance, Darkness\r\n');
+(62, 'False face must hide what the false heart doth know.', '', 6, 'Hide, Heart, Face'),
+(63, 'Better a witty fool than a foolish wit.', 'williamshakespeare100137.jpg', 6, 'Fool, Foolish, Wit'),
+(64, 'This life, which had been the tomb of his virtue and of his honour, is but a walking shadow; a poor player, that struts and frets his hour upon the stage, and then is heard no more: it is a tale told by an idiot, full of sound and fury, signifying nothing', '', 6, 'Life, Idiot, Shadow'),
+(65, 'Better three hours too soon than a minute too late.', 'williamshakespeare139153.jpg', 6, 'Time, Late, Three'),
+(66, 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.', '', 6, 'Fool, Wise, Himself'),
+(67, 'If music be the food of love, play on.', 'williamshakespeare109521.jpg', 6, 'Music, Love, Food'),
+(68, 'If you prick us do we not bleed? If you tickle us do we not laugh? If you poison us do we not die? And if you wrong us shall we not revenge?', '', 6, 'Revenge, Wrong, Bleed'),
+(69, 'Hell is empty and all the devils are here.', '', 6, 'Hell, Devils, Here'),
+(70, 'All the world''s a stage, and all the men and women merely players: they have their exits and their entrances; and one man in his time plays many parts, his acts being seven ages.', '', 6, 'Time, Women, Men'),
+(71, 'What''s in a name? That which we call a rose by any other name would smell as sweet.', '', 6, 'Name, Rose, Call'),
+(72, 'When a father gives to his son, both laugh; when a son gives to his father, both cry.', 'williamshakespeare118143.jpg', 6, 'Father''s Day, Father'),
+(73, 'It is not in the stars to hold our destiny but in ourselves.', '', 6, 'Future, Destiny, Stars'),
+(74, 'Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.', '', 6, 'Dating, Good, Parting'),
+(75, 'Ignorance is the curse of God; knowledge is the wing wherewith we fly to heaven.', '', 6, 'Knowledge, God, Ignorance'),
+(76, 'Some are born great, some achieve greatness, and some have greatness thrust upon them.', '', 6, 'Great, Born, Achieve'),
+(77, 'The course of true love never did run smooth.', '', 6, 'Love, True, Run'),
+(78, 'Doubt thou the stars are fire, Doubt that the sun doth move. Doubt truth to be a liar, But never doubt I love.', '', 6, 'Valentine''s Day, Love, Truth'),
+(79, 'Brevity is the soul of wit.', 'williamshakespeare109518.jpg', 6, 'Communication, Soul'),
+(80, 'Give thy thoughts no tongue.', '', 6, 'Thoughts, Tongue, Thy'),
+(81, 'Let me embrace thee, sour adversity, for wise men say it is the wisest course.', '', 6, 'Men, Adversity, Wise'),
+(82, 'Now is the winter of our discontent.', '', 6, 'Discontent, Winter'),
+(83, 'Love looks not with the eyes, but with the mind, And therefore is winged Cupid painted blind.', '', 6, 'Love, Blind, Eyes'),
+(84, 'There is no darkness but ignorance.', '', 6, 'Ignorance, Darkness'),
+(115, 'The most peaceable way for you, if you do take a thief, is, to let him show himself what he is and steal out of your company.', '', 6, 'Himself, Company, Steal'),
+(116, 'To be, or not to be, that is the question.', '', 6, 'Question'),
+(117, 'My crown is called content, a crown that seldom kings enjoy.', '', 6, 'Kings, Enjoy, Content'),
+(118, 'How far that little candle throws its beams! So shines a good deed in a naughty world.', '', 6, 'Good, Far, Naughty'),
+(119, 'Listen to many, speak to a few.', '', 6, 'Listen, Speak, Few'),
+(120, 'The very substance of the ambitious is merely the shadow of a dream.', '', 6, 'Ambitious, Dream, Merely'),
+(121, 'Now, God be praised, that to believing souls gives light in darkness, comfort in despair.', '', 6, 'Faith, God, Light'),
+(122, 'Let every eye negotiate for itself and trust no agent.', '', 6, 'Trust, Itself, Eye'),
+(123, 'Farewell, fair cruelty.', '', 6, 'Farewell, Fair, Cruelty'),
+(124, 'Life is as tedious as twice-told tale, vexing the dull ear of a drowsy man.', '', 6, 'Life, Ear, Dull'),
+(125, 'Wisely, and slow. They stumble that run fast.', '', 6, 'Run, Fast, Slow'),
+(126, 'Love sought is good, but given unsought, is better.', '', 6, 'Relationship, Love, Good'),
+(127, 'Come, gentlemen, I hope we shall drink down all unkindness.', 'williamshakespeare394960.jpg', 6, 'New Year''s, Hope'),
+(128, 'Who could refrain that had a heart to love and in that heart courage to make love known?', '', 6, 'Courage, Love, Heart'),
+(129, 'Like as the waves make towards the pebbl''d shore, so do our minutes, hasten to their end.', '', 6, 'Time, Minutes, Towards'),
+(130, 'The wheel is come full circle.', 'williamshakespeare126065.jpg', 6, 'Circle, Full, Wheel'),
+(131, 'Suspicion always haunts the guilty mind.', '', 6, 'Guilty, Suspicion, Haunts'),
+(132, 'When we are born we cry that we are come to this great stage of fools.', '', 6, 'Great, Born, Stage'),
+(133, 'As flies to wanton boys, are we to the gods; they kill us for their sport.', '', 6, 'Sports, Boy, Gods'),
+(134, 'There is a tide in the affairs of men, Which taken at the flood, leads on to fortune. Omitted, all the voyage of their life is bound in shallows and in miseries. On such a full sea are we now afloat. And we must take the current when it serves, or lose ou', '', 6, 'Life, Men, Affairs'),
+(135, 'But men are men; the best sometimes forget.', '', 6, 'Best, Men, Forget'),
+(136, 'It is a wise father that knows his own child.', '', 6, 'Father''s Day, Father, Wise'),
+(137, 'We cannot conceive of matter being formed of nothing, since things require a seed to start from... Therefore there is not anything which returns to nothing, but all things return dissolved into their elements.', '', 6, 'Cannot, Matter, Since'),
+(138, 'To do a great right do a little wrong.', '', 6, 'Great, Wrong'),
+(142, 'Boldness be my friend.', '', 6, 'Courage, Boldness, Friend'),
+(143, 'Faith, there hath been many great men that have flattered the people who ne''er loved them.', '', 6, 'Great, Faith, Men'),
+(144, 'Modest doubt is called the beacon of the wise.', '', 6, 'Wise, Doubt, Modest'),
+(145, 'I wasted time, and now doth time waste me.', '', 6, 'Time, Waste, Wasted'),
+(146, 'The man that hath no music in himself, Nor is not moved with concord of sweet sounds, is fit for treasons, stratagems and spoils.', '', 6, 'Music, Himself, Nor'),
+(147, 'The robbed that smiles, steals something from the thief.', '', 6, 'Thief, Smiles, Robbed'),
+(148, 'If you can look into the seeds of time, and say which grain will grow and which will not, speak then unto me.', '', 6, 'Time, Speak, Grow'),
+(149, 'And why not death rather than living torment? To die is to be banish''d from myself; And Silvia is myself: banish''d from her Is self from self: a deadly banishment!', '', 6, 'Death, Living, Rather'),
+(150, 'Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.', '', 6, 'Lost, Reputation, False'),
+(154, 'It is the stars, The stars above us, govern our conditions.', '', 6, 'Stars, Above, Conditions'),
+(155, 'When sorrows come, they come not single spies, but in battalions.', '', 6, 'Sympathy, Battalions, Single'),
+(156, 'O thou invisible spirit of wine, if thou hast no name to be known by, let us call thee devil.', '', 6, 'Call, Name, Known'),
+(157, 'Alas, I am a woman friendless, hopeless!', '', 6, 'Woman, Hopeless, Alas'),
+(158, 'Many a good hanging prevents a bad marriage.', '', 6, 'Good, Marriage, Hanging'),
+(159, 'God hath given you one face, and you make yourselves another.', '', 6, 'God, Face, Given'),
+(160, 'Teach not thy lip such scorn, for it was made For kissing, lady, not for such contempt.', '', 6, 'Teach, Lady, Kissing'),
+(161, 'How sharper than a serpent''s tooth it is to have a thankless child!', '', 6, 'Child, Tooth, Thankless'),
+(162, 'No, I will be the pattern of all patience; I will say nothing.', '', 6, 'Patience, Pattern'),
+(163, 'In a false quarrel there is no true valor.', '', 6, 'True, False, Quarrel');
 
 -- --------------------------------------------------------
 
@@ -413,7 +457,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (187, 'Learning', 'learning', 0),
 (188, 'Legal', 'legal', 0),
 (189, 'Life', 'life', 1),
-(190, 'Love', 'love', 0),
+(190, 'Love', 'love', 1),
 (191, 'Marriage', 'marriage', 0),
 (192, 'Medical', 'medical', 0),
 (193, 'Memorial Day', 'memorial_day', 0),
@@ -480,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `topicshits` (
   `create_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `quote_id` (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `topicshits`
@@ -488,7 +532,8 @@ CREATE TABLE IF NOT EXISTS `topicshits` (
 
 INSERT INTO `topicshits` (`id`, `topic_id`, `ip`, `create_at`) VALUES
 (1, 122, '192.168.8.32', '2016-01-29 04:20:12'),
-(2, 189, '192.168.8.32', '2016-01-29 05:49:20');
+(2, 189, '192.168.8.32', '2016-01-29 05:49:20'),
+(3, 190, '192.168.8.32', '2016-02-01 08:13:24');
 
 --
 -- Constraints for dumped tables

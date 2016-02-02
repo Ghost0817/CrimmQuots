@@ -22,4 +22,16 @@ class TopselectController extends Controller
         #$response->setSharedMaxAge(600);
         return $response;
     }
+
+    public function topauthorsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $authors = $em->getRepository('AppBundle:Authors')->findByTopTen();
+        $response = $this->render('top/topauthors.html.twig', array(
+            'authors' => $authors
+        ));
+        // set the shared max age - which also marks the response as public
+        #$response->setSharedMaxAge(600);
+        return $response;
+    }
 }

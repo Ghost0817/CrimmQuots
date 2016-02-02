@@ -4,16 +4,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class TopicsRepository extends EntityRepository
+class AuthorsRepository extends EntityRepository
 {
 	public function findByTopTen()
     {
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();
-        $qb->select('t')
-            ->from('AppBundle:Topics', 't')
-            ->where('t.hits != 0')
-            ->orderBy('t.hits', 'ASC')
+        $qb->select('a')
+            ->from('AppBundle:Authors', 'a')
+            ->where('a.hits != 0')
+            ->orderBy('a.hits', 'ASC')
             ->setMaxResults(8)
         ;
         $result = $qb->getQuery()->execute();

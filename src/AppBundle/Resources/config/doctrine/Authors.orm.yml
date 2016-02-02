@@ -1,5 +1,6 @@
 AppBundle\Entity\Authors:
     type: entity
+    repositoryClass: AppBundle\Entity\AuthorsRepository
     table: authors
     indexes:
         nationality:

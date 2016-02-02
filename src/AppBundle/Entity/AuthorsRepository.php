@@ -20,4 +20,19 @@ class AuthorsRepository extends EntityRepository
 
         return $result;
     }
+
+    public function findByTopEighteen()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+            ->from('AppBundle:Authors', 'a')
+            ->where('a.hits != 0')
+            ->orderBy('a.hits', 'ASC')
+            ->setMaxResults(17)
+        ;
+        $result = $qb->getQuery()->execute();
+
+        return $result;
+    }
 }

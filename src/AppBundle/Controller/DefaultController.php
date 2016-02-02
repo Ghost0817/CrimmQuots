@@ -16,9 +16,29 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $topics = $this->getDoctrine()
+        ->getRepository('AppBundle:Topics')
+        ->findByTopEighteen();
+        
+        $authors = $this->getDoctrine()
+        ->getRepository('AppBundle:Authors')
+        ->findByTopEighteen();
+
+        $date = new \DateTime();
+        
+        $query = $em->createQuery(
+            "SELECT p
+            FROM AppBundle:Authors p
+            WHERE p.born LIKE :date"
+        )->setParameter('date', $date->format('-m-d') );
+        $birthdays = $query->getResult();
+
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'topics' => $topics,
+            'authors' => $authors,
         ));
     }
 

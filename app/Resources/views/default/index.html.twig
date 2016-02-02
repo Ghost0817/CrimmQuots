@@ -13,62 +13,60 @@
     <div class="row sf_content">
       <div class="col s12 m12 l8">
         <div class="col s12 m12 l6">
-          <h5>Popular Topics</h5>
-          <p>Browse quotations by topic:</p>
-          <div class="col s12 m6 l6">
-            <ul>
-              <li><a href="#!">Motivational</a></li>
-              <li><a href="#!">Inspirational</a></li>
-              <li><a href="#!">Life</a></li>
-              <li><a href="#!">Love</a></li>
-              <li><a href="#!">Funny</a></li>
-              <li><a href="#!">Positive</a></li>
-              <li><a href="#!">Friendship</a></li>
-              <li><a href="#!">Success</a></li>
-              <li><a href="#!">Happiness</a></li>
-            </ul>
-          </div>
-          <div class="col s12 m6 l6">
-            <ul>
-              <li><a href="#!">Education</a></li>
-              <li><a href="#!">Wisdom</a></li>
-              <li><a href="#!">Birthday</a></li>
-              <li><a href="#!">Family</a></li>
-              <li><a href="#!">Change</a></li>
-              <li><a href="#!">Smile</a></li>
-              <li><a href="#!">Work</a></li>
-              <li><a href="#!">Best</a></li>
-            </ul>
+          <div class="row">
+            <h5>Popular Topics</h5>
+            <p>Browse quotations by topic:</p>
+            {% set mycount = 0 %}
+            {% for item in topics %}
+              {% if(mycount == 0) %}
+                <div class="col s12 m6 l6">
+                  <div class="row">
+                    <ul>
+              {% endif %}
+              <li><a href="{{ path('onetopicpage',{'_format':'html','slug': item.slug }) }}">{{ item.name }}</a></li>
+              {% set mycount = mycount + 1 %}
+              {% if(mycount == 9) %}
+                    </ul>
+                  </div>
+                </div>
+                {% set mycount = 0 %}
+              {% endif %}
+            {% endfor %}
+
+            {% if(mycount != 9 and mycount != 0) %}
+                  </ul>
+                </div>
+              </div>
+              {% set mycount = 0 %}
+            {% endif %}
           </div>
         </div>
         <div class="col s12 m12 l6">
           <h5>Popular Authors</h5>
           <p>Browse by author:</p>
-          <div class="col s12 m6 l6">
-            <ul>
-              <li><a href="#!">Martin Luther King, Jr.</a></li>
-              <li><a href="#!">Albert Einstein</a></li>
-              <li><a href="#!">William Shakespeare</a></li>
-              <li><a href="#!">Dr. Seuss</a></li>
-              <li><a href="#!">Mahatma Gandhi</a></li>
-              <li><a href="#!">Buddha</a></li>
-              <li><a href="#!">David Bowie</a></li>
-              <li><a href="#!">Mark Twain</a></li>
-              <li><a href="#!">Confucius</a></li>
-            </ul>
-          </div>
-          <div class="col s12 m6 l6">
-            <ul>
-              <li><a href="#!">Winston Churchill</a></li>
-              <li><a href="#!">Abraham Lincoln</a></li>
-              <li><a href="#!">Mother Teresa</a></li>
-              <li><a href="#!">Maya Angelou</a></li>
-              <li><a href="#!">Heinrich Heine</a></li>
-              <li><a href="#!">Steve Jobs</a></li>
-              <li><a href="#!">Oscar Wilde</a></li>
-              <li><a href="#!">Aristotle</a></li>
-            </ul>
-          </div>
+          {% set mycount = 0 %}
+            {% for item in authors %}
+              {% if(mycount == 0) %}
+                <div class="col s12 m6 l6">
+                  <div class="row">
+                    <ul>
+              {% endif %}
+              <li><a href="{{ path('quotesbyauthor',{'_format':'html','slug': item.slug }) }}">{{ item.name }}</a></li>
+              {% set mycount = mycount + 1 %}
+              {% if(mycount == 9) %}
+                    </ul>
+                  </div>
+                </div>
+                {% set mycount = 0 %}
+              {% endif %}
+            {% endfor %}
+
+            {% if(mycount != 9 and mycount != 0) %}
+                  </ul>
+                </div>
+              </div>
+              {% set mycount = 0 %}
+            {% endif %}
         </div>
         <div class="col s12 m12 l12">
           <h5>Authors to Explore</h5>

@@ -32,13 +32,14 @@ class DefaultController extends Controller
             "SELECT p
             FROM AppBundle:Authors p
             WHERE p.born LIKE :date"
-        )->setParameter('date', $date->format('-m-d') );
+        )->setParameter('date', '%'.$date->format('-m-d') );
         $birthdays = $query->getResult();
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', array(
             'topics' => $topics,
             'authors' => $authors,
+            'birthdays' => $birthdays,
         ));
     }
 
@@ -181,10 +182,36 @@ class DefaultController extends Controller
         if (!$profession) {
             throw $this->createNotFoundException('The product does not exist');
         }
+
+
         
         // replace this example code with whatever you need
         return $this->render('default/profession.html.twig', array(
             'profession' => $profession,
+        ));
+    }
+
+    /**
+     * @Route("/profession/{slug}_quotes.{_format}", name="oneprofessionpage")
+     */
+    public function oneprofessionAction(Request $request, $slug)
+    {
+        $profession = $this->getDoctrine()
+        ->getRepository('AppBundle:Profession')
+        ->findOneBy(array('slug' => $slug, ));
+
+        if (!$profession) {
+            throw $this->createNotFoundException('The product does not exist');
+        }
+
+        $authors = $this->getDoctrine()
+        ->getRepository('AppBundle:Authors')
+        ->findBy(array('profession' => $profession, ));
+        
+        // replace this example code with whatever you need
+        return $this->render('default/oneprofession.html.twig', array(
+            'profession' => $profession,
+            'authors' => $authors,
         ));
     }
 

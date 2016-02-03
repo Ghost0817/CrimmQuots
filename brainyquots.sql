@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2016 at 11:34 AM
+-- Generation Time: Feb 03, 2016 at 02:49 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -399,7 +399,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (129, 'Attitude', 'attitude', 0),
 (130, 'Beauty', 'beauty', 0),
 (131, 'Best', 'best', 0),
-(132, 'Birthday', 'birthday', 0),
+(132, 'Birthday', 'birthday', 1),
 (133, 'Brainy', 'brainy', 0),
 (134, 'Business', 'business', 0),
 (135, 'Car', 'car', 0),
@@ -417,7 +417,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (147, 'Diet', 'diet', 0),
 (148, 'Dreams', 'dreams', 0),
 (149, 'Easter', 'easter', 0),
-(150, 'Education', 'education', 0),
+(150, 'Education', 'education', 1),
 (151, 'Environmental', 'environmental', 0),
 (152, 'Equality', 'equality', 0),
 (153, 'Experience', 'experience', 0),
@@ -432,8 +432,8 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (162, 'Food', 'food', 0),
 (163, 'Forgiveness', 'forgiveness', 0),
 (164, 'Freedom', 'freedom', 0),
-(165, 'Friendship', 'friendship', 0),
-(166, 'Funny', 'funny', 0),
+(165, 'Friendship', 'friendship', 1),
+(166, 'Funny', 'funny', 1),
 (167, 'Future', 'future', 0),
 (168, 'Gardening', 'gardening', 0),
 (169, 'God', 'god', 0),
@@ -441,7 +441,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (171, 'Government', 'government', 0),
 (172, 'Graduation', 'graduation', 0),
 (173, 'Great', 'great', 0),
-(174, 'Happiness', 'happiness', 0),
+(174, 'Happiness', 'happiness', 1),
 (175, 'Health', 'health', 0),
 (176, 'History', 'history', 0),
 (177, 'Home', 'home', 0),
@@ -453,7 +453,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (183, 'Intelligence', 'intelligence', 0),
 (184, 'Jealousy', 'jealousy', 0),
 (185, 'Knowledge', 'knowledge', 0),
-(186, 'Leadership', 'leadership', 0),
+(186, 'Leadership', 'leadership', 1),
 (187, 'Learning', 'learning', 0),
 (188, 'Legal', 'legal', 0),
 (189, 'Life', 'life', 1),
@@ -466,7 +466,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (196, 'Money', 'money', 0),
 (197, 'Morning', 'morning', 0),
 (198, 'Mother''s Day', 'mothers_day', 0),
-(199, 'Motivational', 'motivational', 0),
+(199, 'Motivational', 'motivational', 1),
 (200, 'Movies', 'movies', 0),
 (201, 'Moving On', 'moving_on', 0),
 (202, 'Music', 'music', 0),
@@ -479,7 +479,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (209, 'Pet', 'pet', 0),
 (210, 'Poetry', 'poetry', 0),
 (211, 'Politics', 'politics', 0),
-(212, 'Positive', 'positive', 0),
+(212, 'Positive', 'positive', 1),
 (213, 'Power', 'power', 0),
 (214, 'Relationship', 'relationship', 0),
 (215, 'Religion', 'religion', 0),
@@ -488,13 +488,13 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (218, 'Sad', 'sad', 0),
 (219, 'Saint Patrick''s Day', 'saint_patricks_day', 0),
 (220, 'Science', 'science', 0),
-(221, 'Smile', 'smile', 0),
+(221, 'Smile', 'smile', 1),
 (222, 'Society', 'society', 0),
 (223, 'Sports', 'sports', 0),
 (224, 'Strength', 'strength', 0),
-(225, 'Success', 'success', 0),
+(225, 'Success', 'success', 1),
 (226, 'Sympathy', 'sympathy', 0),
-(227, 'Teacher', 'teacher', 0),
+(227, 'Teacher', 'teacher', 1),
 (228, 'Technology', 'technology', 0),
 (229, 'Teen', 'teen', 0),
 (230, 'Thankful', 'thankful', 0),
@@ -503,11 +503,11 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (233, 'Travel', 'travel', 0),
 (234, 'Trust', 'trust', 0),
 (235, 'Truth', 'truth', 0),
-(236, 'Valentine''s Day', 'valentines_day', 0),
+(236, 'Valentine''s Day', 'valentines_day', 1),
 (237, 'Veterans Day', 'veterans_day', 0),
 (238, 'War', 'war', 0),
 (239, 'Wedding', 'wedding', 0),
-(240, 'Wisdom', 'wisdom', 0),
+(240, 'Wisdom', 'wisdom', 1),
 (241, 'Women', 'women', 0),
 (242, 'Work', 'work', 0);
 
@@ -524,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `topicshits` (
   `create_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `quote_id` (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `topicshits`
@@ -533,7 +533,20 @@ CREATE TABLE IF NOT EXISTS `topicshits` (
 INSERT INTO `topicshits` (`id`, `topic_id`, `ip`, `create_at`) VALUES
 (1, 122, '192.168.8.32', '2016-01-29 04:20:12'),
 (2, 189, '192.168.8.32', '2016-01-29 05:49:20'),
-(3, 190, '192.168.8.32', '2016-02-01 08:13:24');
+(3, 190, '192.168.8.32', '2016-02-01 08:13:24'),
+(4, 225, '192.168.8.32', '2016-02-02 04:24:31'),
+(5, 166, '192.168.8.32', '2016-02-02 04:24:34'),
+(6, 165, '192.168.8.32', '2016-02-02 04:24:35'),
+(7, 212, '192.168.8.32', '2016-02-02 04:24:40'),
+(8, 199, '192.168.8.32', '2016-02-03 02:43:29'),
+(9, 150, '192.168.8.32', '2016-02-03 02:43:44'),
+(10, 174, '192.168.8.32', '2016-02-03 02:43:54'),
+(11, 221, '192.168.8.32', '2016-02-03 02:44:08'),
+(12, 227, '192.168.8.32', '2016-02-03 02:44:14'),
+(13, 240, '192.168.8.32', '2016-02-03 02:44:25'),
+(14, 186, '192.168.8.32', '2016-02-03 02:44:35'),
+(15, 236, '192.168.8.32', '2016-02-03 02:45:26'),
+(16, 132, '192.168.8.32', '2016-02-03 02:46:52');
 
 --
 -- Constraints for dumped tables

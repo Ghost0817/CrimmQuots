@@ -21,7 +21,7 @@
               <div class="row">
                 <ul>
           {% endif %}
-          <li><a href="#">{{ item.name }}</a></li>
+          <li><a href="{{ path('oneprofessionpage',{'_format':'html','slug':item.slug}) }}">{{ item.name }}</a></li>
           {% if ( myrow == 33) %}
                 </ul>
               </div>

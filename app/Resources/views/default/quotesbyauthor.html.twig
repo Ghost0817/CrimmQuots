@@ -132,9 +132,9 @@
 	      <div class="col s12 m12 l3">
       		<h5>Biography</h5>
           <p>Nationality: <a href="#">{{ author.nationality.name }}</a></p>
-          <p>Type: <a href="#">{{ author.profession.name }}</a></p>
-          <p>Born: </p>
-          <p>Died: </p>
+          <p>Type: <a href="{{ path('oneprofessionpage',{'_format':'html','slug':author.profession.slug}) }}">{{ author.profession.name }}</a></p>
+          <p>Born: <a href="{{ path('birthdaysonpage',{'_format':'html', 'date': author.born|date("F_d") }) }}">{{ author.born|date("F d") }}</a>, {{ author.born|date("Y") }}</p>
+          <p>Died: <a href="{{ path('birthdaysonpage',{'_format':'html', 'date': author.died|date("F_d") }) }}">{{ author.died|date("F d") }}</a>, {{ author.died|date("Y") }}</p>
 
           <h5>Popular Topics</h5>
 

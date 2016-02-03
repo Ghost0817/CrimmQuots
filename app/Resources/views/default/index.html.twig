@@ -158,12 +158,10 @@
       <div class="col s12 m12 l4">
         <h5>Today's Birthdays</h5>
         <ul>
-          <li>1788 - <a href="#!">Thomas A. Edison</a></li>
-          <li>1894 - <a href="#!">Thomas Jefferson</a></li>
-          <li>1965 - <a href="#!">Tupac Shakur</a></li>
-          <li>1906 - <a href="#!">Vince Lombardi</a></li>
-          <li>1849 - <a href="#!">Voltaire</a></li>
-          <li><a href="#!">Birthdays on January 22nd</a> | <a href="#!">All Birthdays</a></li>
+          {% for item in birthdays %}
+            <li>{{ item.born|date("Y") }} - <a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></li>
+          {% endfor %}
+          <li><a href="{{ path('birthdaysonpage',{'_format':'html', 'date': "now"|date("F_d") }) }}">Birthdays on {{ "now"|date("F d") }}nd</a> | <a href="{{ path('birthdayspage',{'_format':'html'}) }}">All Birthdays</a></li>
         </ul>
       </div>
     </div>

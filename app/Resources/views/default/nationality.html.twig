@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quotes by Author Nationality - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="row sf_content">
+        <h4>Quotes by Author Nationality</h4>
+        {% set myrow = 0 %}
+        {% for item in nationality %}
+          {% set myrow = myrow + 1 %}
+          {% if ( myrow == 1)%}
+            <div class="col s12 m6 l4">
+              <div class="row">
+                <ul>
+          {% endif %}
+          <li><a href="{{ path('oneprofessionpage',{'_format':'html','slug':item.slug}) }}">{{ item.name }} Quotes</a></li>
+          {% if ( myrow == 71) %}
+                </ul>
+              </div>
+            </div>
+            {% set myrow = 0 %}
+          {% endif %}
+        {% endfor %}
+        {% if ( myrow != 0) %}
+              </ul>
+            </div>
+          </div>
+          {% set myrow = 0 %}
+        {% endif %}
+
+        <div class="col s12 m12 l4">
+          <div class="row">
+            <h5>Top Nationalities</h5>
+          </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+{% endblock %}

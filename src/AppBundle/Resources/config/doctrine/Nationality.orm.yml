@@ -15,4 +15,13 @@ AppBundle\Entity\Nationality:
             nullable: false
             length: 255
             fixed: false
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        hits:
+            type: bigint
+            nullable: false
+            unsigned: false
     lifecycleCallbacks: {  }

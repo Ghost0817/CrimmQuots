@@ -6,6 +6,10 @@ AppBundle\Entity\Quotes:
         author_id:
             columns:
                 - author_id
+    uniqueConstraints:
+        quote:
+            columns:
+                - quote
     id:
         id:
             type: integer

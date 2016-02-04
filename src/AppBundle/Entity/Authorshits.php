@@ -83,13 +83,12 @@ class Authorshits
     /**
      * Set createAt
      *
+     * @param \DateTime $createAt
      * @return Authorshits
      */
-    public function setCreateAt()
+    public function setCreateAt($createAt)
     {
-        if(!$this->createAt){
-            $this->createAt = new \DateTime();
-        }
+        $this->createAt = $createAt;
 
         return $this;
     }

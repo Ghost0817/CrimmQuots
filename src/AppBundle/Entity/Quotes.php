@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Quotes
  *
- * @ORM\Table(name="quotes", indexes={@ORM\Index(name="author_id", columns={"author_id"})})
+ * @ORM\Table(name="quotes", uniqueConstraints={@ORM\UniqueConstraint(name="quote", columns={"quote"})}, indexes={@ORM\Index(name="author_id", columns={"author_id"})})
  * @ORM\Entity
  */
 class Quotes

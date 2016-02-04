@@ -182,8 +182,6 @@ class DefaultController extends Controller
         if (!$profession) {
             throw $this->createNotFoundException('The product does not exist');
         }
-
-
         
         // replace this example code with whatever you need
         return $this->render('default/profession.html.twig', array(
@@ -363,6 +361,69 @@ class DefaultController extends Controller
             'quotes' => $quotes,
             'total_page' => $total_page,
             'page' => $page
+        ));
+    }
+
+    /**
+     * @Route("/nationality.{_format}", 
+     * name="nationality")
+     */
+    public function nationalityAction(Request $request)
+    {
+        $nationality = $this->getDoctrine()
+        ->getRepository('AppBundle:Nationality')
+        ->findAll();
+
+        return $this->render('default/nationality.html.twig', array(
+            'nationality' => $nationality,
+        ));
+    }
+
+    /**
+     * @Route("/nationality/{slug}_quotes.{_format}", 
+     * name="quotesbynationality")
+     */
+    public function quotesbynationalityAction(Request $request, $slug)
+    {
+
+        $nationality = $this->getDoctrine()
+        ->getRepository('AppBundle:Nationality')
+        ->findOneBy(array('slug' => $slug, ));
+
+        if (!$nationality) {
+            throw $this->createNotFoundException('The product does not exist');
+        }
+
+        # get ip address
+        $ip = $request->getClientIp();
+
+        $mycount = $this->getDoctrine()
+        ->getRepository('AppBundle:Nationalityhits')
+        ->findOneBy(array('nationality' => $nationality, 'ip' => $ip));
+
+        $nationalityhits = new Nationalityhits();
+        if($mycount){
+            # valid record;
+        } else {
+            $nationalityhits->setIp($ip);
+            $nationalityhits->setCreateAt();
+            $nationalityhits->setTopic($topic);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($nationalityhits);
+            $nationality->setHits($nationality->getHits() + 1);
+            $em->persist($nationality);
+            $em->flush();
+        }
+
+        // get authors by nationality
+        $authors = $this->getDoctrine()
+        ->getRepository('AppBundle:Authors')
+        ->findBy(array('nationality' => $nationality, ));
+
+
+        return $this->render('default/quotesbynationality.html.twig', array(
+            'nationality' => $nationality,
+            'authors' => $authors,
         ));
     }
 }

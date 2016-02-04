@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}{{ nationality.name }} Quotes - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row sf_content">
+        <h5>{{ nationality.name }} Quotes</h5>
+
+        <div class="col s12 m12 l8">
+        	<div class="row">
+
+        <table class="responsive-table">
+          <thead>
+            <tr>
+                <th data-field="name">Author</th>
+                <th data-field="rrofession">Birth - Death</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for author in authors %}
+            <tr>
+              <td><a href="{{ path('quotesbyauthor',{'slug': author.slug, '_format':'html'}) }}">{{ author.name }}</td>
+              <td>{{ author.born|date("Y") }} - {{ author.died|date("Y") }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+        	</div>
+        </div>
+		<div class="col s12 m12 l4">
+			<h5>Popular Topics</h5>
+
+      {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+      
+      <h5>Popular Authors</h5>
+
+      {{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
+      
+		</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+{% endblock %}

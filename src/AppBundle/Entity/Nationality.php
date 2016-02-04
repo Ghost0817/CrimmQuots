@@ -28,6 +28,20 @@ class Nationality
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="hits", type="bigint", nullable=false)
+     */
+    private $hits;
+
 
 
     /**
@@ -61,5 +75,51 @@ class Nationality
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Nationality
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set hits
+     *
+     * @param integer $hits
+     * @return Nationality
+     */
+    public function setHits($hits)
+    {
+        $this->hits = $hits;
+
+        return $this;
+    }
+
+    /**
+     * Get hits
+     *
+     * @return integer 
+     */
+    public function getHits()
+    {
+        return $this->hits;
     }
 }

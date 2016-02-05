@@ -22,13 +22,6 @@ class Nationalityhits
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="nationality_id", type="integer", nullable=false)
-     */
-    private $nationalityId;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="ip", type="string", length=50, nullable=false)
@@ -41,6 +34,16 @@ class Nationalityhits
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+
+    /**
+     * @var \AppBundle\Entity\Nationality
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Nationality")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nationality_id", referencedColumnName="id")
+     * })
+     */
+    private $nationality;
 
 
 }

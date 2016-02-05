@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\DateTime;
 use AppBundle\Entity\Topicshits;
 use AppBundle\Entity\Authorshits;
+use AppBundle\Entity\Nationalityhits;
 
 class DefaultController extends Controller
 {
@@ -372,7 +373,7 @@ class DefaultController extends Controller
     {
         $nationality = $this->getDoctrine()
         ->getRepository('AppBundle:Nationality')
-        ->findAll();
+        ->findBy(array(),array('name' => 'ASC' ));
 
         return $this->render('default/nationality.html.twig', array(
             'nationality' => $nationality,
@@ -391,7 +392,7 @@ class DefaultController extends Controller
         ->findOneBy(array('slug' => $slug, ));
 
         if (!$nationality) {
-            throw $this->createNotFoundException('The product does not exist');
+            throw $this->createNotFoundException('The nationality does not exist');
         }
 
         # get ip address
@@ -406,8 +407,8 @@ class DefaultController extends Controller
             # valid record;
         } else {
             $nationalityhits->setIp($ip);
-            $nationalityhits->setCreateAt();
-            $nationalityhits->setTopic($topic);
+            $nationalityhits->setCreatedAt();
+            $nationalityhits->setNationality($nationality);
             $em = $this->getDoctrine()->getManager();
             $em->persist($nationalityhits);
             $nationality->setHits($nationality->getHits() + 1);

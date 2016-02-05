@@ -20,7 +20,7 @@
               <div class="row">
                 <ul>
           {% endif %}
-          <li><a href="{{ path('oneprofessionpage',{'_format':'html','slug':item.slug}) }}">{{ item.name }} Quotes</a></li>
+          <li><a href="{{ path('quotesbynationality',{'_format':'html','slug':item.slug}) }}">{{ item.name }} Quotes</a></li>
           {% if ( myrow == 71) %}
                 </ul>
               </div>
@@ -38,6 +38,7 @@
         <div class="col s12 m12 l4">
           <div class="row">
             <h5>Top Nationalities</h5>
+              {{ render_esi(controller('AppBundle:Topselect:topnationalities')) }}
           </div>
         </div>
     </div>

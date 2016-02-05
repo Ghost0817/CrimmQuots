@@ -1,5 +1,6 @@
 AppBundle\Entity\Nationality:
     type: entity
+    repositoryClass: AppBundle\Entity\NationalityRepository
     table: nationality
     id:
         id:

@@ -14,11 +14,6 @@ AppBundle\Entity\Nationalityhits:
             generator:
                 strategy: IDENTITY
     fields:
-        nationalityId:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: nationality_id
         ip:
             type: string
             nullable: false
@@ -28,4 +23,14 @@ AppBundle\Entity\Nationalityhits:
             type: datetime
             nullable: false
             column: created_at
+    manyToOne:
+        nationality:
+            targetEntity: Nationality
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                nationality_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -1,0 +1,11 @@
+{% set colors = ['#00B7ED', '#803591','#F52422','#FFAE1D','#85C243'] %}
+{% set i = 1 %}
+{% for item in nationalities %}
+    <blockquote class="z-depth-1" style="border-color:{{ colors[i-1] }};">
+        <a href="{{ path('quotesbynationality',{'_format':'html','slug': item.slug }) }}"><b>{{ item.name }}</b></a>
+    </blockquote>
+    {% if (i == 5) %}
+        {% set i = 0 %}
+    {% endif %}
+    {% set i = i + 1 %}
+{% endfor %}

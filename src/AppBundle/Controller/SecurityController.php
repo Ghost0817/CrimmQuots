@@ -7,7 +7,7 @@ use AppBundle\Form\AppUsersType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class SecurityController extends Controller
 {
@@ -24,11 +24,76 @@ class SecurityController extends Controller
         ));
 
         $form->handleRequest($request);
+        if ($request->isMethod('POST')) {
+            if ($form->isValid()) {
+                $newuser->setActivationkey($newuser->getActivationkey());
+                $newuser->setIsActive(0);
 
+                // strat Dynamically Encoding a Password
+                $encoder = $this->container->get('security.password_encoder');
+                $encoded = $encoder->encodePassword($newuser, $newuser->getPassword());
+                $newuser->setPassword($encoded);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($newuser);
+                $em->flush();
+
+                $this->addFlash(
+                    'success',
+                    'Амжилттай хадгаллаа.'
+                );
+
+                return $this->redirect($this->generateUrl('homepage'));
+            }
+        }
 
         // replace this example code with whatever you need
         return $this->render('security/index.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @Route("/login", name="login")
+     * @Method("GET")
+     * @Template()
+     */
+    public function loginAction()
+    {
+        $authenticationUtils = $this->get('security.authentication_utils');
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('security/login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
+            'menu'          => 'login'
+        ));
+    }
+
+    /**
+     * @Route("/login_check", name="login_check")
+     * @Method("POST")
+     * @Template()
+     */
+    public function login_checkAction()
+    {
+        $helper = $this->get('security.authentication_utils');
+        return $this->render('security/login.html.twig', array(
+            'last_username' => $helper->getLastUsername(),
+            'error'         => $helper->getLastAuthenticationError(),
+            'menu'          => 'login'
+        ));
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     * @Method("GET")
+     * @Template()
+     */
+    public function logoutAction()
+    {
+        return $this->redirect($this->generateUrl('homepage'));
     }
 }

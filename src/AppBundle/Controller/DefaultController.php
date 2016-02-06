@@ -316,7 +316,6 @@ class DefaultController extends Controller
         if (!$topics) {
             throw $this->createNotFoundException('The topics does not exist');
         }
-        
         # get ip address
         $ip = $request->getClientIp();
 
@@ -345,14 +344,11 @@ class DefaultController extends Controller
         ->findBy(array('author' => $author));
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
-
         $total_page= ceil( count($quotes) / $pageshow);
 
         $quotes = $this->getDoctrine()
         ->getRepository('AppBundle:Quotes')
         ->findByAuthorPage( $author->getId(), $pageshow, $page - 1);
-
-
         # end pagenation
 
         // replace this example code with whatever you need
@@ -386,7 +382,6 @@ class DefaultController extends Controller
      */
     public function quotesbynationalityAction(Request $request, $slug)
     {
-
         $nationality = $this->getDoctrine()
         ->getRepository('AppBundle:Nationality')
         ->findOneBy(array('slug' => $slug, ));
@@ -394,7 +389,6 @@ class DefaultController extends Controller
         if (!$nationality) {
             throw $this->createNotFoundException('The nationality does not exist');
         }
-
         # get ip address
         $ip = $request->getClientIp();
 
@@ -421,10 +415,28 @@ class DefaultController extends Controller
         ->getRepository('AppBundle:Authors')
         ->findBy(array('nationality' => $nationality, ));
 
-
         return $this->render('default/quotesbynationality.html.twig', array(
             'nationality' => $nationality,
             'authors' => $authors,
+        ));
+    }
+
+    /**
+     * @Route("/quotes_of_the_day_{page}.{_format}", 
+     * name="quotesofday",
+     * defaults={"page": "1"},
+     * requirements={"page": "\d+"})
+     */
+    public function quotesofdayAction(Request $request)
+    {
+        $nationality = $this->getDoctrine()
+        ->getRepository('AppBundle:Nationality')
+        ->findBy(array(),array('name' => 'ASC' ));
+
+        //lkkjhgfasdfghjkl
+
+        return $this->render('default/quotesofday.html.twig', array(
+            'nationality' => $nationality,
         ));
     }
 }

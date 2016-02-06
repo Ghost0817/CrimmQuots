@@ -49,7 +49,7 @@
                 <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
                 <li><a href="#">Authors</a></li>
                 <li><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
-                <li><a href="#">Quote of the Day</a></li>
+                <li><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
               </ul>
 
               <ul class="right hide-on-med-and-down">
@@ -62,7 +62,7 @@
                 </div>
               </form>
                 </a></li>
-                <li><a href="#">Sign Up</a></li>
+                <li><a href="{{ path('signup') }}">Sign Up</a></li>
                 <li><a href="#">Login</a></li>
               </ul>
 
@@ -109,7 +109,7 @@
                 <li><a class="white-text" href="#!">Home</a></li>
                 <li><a class="white-text" href="#!">Authors</a></li>
                 <li><a class="white-text" href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
-                <li><a class="white-text" href="#!">Quote of the Day</a></li>
+                <li><a class="white-text" href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
                 <li><a class="white-text" href="{{ path('professionpage',{'_format':'html'}) }}">Professions</a></li>
                 <li><a class="white-text" href="{{ path('birthdayspage',{'_format':'html'}) }}">Birthdays</a></li>
               </ul>

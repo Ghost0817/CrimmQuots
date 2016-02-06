@@ -56,7 +56,6 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="login")
      * @Method("GET")
-     * @Template()
      */
     public function loginAction()
     {
@@ -75,7 +74,6 @@ class SecurityController extends Controller
     /**
      * @Route("/login_check", name="login_check")
      * @Method("POST")
-     * @Template()
      */
     public function login_checkAction()
     {
@@ -90,10 +88,9 @@ class SecurityController extends Controller
     /**
      * @Route("/logout", name="logout")
      * @Method("GET")
-     * @Template()
      */
     public function logoutAction()
     {
-        return $this->redirect($this->generateUrl('homepage'));
+        //return $this->redirect($this->generateUrl('homepage'));
     }
 }

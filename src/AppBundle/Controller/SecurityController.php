@@ -77,6 +77,7 @@ class SecurityController extends Controller
      */
     public function login_checkAction()
     {
+        #You have successfully logged in.
         $helper = $this->get('security.authentication_utils');
         return $this->render('security/login.html.twig', array(
             'last_username' => $helper->getLastUsername(),
@@ -91,6 +92,21 @@ class SecurityController extends Controller
      */
     public function logoutAction()
     {
+        $this->addFlash(
+            'success',
+            'You have logged out.'
+        );
         //return $this->redirect($this->generateUrl('homepage'));
+    }
+
+    /**
+     * @Route("/users/my/account", name="accountsettings")
+     * @Method("GET")
+     */
+    public function accountsettingsAction()
+    {
+        return $this->render('security/settings.html.twig', array(
+            'menu'          => 'login'
+        ));
     }
 }

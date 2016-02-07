@@ -26,7 +26,7 @@
                 <a {% if(page == 1) %}{% else %}href="{{ path('quotesbyauthor', {'slug' :author.slug,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
                   <span aria-hidden="true">«</span>
                 </a>
-              </li class="waves-effect">
+              </li>
               {% for i in 1..total_page %}
                  <li{% if(page == i) %} class="active"{% else %} class="waves-effect"{% endif %}>
                  <a {% if(page == i) %}{% else %}href="{{ path('quotesbyauthor', { 'page' : i ,'slug' :author.slug,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
@@ -129,7 +129,7 @@
 
           <!-- end pagenation -->
         </div>
-	      <div class="col s12 m12 l3">
+        <div class="col s12 m12 l3">
       		<h5>Biography</h5>
           <p>Nationality: <a href="{{ path('quotesbynationality',{'slug':author.nationality.slug,'_format':'html'})}}">{{ author.nationality.name }}</a></p>
           <p>Type: <a href="{{ path('oneprofessionpage',{'_format':'html','slug':author.profession.slug}) }}">{{ author.profession.name }}</a></p>

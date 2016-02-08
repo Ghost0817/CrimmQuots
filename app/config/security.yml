@@ -1,17 +1,43 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    encoders:
+        AppBundle\Entity\AppUsers:
+            algorithm:        sha512
+            encode_as_base64: true
+            iterations:       1
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        our_db_provider:
+            entity:
+                class: AppBundle:AppUsers
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        demo_secured_area:
+            pattern: ^/.*
+            provider: our_db_provider
+            # it's important to notice that in this case _demo_security_check and _demo_login
+            # are route names and that they are specified in the AcmeDemoBundle
+            form_login:
+                check_path: login_check
+                login_path: login
+                always_use_default_target_path: true
+                default_target_path: homepage
+                #csrf_provider: security.csrf.token_manager
+                #csrf_parameter: _csrf_security_token
+                #intention: a_private_string
+
+            logout:
+                path:   logout
+                target: homepage
+            anonymous: ~
 
         main:
             anonymous: ~

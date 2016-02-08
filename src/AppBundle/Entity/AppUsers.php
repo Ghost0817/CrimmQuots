@@ -3,14 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * AppUsers
  *
  * @ORM\Table(name="app_users")
- * @ORM\Entity
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="User name already taken")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\AppUsersRepository")
  */
-class AppUsers
+class AppUsers implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -157,6 +162,18 @@ class AppUsers
      */
     public function getActivationkey()
     {
+        if (null === $this->activationkey) {
+            $this->activationkey = md5(sprintf(
+                '%s_%d_%s_%f_%s_%d',
+                uniqid(),
+                rand(0, 99999),
+                $this->getUsername(),
+                microtime(true),
+                $this->getEmail(),
+                rand(99999, 999999)
+            ));
+        }
+
         return $this->activationkey;
     }
 
@@ -181,5 +198,79 @@ class AppUsers
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * @return void
+     */
+    public function eraseCredentials()
+    {
+        $this->role = null;
+    }
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized);
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Get role
+     *
+     * @return Role[]
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
     }
 }

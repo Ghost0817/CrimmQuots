@@ -5,9 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\DateTime;
-use AppBundle\Entity\Topics;
-use AppBundle\Entity\Authors;
 
 class TopselectController extends Controller
 {

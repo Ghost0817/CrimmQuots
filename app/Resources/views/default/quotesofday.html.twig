@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}Quote of the Day - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row sf_content">
+    	<div class="col s12 m12 l8">
+    		<div class="row" style="margin-right: 0px;">
+    			<h5>Quote of the Day February 5</h5>
+			</div>
+    	</div>
+    	<div class="col s12 m12 l4">
+    		<div class="row">
+
+          	<h5>Popular Topics</h5>
+          	{{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+          
+          	<h5>Popular Authors</h5>
+          	{{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
+			</div>
+    	</div>
+	</div>
+</div>
+{% endblock %}

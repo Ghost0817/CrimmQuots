@@ -15,12 +15,13 @@
             <h5>Quotes by '{{ char|upper }}' Authors</h5>
             <div class="col s12 m12 l8">
                 <div class="row" style="margin-right: 0px;">
-                    {{ knp_pagination_render(pagination) }}
-                </div>
-                <div class="row" style="margin-right: 0px;">
                     <h5>Most popular '{{ char|upper }}' authors</h5>
 
                     <h5>All '{{ char|upper }}' authors</h5>
+                    
+                    <div class="row" style="margin-right: 0px;">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
 
                     <table class="responsive-table">
                         <thead>

@@ -14,7 +14,7 @@
     <div class="row sf_content">
       <div class="col s12 m12 l8">
         <div class="col s12 m12 l6">
-          <div class="row">
+          <div class="row" style="margin-right: 0px;">
             <h5>Popular Topics</h5>
             <p>Browse quotations by topic:</p>
             {% set mycount = 0 %}
@@ -43,9 +43,10 @@
           </div>
         </div>
         <div class="col s12 m12 l6">
-          <h5>Popular Authors</h5>
-          <p>Browse by author:</p>
-          {% set mycount = 0 %}
+          <div class="row">
+            <h5>Popular Authors</h5>
+            <p>Browse by author:</p>
+            {% set mycount = 0 %}
             {% for item in authors %}
               {% if(mycount == 0) %}
                 <div class="col s12 m6 l6">
@@ -68,102 +69,38 @@
               </div>
               {% set mycount = 0 %}
             {% endif %}
+          </div>
         </div>
         <div class="col s12 m12 l12">
-          <h5>Authors to Explore</h5>
-          <div class="col s12 m6 l6">
-            <ul>
-              <li><a href="#!">A. P. J. Abdul Kalam</a></li>
-              <li><a href="#!">Alan Rickman</a></li>
-              <li><a href="#!">Albert Camus</a></li>
-              <li><a href="#!">Aristotle</a></li>
-              <li><a href="#!">Audrey Hepburn</a></li>
-              <li><a href="#!">Barack Obama</a></li>
-              <li><a href="#!">Benjamin Franklin</a></li>
-              <li><a href="#!">Bill Gates</a></li>
-              <li><a href="#!">Bob Marly</a></li>
-              <li><a href="#!">Bruce Lee</a></li>
-              <li><a href="#!">C. S. Lewis</a></li>
-              <li><a href="#!">Carl Sagan</a></li>
-              <li><a href="#!">Coco Chanel</a></li>
-              <li><a href="#!">Conor McGregor</a></li>
-              <li><a href="#!">Dalai Lama</a></li>
-              <li><a href="#!">Donald Trump</a></li>
-              <li><a href="#!">Edgar Allan Poe</a></li>
-              <li><a href="#!">Eleanor Roosevelt</a></li>
-              <li><a href="#!">Eminem</a></li>
-              <li><a href="#!">Ernest Hemingway</a></li>
-              <li><a href="#!">Francis Bacon</a></li>
-              <li><a href="#!">Franklin D. Roosevelt</a></li>
-              <li><a href="#!">Frederick Douglass</a></li>
-              <li><a href="#!">Friedrich Nietzsche</a></li>
-              <li><a href="#!">George Bernard Shaw</a></li>
-              <li><a href="#!">George Carlin</a></li>
-              <li><a href="#!">George Orwell</a></li>
-              <li><a href="#!">George Washington</a></li>
-              <li><a href="#!">Groucho Marx</a></li>
-              <li><a href="#!">Helen Keller</a></li>
-              <li><a href="#!">Henry David Thoreau</a></li>
-              <li><a href="#!">Henry Ford</a></li>
-              <li><a href="#!">Isaac Newton</a></li>
-              <li><a href="#!">Jackie Robinson</a></li>
-              <li><a href="#!">Jesus Christ</a></li>
-              <li><a href="#!">John F. Kennedy</a></li>
-              <li><a href="#!">John Lennon</a></li>
-              <li><a href="#!">John Locke</a></li>
-            </ul>
-          </div>
-          <div class="col s12 m6 l6">
-            <ul>
-              <li><a href="#!">John Wooden</a></li>
-              <li><a href="#!">Julius Caesar</a></li>
-              <li><a href="#!">Kanye West</a></li>
-              <li><a href="#!">Karl Marx</a></li>
-              <li><a href="#!">Khalil Gibran</a></li>
-              <li><a href="#!">Kurt Cobain</a></li>
-              <li><a href="#!">Lao Tzu</a></li>
-              <li><a href="#!">Leonardo da Vinci</a></li>
-              <li><a href="#!">Malala Yousafzai</a></li>
-              <li><a href="#!">Malcolm X</a></li>
-              <li><a href="#!">Marcus Aurelius</a></li>
-              <li><a href="#!">Marilyn Monroe</a></li>
-              <li><a href="#!">Martin Luther</a></li>
-              <li><a href="#!">Michael Jordan</a></li>
-              <li><a href="#!">Muhammad Ali</a></li>
-              <li><a href="#!">Napoleon Bonaparte</a></li>
-              <li><a href="#!">Nelson Mandela</a></li>
-              <li><a href="#!">Niccolo Machiavelli</a></li>
-              <li><a href="#!">Plato</a></li>
-              <li><a href="#!">Pope Francis</a></li>
-              <li><a href="#!">Publilius Syrus</a></li>
-              <li><a href="#!">Ralph Waldo Emerson</a></li>
-              <li><a href="#!">Robert Frost</a></li>
-              <li><a href="#!">Ronald Reagan</a></li>
-              <li><a href="#!">Rosa Parks</a></li>
-              <li><a href="#!">Rumi</a></li>
-              <li><a href="#!">Socrates</a></li>
-              <li><a href="#!">Sun Tzu</a></li>
-              <li><a href="#!">Swami Vivekananda</a></li>
-              <li><a href="#!">Theodore Roosevelt</a></li>
-              <li><a href="#!">Thomas A. Edison</a></li>
-              <li><a href="#!">Thomas Jefferson</a></li>
-              <li><a href="#!">Tupac Shakur</a></li>
-              <li><a href="#!">Vince Lombardi</a></li>
-              <li><a href="#!">Voltaire</a></li>
-              <li><a href="#!">Warren Buffett</a></li>
-              <li><a href="#!">Yogi Berra</a></li>
-            </ul>
+          <div class="row">
+            <h5>Authors to Explore</h5>
+            <div class="col s12 m6 l6">
+              <div class="row">
+                <ul>
+                  <li><a href="#!">A. P. J. Abdul Kalam</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col s12 m6 l6">
+              <div class="row">
+                <ul>
+                  <li><a href="#!">Yogi Berra</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="col s12 m12 l4">
-        <h5>Today's Birthdays</h5>
-        <ul>
-          {% for item in birthdays %}
-            <li>{{ item.born|date("Y") }} - <a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></li>
-          {% endfor %}
-          <li><a href="{{ path('birthdaysonpage',{'_format':'html', 'date': "now"|date("F_d") }) }}">Birthdays on {{ "now"|date("F d") }}nd</a> | <a href="{{ path('birthdayspage',{'_format':'html'}) }}">All Birthdays</a></li>
-        </ul>
+        <div class="row">
+          <h5>Today's Birthdays</h5>
+          <ul>
+            {% for item in birthdays %}
+              <li>{{ item.born|date("Y") }} - <a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></li>
+            {% endfor %}
+            <li><a href="{{ path('birthdaysonpage',{'_format':'html', 'date': "now"|date("F_d") }) }}">Birthdays on {{ "now"|date("F d") }}nd</a> | <a href="{{ path('birthdayspage',{'_format':'html'}) }}">All Birthdays</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -175,6 +112,14 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  {% if app.session.flashBag.has('success') %}
+      {% for msg in app.session.flashBag.get('success') %}
+        <script>
+          Materialize.toast('{{ msg }}', 4000,'green');
+        </script>
+
+      {% endfor %}
+  {% endif %}
 
   {% for flash_message in app.session.flashbag.get('success') %}
     <script>

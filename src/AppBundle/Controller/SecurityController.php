@@ -90,12 +90,12 @@ class SecurityController extends Controller
      * @Route("/logout", name="logout")
      * @Method("GET")
      */
-    public function logoutAction()
+    public function logoutAction(Request $request)
     {
-        $this->addFlash(
-            'success',
-            'You have logged out.'
-        );
+        $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'You have logged out.')
+        ;
         //return $this->redirect($this->generateUrl('homepage'));
     }
 
@@ -103,7 +103,7 @@ class SecurityController extends Controller
      * @Route("/users/my/account", name="accountsettings")
      * @Method("GET")
      */
-    public function accountsettingsAction()
+    public function accountsettingsAction(Request $request)
     {
         return $this->render('security/settings.html.twig', array(
             'menu'          => 'login'

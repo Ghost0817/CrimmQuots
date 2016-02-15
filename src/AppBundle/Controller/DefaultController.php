@@ -468,9 +468,16 @@ class DefaultController extends Controller
             ->getRepository('AppBundle:Authors')
             ->findBy(array('tick' => $char),array('name' => 'ASC' ));
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $authors, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            26/*limit per page*/
+        );
+
         return $this->render('default/authors.html.twig', array(
             'char' => $char,
-            'authors' => $authors,
+            'pagination' => $pagination
         ));
     }
 }

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Favorite Authors - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row sf_content">
+            <h5>Favorite Authors</h5>
+            <p>Looking for quotes by our most popular authors? Gather wisdom from the ages as you browse favorite quotes by famous authors like: Aristotle, Abraham Lincoln, Thomas Jefferson, Oscar Wilde, and William Shakespeare.</p>
+            {% for letter in 'a'|upper..'z'|upper %}
+                <div class="col s12 m12 l4">
+                    <div class="row">
+                        <h5><a href="{{ path('authors',{'char': letter|lower }) }}">{{ letter }} Authors</a></h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script src="/js/init.js"></script>
+{% endblock %}

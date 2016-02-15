@@ -71,6 +71,13 @@ class Authors
     private $hits;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="tick", type="string", length=255, nullable=false)
+     */
+    private $tick;
+
+    /**
      * @var \AppBundle\Entity\Nationality
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Nationality")
@@ -261,6 +268,29 @@ class Authors
     public function getHits()
     {
         return $this->hits;
+    }
+
+    /**
+     * Set tick
+     *
+     * @param string $tick
+     * @return Authors
+     */
+    public function setTick($tick)
+    {
+        $this->tick = $tick;
+
+        return $this;
+    }
+
+    /**
+     * Get tick
+     *
+     * @return string
+     */
+    public function getTick()
+    {
+        return $this->tick;
     }
 
     /**

@@ -27,7 +27,7 @@
     <body>
       <div class="container">
         <div class="row">
-          
+
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- ad 1 -->
 <ins class="adsbygoogle"
@@ -47,7 +47,7 @@
               </a>
               <ul class="left hide-on-med-and-down">
                 <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="#">Authors</a></li>
+                <li><a href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
                 <li><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
                 <li><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
               </ul>
@@ -90,17 +90,39 @@
             </div>
         </nav>
 
+      <div class="container">
+          <div class="row center">
+              <p>Authors:&nbsp;
+                  {% for letter in 'a'|upper..'z'|upper %}
+                    <a href="{{ path('authors',{'char': letter|lower }) }}">{{ letter }}</a>&nbsp;&nbsp;
+                  {% endfor %}
+              </p>
+
+          </div>
+      </div>
         <div id="index-banner" class="parallax-container">
             <div class="section no-pad-bot">
               <div class="container">
                 <br><br>
                 <div class="row center">
-                  <a href="#"><h5 class="header col s12 light">A forest bird never wants a cage.</h5></a>
+                  <a href="#"><h4 class="header col s12 light">A forest bird never wants a cage.</h4></a>
                 </div>
                 <div class="row center">
                   <a href="#"><p>Henrik Ibsen</p></a>
                 </div>
-                <br><br>
+
+                <div class="row center">
+                      <p>&nbsp;</p>
+                </div>
+                <div class="row center">
+                    <a class="right-align" href="#"><i class="fa fa-heart fa-1x"></i></a>&nbsp;&nbsp;
+                    <a class="right-align" href="#"><i class="fa fa-plus-square fa-1x"></i></a>&nbsp;&nbsp;
+                    <a class="right-align" href="#"><i class="fa fa-refresh fa-1x"></i></a>
+                </div>
+                <br>
+                <div class="row center">
+                  <p>&nbsp;</p>
+                </div>
 
               </div>
             </div>
@@ -120,8 +142,8 @@
             <div class="col l3 s6">
               <h5 class="white-text">Site</h5>
               <ul>
-                <li><a class="white-text" href="#!">Home</a></li>
-                <li><a class="white-text" href="#!">Authors</a></li>
+                <li><a class="white-text" href="{{ path('homepage') }}">Home</a></li>
+                <li><a class="white-text" href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
                 <li><a class="white-text" href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
                 <li><a class="white-text" href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
                 <li><a class="white-text" href="{{ path('professionpage',{'_format':'html'}) }}">Professions</a></li>

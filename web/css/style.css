@@ -58,9 +58,10 @@ p {
   .parallax-container a:hover {
     text-decoration: underline;
   }
-  .parallax-container h5 {
+  .parallax-container h4 {
     font-weight: bold;
     text-shadow: 3px 2px 3px #000000;
+    font-size: 32px;
   }
   .parallax-container a:hover h5 {
     text-decoration: underline;

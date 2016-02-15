@@ -53,6 +53,11 @@ AppBundle\Entity\Authors:
             nullable: false
             unsigned: false
             comment: 'Дарагдсан тоо'
+        tick:
+            type: string
+            nullable: false
+            length: 1
+            fixed: false
     manyToOne:
         nationality:
             targetEntity: Nationality

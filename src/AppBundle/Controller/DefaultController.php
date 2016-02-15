@@ -28,13 +28,14 @@ class DefaultController extends Controller
         ->findByTopEighteen();
 
         $date = new \DateTime();
-        
+
+        # todo: rank-aar ne shvvj xaryylax
         $query = $em->createQuery(
             "SELECT p
             FROM AppBundle:Authors p
             WHERE p.born LIKE :date"
         )->setParameter('date', '%'.$date->format('-m-d') );
-        $birthdays = $query->getResult();
+        $birthdays = $query->setMaxResults(5)->getResult();
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', array(
@@ -437,6 +438,39 @@ class DefaultController extends Controller
 
         return $this->render('default/quotesofday.html.twig', array(
             'nationality' => $nationality,
+        ));
+    }
+
+    /**
+     * @Route("/quotes/favorites.{_format}",
+     * name="favorites")
+     */
+    public function favoritesAction(Request $request)
+    {
+        # todo: rank-aar ne shvvj xaryylax
+        $nationality = $this->getDoctrine()
+            ->getRepository('AppBundle:Nationality')
+            ->findBy(array(),array('name' => 'ASC' ));
+
+        return $this->render('default/favorites.html.twig', array(
+            'nationality' => $nationality,
+        ));
+    }
+
+    /**
+     * @Route("/authors/{char}",
+     * name="authors")
+     */
+    public function authorsAction(Request $request, $char)
+    {
+        # todo: rank-aar ne shvvj xaryylax
+        $authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findBy(array('tick' => $char),array('name' => 'ASC' ));
+
+        return $this->render('default/authors.html.twig', array(
+            'char' => $char,
+            'authors' => $authors,
         ));
     }
 }

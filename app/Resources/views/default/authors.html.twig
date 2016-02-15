@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quotes by '{{ char|upper }}' Authors - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row sf_content">
+            <h5>Quotes by '{{ char|upper }}' Authors</h5>
+            <div class="col s12 m12 l8">
+                <div class="row" style="margin-right: 0px;">
+                    <h5>Most popular '{{ char|upper }}' authors</h5>
+
+                    <h5>All '{{ char|upper }}' authors</h5>
+
+                    <table class="responsive-table">
+                        <thead>
+                        <tr>
+                            <th data-field="name">Author</th>
+                            <th data-field="rrofession">Profession</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for author in authors %}
+                            <tr>
+                                <td><a href="{{ path('quotesbyauthor',{'slug': author.slug, '_format':'html'}) }}">{{ author.name }}</td>
+                                <td>{% if author.profession %}{{ author.profession.name }}{% else %}-{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div class="row">
+                    <h5>Popular Topics</h5>
+
+                    {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script src="/js/init.js"></script>
+{% endblock %}

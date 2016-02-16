@@ -9,5 +9,7 @@
 /build/
 /vendor/
 /bin/
+/src/Knp/Bundle/*
+/src/Knp/Component/*
 /composer.phar
 /.idea/*

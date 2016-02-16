@@ -10,6 +10,8 @@
 {% endblock %}
 
 {% block body %}
+
+    {% include 'helper/letternavbar.html.twig' %}
 <div class="container">
     <div class="row sf_content">
         <h5>Birthdays on {{ date | replace('_',' ')}}</h5>
@@ -31,7 +33,7 @@
             <tr>
               <td><a href="{{ path('quotesbyauthor',{'slug': author.slug, '_format':'html'}) }}">{{ author.name }}</td>
               <td>{{ author.profession.name }}</td>
-              <td>{{ author.born|date("Y") }}</td>
+              <td>{% if author.born != '' %}{{ author.born|date("Y") }}{% endif %}</td>
             </tr>
             {% endfor %}
           </tbody>

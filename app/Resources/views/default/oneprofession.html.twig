@@ -10,43 +10,48 @@
 {% endblock %}
 
 {% block body %}
+
+    {% include 'helper/letternavbar.html.twig' %}
 <div class="container">
     <div class="row sf_content">
         <h5>{{ profession.name }} Quotes</h5>
 
         <div class="col s12 m12 l8">
-        	<div class="row">
+        	<div class="row" style="margin-right: 0px;">
 
-        <table class="responsive-table">
-          <thead>
-            <tr>
-                <th data-field="name">Author</th>
-                <th data-field="rrofession">Birth - Death</th>
-            </tr>
-          </thead>
+                <table class="responsive-table">
+                  <thead>
+                    <tr>
+                        <th data-field="name">Author</th>
+                        <th data-field="rrofession">Birth - Death</th>
+                    </tr>
+                  </thead>
 
-          <tbody>
-            {% for author in authors %}
-            <tr>
-              <td><a href="{{ path('quotesbyauthor',{'slug': author.slug, '_format':'html'}) }}">{{ author.name }}</td>
-              <td>{{ author.born|date("Y") }} - {{ author.died|date("Y") }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+                  <tbody>
+                    {% for author in authors %}
+                    <tr>
+                      <td><a href="{{ path('quotesbyauthor',{'slug': author.slug, '_format':'html'}) }}">{{ author.name }}</td>
+                      <td>{{ author.born|date("Y") }} - {{ author.died|date("Y") }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
 
 
         	</div>
         </div>
 		<div class="col s12 m12 l4">
-			<h5>Popular Topics</h5>
+        	<div class="row">
+                <h5>Quote of the Day</h5>
+                <p>Enjoy five great <a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></p>
+                <h5>Popular Topics</h5>
 
-      {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
-      
-      <h5>Popular Authors</h5>
+              {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
 
-      {{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
-      
+              <h5>Popular Authors</h5>
+
+              {{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
+            </div>
 		</div>
     </div>
 </div>

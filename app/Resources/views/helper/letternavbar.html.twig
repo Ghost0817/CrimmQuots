@@ -1,0 +1,12 @@
+<nav class="letter-navbar" role="navigation">
+    <div class="container">
+        <div class="row center">
+            <p>Authors:&nbsp;
+                {% for letter in 'a'|upper..'z'|upper %}
+                    <a href="{{ path('authors',{'char': letter|lower }) }}">{{ letter }}</a>&nbsp;&nbsp;
+                {% endfor %}
+            </p>
+
+        </div>
+    </div>
+</nav>

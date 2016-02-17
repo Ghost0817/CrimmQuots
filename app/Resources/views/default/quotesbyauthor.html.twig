@@ -131,11 +131,26 @@
           <!-- end pagenation -->
         </div>
         <div class="col s12 m12 l3">
-      		<h5>Biography</h5>
-          <p>Nationality: <a href="{{ path('quotesbynationality',{'slug':author.nationality.slug,'_format':'html'})}}">{{ author.nationality.name }}</a></p>
-          <p>Type: <a href="{{ path('oneprofessionpage',{'_format':'html','slug':author.profession.slug}) }}">{{ author.profession.name }}</a></p>
-          <p>Born: <a href="{{ path('birthdaysonpage',{'_format':'html', 'date': author.born|date("F_d") }) }}">{{ author.born|date("F d") }}</a>, {{ author.born|date("Y") }}</p>
-          <p>Died: <a href="{{ path('birthdaysonpage',{'_format':'html', 'date': author.died|date("F_d") }) }}">{{ author.died|date("F d") }}</a>, {{ author.died|date("Y") }}</p>
+          <h5>Biography</h5>
+          {% if (author.nationality) %}
+            <p>Nationality: <a href="{{ path('quotesbynationality',{'slug':author.nationality.slug,'_format':'html'})}}">{{ author.nationality.name }}</a></p>
+          {% endif %}
+
+          {% if (author.profession) %}
+            <p>Type: <a href="{{ path('oneprofessionpage',{'_format':'html','slug':author.profession.slug}) }}">{{ author.profession.name }}</a></p>
+          {% endif %}
+
+          {% if author.born matches '/([0-9]){4}-([0-9]){2}-([0-9]){2}/' %}
+            <p>Born: <a href="{{ path('birthdaysonpage',{'_format':'html', 'date': author.born|date("F_d") }) }}">{{ author.born|date("F d") }}</a>, {{ author.born|date("Y") }}</p>
+          {% else %}
+            <p>Born: {{ author.born }}</p>
+          {% endif %}
+
+          {% if author.died matches '/([0-9]){4}-([0-9]){2}-([0-9]){2}/' %}
+            <p>Died: <a href="{{ path('birthdaysonpage',{'_format':'html', 'date': author.died|date("F_d") }) }}">{{ author.died|date("F d") }}</a>, {{ author.died|date("Y") }}</p>
+          {% else %}
+            <p>Died: {{ author.died }}</p>
+          {% endif %}
 
           <h5>Popular Topics</h5>
 

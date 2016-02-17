@@ -39,6 +39,7 @@
             {% endfor %}
 
             {% if(mycount != 9 and mycount != 0) %}
+                    <li><a class="more-link" href="{{ path('topicspage',{'_format':'html'}) }}">more topics</a></li>
                   </ul>
                 </div>
               </div>
@@ -68,6 +69,7 @@
             {% endfor %}
 
             {% if(mycount != 9 and mycount != 0) %}
+                    <li><a class="more-link" href="{{ path('favorites',{'_format':'html'}) }}">more authors</a></li>
                   </ul>
                 </div>
               </div>

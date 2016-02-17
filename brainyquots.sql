@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2016 at 09:03 AM
+-- Generation Time: Feb 17, 2016 at 11:30 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -706,7 +706,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (631, 13, '1872-12-26', '1967-10-07', '', '', 'norman_angell', 65, 'Norman Angell', 0, 'a'),
 (632, 2, '1920-09-19', '', '', '', 'roger_angell', 65, 'Roger Angell', 0, 'a'),
 (633, 45, '1955-12-12', '', '', '', 'gianna_angelopoulosdaska', 11, 'Gianna Angelopoulos-Daskalaki', 0, 'a'),
-(634, 2, '1928-04-04', '2014-05-28', '', '', 'maya_angelou', 48, 'Maya Angelou', 0, 'a'),
+(634, 2, '1928-04-04', '2014-05-28', '', '', 'maya_angelou', 48, 'Maya Angelou', 1, 'a'),
 (635, 2, '1930-02-03', '', '', '', 'kenneth_anger', 8, 'Kenneth Anger', 0, 'a'),
 (636, 2, '', '', '', '', 'gennaro_angiulo', 19, 'Gennaro Angiulo', 0, 'a'),
 (637, 2, '1967', '', '', '', 'colin_angle', 10, 'Colin Angle', 0, 'a'),
@@ -3107,7 +3107,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (3028, 2, '1962-05-31', '', '', '', 'larry_bucshon', 49, 'Larry Bucshon', 0, 'b'),
 (3029, 2, '1936-05-24', '', '', '', 'harold_budd', 18, 'Harold Budd', 0, 'b'),
 (3030, 108, '1966-05-26', '', '', '', 'zola_budd', 7, 'Zola Budd', 0, 'b'),
-(3031, NULL, '563 BC', '483 BC', '', '', 'buddha', 39, 'Buddha', 0, 'b'),
+(3031, NULL, '563 BC', '483 BC', '', '', 'buddha', 39, 'Buddha', 1, 'b'),
 (3032, 2, '1945', '', '', '', 'bill_budge', 10, 'Bill Budge', 0, 'b'),
 (3033, 5, '1686-08-19', '1737-05-04', '', '', 'eustace_budgell', 65, 'Eustace Budgell', 0, 'b'),
 (3034, 2, '1926-07-11', '', '', '', 'frederick_buechner', 15, 'Frederick Buechner', 0, 'b'),
@@ -4227,7 +4227,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (4147, 5, '1731', '1764', '', '', 'charles_churchill', 48, 'Charles Churchill', 0, 'c'),
 (4148, 2, '1854-01-09', '1921-06-09', '', '', 'lady_randolph_churchill', 13, 'Lady Randolph Churchill', 0, 'c'),
 (4149, 2, '1947-10-02', '', '', '', 'ward_churchill', 29, 'Ward Churchill', 0, 'c'),
-(4150, 5, '1874-11-30', '1965-01-24', '', '', 'winston_churchill', 62, 'Winston Churchill', 0, 'c'),
+(4150, 5, '1874-11-30', '1965-01-24', '', '', 'winston_churchill', 62, 'Winston Churchill', 1, 'c'),
 (4151, 2, '1970', '', '', '', 'sarah_churchwell', 29, 'Sarah Churchwell', 0, 'c'),
 (4152, 3, '1975-06-19', '', '', '', 'oxana_chusovitina', 7, 'Oxana Chusovitina', 0, 'c'),
 (4153, 2, '1922-05-11', '1982-02-17', '', '', 'nestor_chylak', 13, 'Nestor Chylak', 0, 'c'),
@@ -4626,7 +4626,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (4545, 2, '1963-01-02', '', '', '', 'david_cone', 7, 'David Cone', 0, 'c'),
 (4546, 2, '1903-02-21', '1977', '', '', 'fairfax_cone', 10, 'Fairfax Cone', 0, 'c'),
 (4547, 2, '1938-08-05', '', '', '', 'james_hal_cone', 63, 'James Hal Cone', 0, 'c'),
-(4548, 22, '551 BC', '479 BC', '', '', 'confucius', 44, 'Confucius', 0, 'c'),
+(4548, 22, '551 BC', '479 BC', '', '', 'confucius', 44, 'Confucius', 1, 'c'),
 (4549, 5, '1670-02-10', '1729-01-19', '', '', 'william_congreve', 48, 'William Congreve', 0, 'c'),
 (4550, 2, '', '', '', '', 'robert_conklin', 29, 'Robert Conklin', 0, 'c'),
 (4551, 2, '1829-10-30', '1888-04-18', '', '', 'roscoe_conkling', 49, 'Roscoe Conkling', 0, 'c'),
@@ -7494,7 +7494,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (7408, 2, '1882-11-15', '1965-02-22', '', '', 'felix_frankfurter', 37, 'Felix Frankfurter', 0, 'f'),
 (7409, 142, '1905-03-26', '1997-09-02', '', '', 'viktor_e_frankl', 52, 'Viktor E. Frankl', 0, 'f'),
 (7410, 2, '1942-03-25', '', '', '', 'aretha_franklin', 42, 'Aretha Franklin', 0, 'f'),
-(7411, 2, '1706-01-17', '1790-04-17', '', '', 'benjamin_franklin', 49, 'Benjamin Franklin', 0, 'f'),
+(7411, 2, '1706-01-17', '1790-04-17', '', '', 'benjamin_franklin', 49, 'Benjamin Franklin', 1, 'f'),
 (7412, 2, '1915-01-02', '', '', '', 'john_hope_franklin', 34, 'John Hope Franklin', 0, 'f'),
 (7413, 141, '1879-10-14', '1954-09-19', '', '', 'miles_franklin', 65, 'Miles Franklin', 0, 'f'),
 (7414, 2, '1995-05-10', '', '', '', 'missy_franklin', 7, 'Missy Franklin', 0, 'f'),
@@ -11659,7 +11659,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (11566, 141, '1934-02-15', '2005-05-25', '', '', 'graham_kennedy', 30, 'Graham Kennedy', 0, 'k'),
 (11567, 2, '1929-07-28', '1994-05-19', '', '', 'jackie_kennedy', 33, 'Jackie Kennedy', 0, 'k'),
 (11568, 2, '1970-05-25', '', '', '', 'jamie_kennedy', 2, 'Jamie Kennedy', 0, 'k'),
-(11569, 2, '1917-05-29', '1963-11-22', '', '', 'john_f_kennedy', 50, 'John F. Kennedy', 0, 'k'),
+(11569, 2, '1917-05-29', '1963-11-22', '', '', 'john_f_kennedy', 50, 'John F. Kennedy', 1, 'k'),
 (11570, 2, '1888-09-06', '1969-11-18', '', '', 'joseph_p_kennedy', 23, 'Joseph P. Kennedy', 0, 'k'),
 (11571, 2, '1980-10-04', '', '', '', 'joseph_p_kennedy_iii', 49, 'Joseph P. Kennedy III', 0, 'k'),
 (11572, 2, '1953-06-05', '', '', '', 'kathleen_kennedy', 51, 'Kathleen Kennedy', 0, 'k'),
@@ -11878,7 +11878,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (11785, 137, '1952-09-19', '', '', '', 'laurie_r_king', 8, 'Laurie R. King', 0, 'k'),
 (11786, 2, '', '', '', '', 'lily_king', 43, 'Lily King', 0, 'k'),
 (11787, 18, '1874-12-17', '1950-07-22', '', '', 'mackenzie_king', 62, 'Mackenzie King', 0, 'k'),
-(11788, 2, '1929-01-15', '1968-04-04', '', '', 'martin_luther_king_jr', 39, 'Martin Luther King, Jr.', 0, 'k'),
+(11788, 2, '1929-01-15', '1968-04-04', '', '', 'martin_luther_king_jr', 39, 'Martin Luther King, Jr.', 1, 'k'),
 (11789, 80, '1945-12-15', '2004-03-30', '', '', 'michael_king', 34, 'Michael King', 0, 'k'),
 (11790, 2, '1954-09-14', '', '', '', 'michael_patrick_king', 65, 'Michael Patrick King', 0, 'k'),
 (11791, 5, '1987-06-04', '', '', '', 'mollie_king', 42, 'Mollie King', 0, 'k'),
@@ -13141,7 +13141,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (13046, 2, '1959-10-05', '', '', '', 'maya_lin', 4, 'Maya Lin', 0, 'l'),
 (13047, 2, '1983-07-02', '', '', '', 'tao_lin', 43, 'Tao Lin', 0, 'l'),
 (13048, 2, '1930-08-06', '', '', '', 'abbey_lincoln', 42, 'Abbey Lincoln', 0, 'l'),
-(13049, 2, '1809-02-12', '1865-04-15', '', '', 'abraham_lincoln', 50, 'Abraham Lincoln', 0, 'l'),
+(13049, 2, '1809-02-12', '1865-04-15', '', '', 'abraham_lincoln', 50, 'Abraham Lincoln', 1, 'l'),
 (13050, 5, '1973-09-14', '', '', '', 'andrew_lincoln', 2, 'Andrew Lincoln', 0, 'l'),
 (13051, 2, '1960-09-30', '', '', '', 'blanche_lincoln', 49, 'Blanche Lincoln', 0, 'l'),
 (13052, NULL, '', '', '', '', 'joseph_c_lincoln', NULL, 'Joseph C. Lincoln', 0, 'l'),
@@ -16038,7 +16038,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (15938, 12, '1907-12-15', '2012-12-05', '', '', 'oscar_niemeyer', 4, 'Oscar Niemeyer', 0, 'n'),
 (15939, 3, '1892-01-14', '1984-03-06', '', '', 'martin_niemoller', 15, 'Martin Niemoller', 0, 'n'),
 (15940, 75, '1966-07-20', '', '', '', 'enrique_pena_nieto', 62, 'Enrique Pena Nieto', 0, 'n'),
-(15941, 3, '1844-10-15', '1900-08-25', '', '', 'friedrich_nietzsche', 44, 'Friedrich Nietzsche', 0, 'n'),
+(15941, 3, '1844-10-15', '1900-08-25', '', '', 'friedrich_nietzsche', 44, 'Friedrich Nietzsche', 1, 'n'),
 (15942, 4, '1973-07-30', '', '', '', 'sonu_nigam', 42, 'Sonu Nigam', 0, 'n'),
 (15943, 2, '1921-03-12', '1989-03-25', '', '', 'earl_nightingale', 30, 'Earl Nightingale', 0, 'n'),
 (15944, 5, '1820-05-12', '1910-08-13', '', '', 'florence_nightingale', 1, 'Florence Nightingale', 0, 'n'),
@@ -19980,7 +19980,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (20197, 2, '1941-10-12', '', '', '', 'craig_washington', 49, 'Craig Washington', 0, 'w'),
 (20198, 2, '1934', '', '', '', 'dennis_washington', 10, 'Dennis Washington', 0, 'w'),
 (20199, 2, '1954-12-28', '', '', '', 'denzel_washington', 2, 'Denzel Washington', 0, 'w'),
-(20200, 2, '1732-02-22', '1799-12-14', '', '', 'george_washington', 50, 'George Washington', 0, 'w'),
+(20200, 2, '1732-02-22', '1799-12-14', '', '', 'george_washington', 50, 'George Washington', 1, 'w'),
 (20201, 2, '1922-04-15', '1987-11-25', '', '', 'harold_washington', 49, 'Harold Washington', 0, 'w'),
 (20202, 2, '1963-08-03', '', '', '', 'isaiah_washington', 2, 'Isaiah Washington', 0, 'w'),
 (20203, 2, '1977-01-31', '', '', '', 'kerry_washington', 3, 'Kerry Washington', 0, 'w'),
@@ -20457,7 +20457,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (20673, 5, '1960-11-18', '', '', '', 'kim_wilde', 42, 'Kim Wilde', 0, 'w'),
 (20674, 2, '', '', '', '', 'lori_wilde', 8, 'Lori Wilde', 0, 'w'),
 (20675, 2, '1984-03-10', '', '', '', 'olivia_wilde', 3, 'Olivia Wilde', 0, 'w'),
-(20676, 55, '1854-10-16', '1900-11-30', '', '', 'oscar_wilde', 25, 'Oscar Wilde', 0, 'w'),
+(20676, 55, '1854-10-16', '1900-11-30', '', '', 'oscar_wilde', 25, 'Oscar Wilde', 1, 'w'),
 (20677, 13, '', '', '', '', 'stuart_wilde', 8, 'Stuart Wilde', 0, 'w'),
 (20678, 2, '1906-06-22', '2002-03-27', '', '', 'billy_wilder', 24, 'Billy Wilder', 0, 'w'),
 (20679, 2, '1931-01-17', '', '', '', 'douglas_wilder', 49, 'Douglas Wilder', 0, 'w'),
@@ -21733,7 +21733,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (22738, 2, '1952-09-16', '', '', '', 'lisa_tuttle', 65, 'Lisa Tuttle', 0, 't'),
 (22739, 108, '1931-10-07', '', '', '', 'desmond_tutu', 39, 'Desmond Tutu', 0, 't'),
 (22740, 2, '1983-10-21', '', '', '', 'aaron_tveit', 2, 'Aaron Tveit', 0, 't'),
-(22741, 2, '1835-11-30', '1910-04-21', '', '', 'mark_twain', 8, 'Mark Twain', 0, 't'),
+(22741, 2, '1835-11-30', '1910-04-21', '', '', 'mark_twain', 8, 'Mark Twain', 1, 't'),
 (22742, 18, '1965-08-28', '', '', '', 'shania_twain', 42, 'Shania Twain', 0, 't'),
 (22743, 2, '1823-04-03', '1878-04-12', '', '', 'boss_tweed', 49, 'Boss Tweed', 0, 't'),
 (22744, 18, '1957-03-10', '', '', '', 'shannon_tweed', 3, 'Shannon Tweed', 0, 't'),
@@ -22065,7 +22065,7 @@ INSERT INTO `authors` (`id`, `nationality`, `born`, `died`, `description`, `body
 (24092, 57, '1958', '', '', '', 'silvio_scaglia', 10, 'Silvio Scaglia', 0, 's'),
 (24093, 2, '1990-09-21', '', '', '', 'allison_scagliotti', 3, 'Allison Scagliotti', 0, 's'),
 (24094, 2, '1932-07-03', '', '', '', 'richard_scaife', 10, 'Richard Scaife', 0, 's'),
-(24095, 2, '1936-03-11', '', '', '', 'antonin_scalia', 37, 'Antonin Scalia', 0, 's'),
+(24095, 2, '1936-03-11', '', '', '', 'antonin_scalia', 37, 'Antonin Scalia', 1, 's'),
 (24096, 2, '1951-11-10', '', '', '', 'jack_scalia', 2, 'Jack Scalia', 0, 's'),
 (24097, 2, '1965-10-06', '', '', '', 'steve_scalise', 49, 'Steve Scalise', 0, 's'),
 (24098, 2, '1969-05-10', '', '', '', 'john_scalzi', 8, 'John Scalzi', 0, 's'),
@@ -24096,7 +24096,7 @@ CREATE TABLE IF NOT EXISTS `authorshits` (
   `create_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `authorshits`
@@ -24106,7 +24106,20 @@ INSERT INTO `authorshits` (`id`, `author_id`, `ip`, `create_at`) VALUES
 (1, 24580, '192.168.8.32', '2016-02-15 04:14:28'),
 (2, 7696, '192.168.8.32', '2016-02-15 04:15:11'),
 (3, 24528, '192.168.8.32', '2016-02-15 04:15:45'),
-(4, 6356, '192.168.8.32', '2016-02-15 04:16:14');
+(4, 6356, '192.168.8.32', '2016-02-15 04:16:14'),
+(5, 11788, '192.168.8.32', '2016-02-17 10:33:34'),
+(6, 13049, '192.168.8.32', '2016-02-17 10:34:01'),
+(7, 3031, '192.168.8.32', '2016-02-17 10:34:38'),
+(8, 22741, '192.168.8.32', '2016-02-17 10:41:45'),
+(9, 4548, '192.168.8.32', '2016-02-17 10:42:23'),
+(10, 4150, '192.168.8.32', '2016-02-17 11:01:40'),
+(11, 634, '192.168.8.32', '2016-02-17 11:01:53'),
+(12, 20200, '192.168.8.32', '2016-02-17 11:02:14'),
+(13, 24095, '192.168.8.32', '2016-02-17 11:02:25'),
+(14, 15941, '192.168.8.32', '2016-02-17 11:02:47'),
+(15, 7411, '192.168.8.32', '2016-02-17 11:02:55'),
+(16, 11569, '192.168.8.32', '2016-02-17 11:03:03'),
+(17, 20676, '192.168.8.32', '2016-02-17 11:03:23');
 
 -- --------------------------------------------------------
 
@@ -24131,7 +24144,7 @@ INSERT INTO `nationality` (`id`, `name`, `slug`, `hits`) VALUES
 (2, 'American', 'american', 0),
 (3, 'German', 'german', 0),
 (4, 'Indian', 'indian', 0),
-(5, 'English', 'english', 0),
+(5, 'English', 'english', 1),
 (6, 'Bahamian', 'bahamian', 0),
 (7, 'Bangladeshi', 'bangladeshi', 0),
 (8, 'Barbadian', 'barbadian', 0),
@@ -24283,7 +24296,14 @@ CREATE TABLE IF NOT EXISTS `nationalityhits` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `nationality_id` (`nationality_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `nationalityhits`
+--
+
+INSERT INTO `nationalityhits` (`id`, `nationality_id`, `ip`, `created_at`) VALUES
+(1, 5, '192.168.8.32', '2016-02-16 03:27:22');
 
 -- --------------------------------------------------------
 
@@ -24390,24 +24410,6 @@ CREATE TABLE IF NOT EXISTS `quotes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `temp_authors`
---
-
-CREATE TABLE IF NOT EXISTS `temp_authors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `slug` varchar(255) DEFAULT NULL,
-  `nationality` varchar(255) DEFAULT NULL,
-  `profession` varchar(255) DEFAULT NULL,
-  `born` varchar(45) DEFAULT NULL,
-  `died` varchar(45) DEFAULT NULL,
-  `tick` char(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `temp_quotes`
 --
 
@@ -24456,7 +24458,7 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `hits`) VALUES
 (134, 'Business', 'business', 0),
 (135, 'Car', 'car', 0),
 (136, 'Chance', 'chance', 0),
-(137, 'Change', 'change', 0),
+(137, 'Change', 'change', 1),
 (138, 'Christmas', 'christmas', 0),
 (139, 'Communication', 'communication', 0),
 (140, 'Computers', 'computers', 0),
@@ -24576,7 +24578,7 @@ CREATE TABLE IF NOT EXISTS `topicshits` (
   `create_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `quote_id` (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `topicshits`
@@ -24614,7 +24616,8 @@ INSERT INTO `topicshits` (`id`, `topic_id`, `ip`, `create_at`) VALUES
 (29, 225, '127.0.0.1', '2016-02-05 15:24:14'),
 (30, 221, '127.0.0.1', '2016-02-05 15:24:17'),
 (31, 212, '127.0.0.1', '2016-02-05 15:24:21'),
-(32, 199, '127.0.0.1', '2016-02-05 15:24:24');
+(32, 199, '127.0.0.1', '2016-02-05 15:24:24'),
+(33, 137, '192.168.8.32', '2016-02-17 11:04:35');
 
 --
 -- Constraints for dumped tables

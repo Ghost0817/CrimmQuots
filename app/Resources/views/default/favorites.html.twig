@@ -17,13 +17,163 @@
         <div class="row sf_content">
             <h5>Favorite Authors</h5>
             <p>Looking for quotes by our most popular authors? Gather wisdom from the ages as you browse favorite quotes by famous authors like: Aristotle, Abraham Lincoln, Thomas Jefferson, Oscar Wilde, and William Shakespeare.</p>
-            {% for letter in 'a'|upper..'z'|upper %}
-                <div class="col s12 m12 l4">
-                    <div class="row">
-                        <h5><a href="{{ path('authors',{'char': letter|lower }) }}">{{ letter }} Authors</a></h5>
-                    </div>
-                </div>
-            {% endfor %}
+
+            <div class="col s12 m12 l4">
+             <div class="row" style="margin-right: 0px;">
+                 <h5><a href="{{ path('authors',{'char': 'a' }) }}">A Authors</a></h5>
+                 {% for item in a_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'a' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'b' }) }}">B Authors</a></h5>
+                 {% for item in b_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'b' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'c' }) }}">C Authors</a></h5>
+                 {% for item in c_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'c' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'd' }) }}">D Authors</a></h5>
+                 {% for item in d_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'd' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'e' }) }}">E Authors</a></h5>
+                 {% for item in e_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'e' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'f' }) }}">F Authors</a></h5>
+                 {% for item in f_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'f' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'g' }) }}">G Authors</a></h5>
+                 {% for item in f_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'g' }) }}">More</a></p>
+
+             </div>
+            </div>
+
+            <div class="col s12 m12 l4">
+             <div class="row" style="margin-right: 0px;">
+                 <h5><a href="{{ path('authors',{'char': 'h' }) }}">H Authors</a></h5>
+                 {% for item in h_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'h' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'i' }) }}">I Authors</a></h5>
+                 {% for item in i_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'i' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'j' }) }}">J Authors</a></h5>
+                 {% for item in j_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'j' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'k' }) }}">K Authors</a></h5>
+                 {% for item in k_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'k' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'l' }) }}">L Authors</a></h5>
+                 {% for item in l_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'l' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'm' }) }}">M Authors</a></h5>
+                 {% for item in m_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'm' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'n' }) }}">N Authors</a></h5>
+                 {% for item in n_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'n' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'o' }) }}">O Authors</a></h5>
+                 {% for item in o_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'o' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'p' }) }}">P Authors</a></h5>
+                 {% for item in p_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'p' }) }}">More</a></p>
+             </div>
+            </div>
+
+            <div class="col s12 m12 l4">
+             <div class="row">
+                 <h5><a href="{{ path('authors',{'char': 'q' }) }}">Q Authors</a></h5>
+                 {% for item in q_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'q' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'r' }) }}">R Authors</a></h5>
+                 {% for item in r_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'r' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 's' }) }}">S Authors</a></h5>
+                 {% for item in s_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 's' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 't' }) }}">T Authors</a></h5>
+                 {% for item in t_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 't' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'v' }) }}">V Authors</a></h5>
+                 {% for item in v_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'v' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'w' }) }}">W Authors</a></h5>
+                 {% for item in w_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'w' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'y' }) }}">Y Authors</a></h5>
+                 {% for item in y_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'y' }) }}">More</a></p>
+
+                 <h5><a href="{{ path('authors',{'char': 'z' }) }}">Z Authors</a></h5>
+                 {% for item in z_authors %}
+                     <p><a href="{{ path('quotesbyauthor',{'slug': item.slug, '_format':'html'}) }}">{{ item.name }}</a></p>
+                 {% endfor %}
+                 <p><a class="more-link" href="{{ path('authors',{'char': 'z' }) }}">More</a></p>
+             </div>
+            </div>
         </div>
     </div>
 {% endblock %}

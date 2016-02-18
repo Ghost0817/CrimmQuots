@@ -448,12 +448,130 @@ class DefaultController extends Controller
     public function favoritesAction(Request $request)
     {
         # todo: rank-aar ne shvvj xaryylax
-        $nationality = $this->getDoctrine()
-            ->getRepository('AppBundle:Nationality')
-            ->findBy(array(),array('name' => 'ASC' ));
+        $a_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('a', 26);
+
+        $b_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('b', 39);
+
+        $c_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('c', 31);
+
+        $d_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('d', 24);
+
+        $e_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('e', 14);
+
+        $f_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('f', 18);
+
+        $g_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('g', 18);
+
+        $h_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('h', 25);
+
+        $i_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('i', 2);
+
+        $j_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('j', 13);
+
+        $k_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('k', 19);
+
+        $l_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('l', 18);
+
+        $m_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('m', 40);
+
+        $n_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('n', 9);
+
+        $o_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('o', 7);
+
+        $p_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('p', 22);
+
+        $q_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('q', 1);
+
+        $r_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('r', 24);
+
+        $s_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('s', 37);
+
+        $t_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('t', 24);
+
+        $v_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('v', 6);
+
+        $w_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('w', 26);
+
+        $y_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('y', 3);
+
+        $z_authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findByLetter('z', 2);
 
         return $this->render('default/favorites.html.twig', array(
-            'nationality' => $nationality,
+            'a_authors' => $a_authors,
+            'b_authors' => $b_authors,
+            'c_authors' => $c_authors,
+            'd_authors' => $d_authors,
+            'e_authors' => $e_authors,
+            'f_authors' => $f_authors,
+            'g_authors' => $g_authors,
+
+
+            'h_authors' => $h_authors,
+            'i_authors' => $i_authors,
+            'j_authors' => $j_authors,
+            'k_authors' => $k_authors,
+            'l_authors' => $l_authors,
+            'm_authors' => $m_authors,
+            'n_authors' => $n_authors,
+            'o_authors' => $o_authors,
+            'p_authors' => $p_authors,
+
+            'q_authors' => $q_authors,
+            'r_authors' => $r_authors,
+            's_authors' => $s_authors,
+            't_authors' => $t_authors,
+            'v_authors' => $v_authors,
+            'w_authors' => $w_authors,
+            'y_authors' => $y_authors,
+            'z_authors' => $z_authors,
         ));
     }
 

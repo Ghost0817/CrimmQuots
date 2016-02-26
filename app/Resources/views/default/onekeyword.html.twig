@@ -67,6 +67,7 @@
                     <p>{{ item.quote }}</p>
                     <a href="">{{ item.author.name }}</a>
                   </div>
+                  {% if(item.keywords) %}
                   <div class="card-tags">
                     {% set tags = item.keywords|split(', ') %}
                     {% for tag in tags %}
@@ -77,9 +78,9 @@
                         {% endif %}
                       {% endfor %}
                       {% if (isTopic == true) %}
-                        <a href="{{ path('onetopicpage',{'_format':'html','slug': tag|lower }) }}" title="view topic">{{ tag }}</a>, 
+                        <a href="{{ path('onetopicpage',{'_format':'html','slug': tag|lower }) }}" title="view topic">{{ tag }}</a>,
                       {% else %}
-                        <a href="{{ path('onekeywordpage',{'_format':'html','slug': tag|lower }) }}" title="view keyword">{{ tag }}</a>, 
+                        <a href="{{ path('onekeywordpage',{'_format':'html','slug': tag|lower }) }}" title="view keyword">{{ tag }}</a>,
                       {% endif %}
                     {% endfor %}
                   </div>

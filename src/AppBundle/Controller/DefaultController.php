@@ -136,7 +136,7 @@ class DefaultController extends Controller
      * @Route("/quotes/keywords/{slug}{page}.{_format}", 
      * name="onekeywordpage",
      * defaults={"page": "1"},
-     * requirements={"page": "\d+"}
+     * requirements={"page": "\d+", "slug": "[a-z]+"}
      * )
      */
     public function onekeywordAction(Request $request, $slug, $page)

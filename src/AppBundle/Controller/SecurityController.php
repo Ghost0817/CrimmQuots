@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+use AppBundle\Form\Model\ChangePassword;
+use AppBundle\Form\Type\PasswordChange;
+
 class SecurityController extends Controller
 {
     /**
@@ -109,12 +112,15 @@ class SecurityController extends Controller
 
         $me->setEmail($this->secret_mail($me->getEmail()));
 
+        $entity = new ChangePassword();
+        $form = $this->createForm(PasswordChange::class, $entity);
+
         return $this->render('security/settings.html.twig', array(
-            'menu'          => 'login',
-            'me'            => $me
+            'menu' => 'login',
+            'form' => $form->createView(),
+            'me'   => $me
         ));
     }
-
 
     public function secret_mail($email)
     {

@@ -1,6 +1,7 @@
 <?php
 // src/FrontendBundle/Form/Model/ChangePassword.php
 namespace AppBundle\Form\Model;
+
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
 class ChangePassword

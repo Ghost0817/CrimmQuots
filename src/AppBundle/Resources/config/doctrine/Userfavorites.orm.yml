@@ -1,0 +1,32 @@
+AppBundle\Entity\Userfavorites:
+    type: entity
+    table: userfavorites
+    indexes:
+        user_id:
+            columns:
+                - user_id
+                - quote_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: user_id
+        quoteId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: quote_id
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+    lifecycleCallbacks: {  }

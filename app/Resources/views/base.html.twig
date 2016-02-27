@@ -57,12 +57,11 @@
                       <li><a href="{{ path('signup') }}">Sign Up</a></li>
                       <li><a href="{{ path('login') }}">Login</a></li>
                   {% endif %}
-
               </ul>
 
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="#!"><i class="fa fa-heart"></i> Favorites</a></li>
+                    <li><a href="{{ path('usersfavorites') }}"><i class="fa fa-heart"></i> Favorites</a></li>
                     <li><a href="#!"><i class="fa fa-plus-square-o"></i> Collections</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ path('accountsettings') }}"><i class="fa fa-cog"></i> Account Settings</a></li>
@@ -71,7 +70,7 @@
 
               <ul id="nav-mobile" class="side-nav">
                 <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="#">Authors</a></li>
+                <li><a href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
                 <li><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
                 <li><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
               </ul>

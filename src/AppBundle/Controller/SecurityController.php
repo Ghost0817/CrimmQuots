@@ -113,11 +113,6 @@ class SecurityController extends Controller
 
         $form = $this->createForm(PasswordChange::class, $entity);
 
-        $this->addFlash(
-            'success',
-            'You have changed your password.'
-        );
-
         $form->handleRequest($request);
         if ($request->isMethod('POST')) {
             if ($form->isValid()) {
@@ -141,6 +136,8 @@ class SecurityController extends Controller
                     'success',
                     'You have changed your password.'
                 );
+
+                return $this->redirect($this->generateUrl('accountsettings'));
             }
         }
 
@@ -152,6 +149,31 @@ class SecurityController extends Controller
             'menu' => 'login',
             'form' => $form->createView(),
             'me'   => $me
+        ));
+    }
+
+    /**
+     * @Route("/users/favorites", name="usersfavorites")
+     * @Method("GET")
+     */
+    public function favoritesAction(Request $request)
+    {
+        $me = $this->getUser();
+
+        $authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Authors')
+            ->findBy(array('tick' => $me),array('name' => 'ASC' ));
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $authors, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            26/*limit per page*/
+        );
+
+        return $this->render('security/usersfavorites.html.twig', array(
+            'menu' => 'usersfavorites',
+            'pagination' => $pagination
         ));
     }
 

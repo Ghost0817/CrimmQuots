@@ -1,0 +1,21 @@
+AppBundle\Entity\Collections:
+    type: entity
+    table: collections
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: integer
+            nullable: false
+            unsigned: false
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+    lifecycleCallbacks: {  }

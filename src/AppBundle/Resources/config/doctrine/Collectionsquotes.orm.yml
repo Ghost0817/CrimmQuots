@@ -1,0 +1,32 @@
+AppBundle\Entity\Collectionsquotes:
+    type: entity
+    table: collectionsquotes
+    indexes:
+        quote_id:
+            columns:
+                - quote_id
+                - user_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        quoteId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: quote_id
+        userId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: user_id
+        createAt:
+            type: datetime
+            nullable: false
+            column: create_at
+    lifecycleCallbacks: {  }

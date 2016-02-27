@@ -105,8 +105,36 @@ class SecurityController extends Controller
      */
     public function accountsettingsAction(Request $request)
     {
+        $me = $this->getUser();
+
+        $me->setEmail($this->secret_mail($me->getEmail()));
+
         return $this->render('security/settings.html.twig', array(
-            'menu'          => 'login'
+            'menu'          => 'login',
+            'me'            => $me
         ));
+    }
+
+
+    public function secret_mail($email)
+    {
+        $prop=2;
+        $start = '';
+        $end='';
+        $domain = substr(strrchr($email, "@"), 1);
+        $mailname=str_replace($domain,'',$email);
+        $name_l=strlen($mailname);
+        $domain_l=strlen($domain);
+        for($i=0;$i<=$name_l/$prop-1;$i++)
+        {
+            $start.='?';
+        }
+
+        for($i=0;$i<=$domain_l/$prop-1;$i++)
+        {
+            $end.='?';
+        }
+
+        return substr_replace($mailname, $start, 2, $name_l/$prop).substr_replace($domain, $end, 2, $domain_l/$prop);
     }
 }

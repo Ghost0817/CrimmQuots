@@ -13,42 +13,37 @@
 
 {% include 'helper/letternavbar.html.twig' %}
 <div class="container">
-    <div class="row">
         <h4>Account Settings</h4>
-
-    </div>
 </div>
 
 
 <div class="container">
     <div class="row sf_content">
         <div class="col s12 m12 l9">
-            <div class="row">
-                <h5>Profile</h5>
+            <h5>Profile</h5>
 
-                <form class="col s12 m8 l5">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input disabled value="{{ app.user.username }}" id="disabled" type="text" class="validate">
-                            <label for="disabled">Display Name</label>
-                        </div>
+            <form class="col s12 m8 l5">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled value="{{ me.username }}" id="disabled" type="text" class="validate">
+                        <label for="disabled">Display Name</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input disabled value="{{ app.user.email }}" id="disabled" type="text" class="validate">
-                            <label for="disabled">Email</label>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled value="{{ me.email }}" id="disabled" type="text" class="validate">
+                        <label for="disabled">Email</label>
                     </div>
+                </div>
 
-                    <div class="row">
-                        Note: for security reasons, portions of your email address are not shown.
-                    </div>
-
-                    <div class="row">
-                        Note: for security reasons, portions of your email address are not shown.
-                    </div>
-                </form>
-            </div>
+                <div class="row">
+                    Note: for security reasons, portions of your email address are not shown.
+                </div>
+                <br/>
+                <div class="row">
+                    <a class="waves-effect waves-light btn">Change password</a>
+                </div>
+            </form>
         </div>
         <div class="col s12 m12 l3">
             <h5>Popular Topics</h5>

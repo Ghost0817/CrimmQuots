@@ -79,6 +79,31 @@
         </div>
         <div class="col s12 m12 l12">
           <div class="row">
+            <h5>Picture Quotes</h5>
+            <p>Share our beautiful quote pictures on <a>Facebook</a>, <a>Twitter</a>, <a>Google+</a>, and <a>Pinterest.</a></p>
+            {% for item in homepic %}
+            <div class="col s12 m6 l6">
+              <div class="row" style="margin-right: 0px;">
+                <div class="card" style="max-width: 300px;">
+                  <div class="card-image">
+                    <img src="/uploads/{{ item.image }}">
+                  </div>
+                  <div class="card-action">
+                    <a class="left-align" href="#" style="color:#00B7ED;"><i class="fa fa-facebook-official fa-2x"></i></a>
+                    <a class="left-align" href="#" style="color:#803591;"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    <a class="left-align" href="#" style="color:#F52422;"><i class="fa fa-pinterest-square fa-2x"></i></a>
+
+                    <a class="right-align right" href="#" style="color:#333;"><i class="fa fa-plus-square-o fa-2x"></i></a>
+                    <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col s12 m12 l12">
+          <div class="row">
             <h5>Authors to Explore</h5>
             <div class="col s12 m6 l6">
               <div class="row">

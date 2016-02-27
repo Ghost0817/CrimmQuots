@@ -20,12 +20,16 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $topics = $this->getDoctrine()
-        ->getRepository('AppBundle:Topics')
-        ->findByTopEighteen();
+            ->getRepository('AppBundle:Topics')
+            ->findByTopEighteen();
         
         $authors = $this->getDoctrine()
-        ->getRepository('AppBundle:Authors')
-        ->findByTopEighteen();
+            ->getRepository('AppBundle:Authors')
+            ->findByTopEighteen();
+
+        $homepic = $this->getDoctrine()
+            ->getRepository('AppBundle:Quotes')
+            ->findByPicHome(2);
 
         $date = new \DateTime();
 
@@ -42,6 +46,7 @@ class DefaultController extends Controller
             'topics' => $topics,
             'authors' => $authors,
             'birthdays' => $birthdays,
+            'homepic' => $homepic
         ));
     }
 

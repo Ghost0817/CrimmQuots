@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title%}Account Settings{% endblock %}
+{% block title%}BrainyQuote - My Quotes{% endblock %}
 
 {% block stylesheets %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,9 +10,87 @@
 {% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="col s12 m12 l12">
+            <ul class="tabs" style="margin-top: 20px;margin-bottom: 10px;">
+                <li class="tab col s2 disabled"><a href="#"><i class="fa fa-heart-o fa-2x"></i><br/>
+                        Favorites</a></li>
+                <li class="tab col s2"><a class="active" href="#"><i class="fa fa-plus-square-o fa-2x"></i><br/>
+                        Collections</a></li>
+            </ul>
+        </div>
+    </div>
 <div class="container">
     <div class="row sf_content">
-        safdsafda
+        <div class="col s12 m12 l9">
+            {{ knp_pagination_render(pagination) }}
+
+            {% set line_c = 0 %}
+            {% for item in pagination %}
+                {% set line_c = line_c + 1 %}
+                {% if(line_c == 1) %}
+                    <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
+                {% endif %}
+                <div class="card">
+                    {% if(item.image) %}
+                        <div class="card-image">
+                            <img src="/uploads/{{ item.image }}">
+                        </div>
+                    {% endif %}
+                    <div class="card-content">
+                        <p>{{ item.quote }}</p>
+                        <a href="">{{ item.author.name }}</a>
+                    </div>
+                    {% if(item.keywords) %}
+                        <div class="card-tags">
+                            {% set tags = item.keywords|split(', ') %}
+                            {% for tag in tags %}
+                                {% set isTopic = false %}
+                                {% for i in topics %}
+                                    {% if (i.name == tag) %}
+                                        {% set isTopic = true %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if (isTopic == true) %}
+                                    <a href="{{ path('onetopicpage',{'_format':'html','slug': tag|lower }) }}" title="view topic">{{ tag }}</a>,
+                                {% else %}
+                                    <a href="{{ path('onekeywordpage',{'_format':'html','slug': tag|lower }) }}" title="view keyword">{{ tag }}</a>,
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="card-action">
+                        <a class="left-align" href="#" style="color:#00B7ED;"><i class="fa fa-facebook-official fa-2x"></i></a>
+                        <a class="left-align" href="#" style="color:#803591;"><i class="fa fa-twitter-square fa-2x"></i></a>
+                        {% if(item.image) %}
+                            <a class="left-align" href="#" style="color:#F52422;"><i class="fa fa-pinterest-square fa-2x"></i></a>
+                        {% else%}
+                            <a class="left-align" href="#" style="color:#85C243;"><i class="fa fa-camera fa-2x"></i></a>
+                        {% endif %}
+
+                        <a class="right-align right" href="#" style="color:#333;"><i class="fa fa-plus-square-o fa-2x"></i></a>
+                        <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
+                    </div>
+                </div>
+                {% if(line_c == 9)%}
+                    {% set line_c = 0 %}
+                    </div>
+                {% endif %}
+
+            {% else %}
+                no Quotes has been found.
+            {% endfor %}
+
+            {% if(line_c != 9 and line_c != 0)%}
+            </div>
+            {% endif %}
+
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <div class="col s12 m12 l3">
+            <h5>Popular Topics</h5>
+            {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -7968,14 +7968,9 @@ small {
 }
 
 .tabs {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
-  height: 48px;
-  background-color: #fff;
   margin: 0 auto;
   width: 100%;
   white-space: nowrap;
@@ -7989,8 +7984,6 @@ small {
   display: block;
   float: left;
   text-align: center;
-  line-height: 48px;
-  height: 48px;
   padding: 0;
   margin: 0;
   text-transform: uppercase;
@@ -8002,7 +7995,7 @@ small {
 }
 
 .tabs .tab a {
-  color: #ee6e73;
+  color: #00B7ED;
   display: block;
   width: 100%;
   height: 100%;
@@ -8012,11 +8005,15 @@ small {
 }
 
 .tabs .tab a:hover {
-  color: #f9c9cb;
+  color: #00a3ed;
+}
+
+.tabs .tab.disabled a:hover {
+  color: #555;
 }
 
 .tabs .tab.disabled a {
-  color: #f9c9cb;
+  color: #555;
   cursor: default;
 }
 
@@ -8024,7 +8021,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color: #00a3ed;
   will-change: left, right;
 }
 

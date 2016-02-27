@@ -6,6 +6,15 @@ AppBundle\Entity\Collectionsquotes:
             columns:
                 - quote_id
                 - user_id
+        user_id:
+            columns:
+                - user_id
+        coll_id:
+            columns:
+                - coll_id
+        IDX_5B8D23DBDB805178:
+            columns:
+                - quote_id
     id:
         id:
             type: integer
@@ -15,18 +24,36 @@ AppBundle\Entity\Collectionsquotes:
             generator:
                 strategy: IDENTITY
     fields:
-        quoteId:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: quote_id
-        userId:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: user_id
         createAt:
             type: datetime
             nullable: false
             column: create_at
+    manyToOne:
+        coll:
+            targetEntity: Collections
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                coll_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        quote:
+            targetEntity: Quotes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                quote_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        user:
+            targetEntity: AppUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

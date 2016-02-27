@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Userfavorites
  *
- * @ORM\Table(name="userfavorites", indexes={@ORM\Index(name="user_id", columns={"user_id", "quote_id"})})
+ * @ORM\Table(name="userfavorites", indexes={@ORM\Index(name="user_id", columns={"user_id", "quote_id"}), @ORM\Index(name="IDX_2A24C195A76ED395", columns={"user_id"})})
  * @ORM\Entity
  */
 class Userfavorites
@@ -24,13 +24,6 @@ class Userfavorites
     /**
      * @var integer
      *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
-     */
-    private $userId;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="quote_id", type="integer", nullable=false)
      */
     private $quoteId;
@@ -42,6 +35,16 @@ class Userfavorites
      */
     private $createdAt;
 
+    /**
+     * @var \AppBundle\Entity\AppUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
 
 
     /**
@@ -52,29 +55,6 @@ class Userfavorites
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set userId
-     *
-     * @param integer $userId
-     * @return Userfavorites
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return integer 
-     */
-    public function getUserId()
-    {
-        return $this->userId;
     }
 
     /**
@@ -121,5 +101,28 @@ class Userfavorites
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\AppUsers $user
+     * @return Userfavorites
+     */
+    public function setUser(\AppBundle\Entity\AppUsers $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\AppUsers 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

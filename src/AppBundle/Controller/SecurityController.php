@@ -161,8 +161,8 @@ class SecurityController extends Controller
         $me = $this->getUser();
 
         $authors = $this->getDoctrine()
-            ->getRepository('AppBundle:Authors')
-            ->findBy(array('tick' => $me),array('name' => 'ASC' ));
+            ->getRepository('AppBundle:Userfavorites')
+            ->findBy(array('user' => $me),array('createdAt' => 'DESC' ));
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

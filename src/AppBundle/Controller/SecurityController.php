@@ -104,16 +104,49 @@ class SecurityController extends Controller
 
     /**
      * @Route("/users/my/account", name="accountsettings")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
     public function accountsettingsAction(Request $request)
     {
+
+        $entity = new ChangePassword();
+
+        $form = $this->createForm(PasswordChange::class, $entity);
+
+        $this->addFlash(
+            'success',
+            'You have changed your password.'
+        );
+
+        $form->handleRequest($request);
+        if ($request->isMethod('POST')) {
+            if ($form->isValid()) {
+
+                $registration = $form->getData();
+
+                $entity = $this->getUser();
+
+                //start Dynamically Encoding a Password
+                $encoder = $this->container->get('security.password_encoder');
+                $encoded = $encoder->encodePassword($entity, $registration->getPassword());
+
+                $entity->setPassword($encoded);
+                // end Dynamically Encoding a Password
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+
+                $this->addFlash(
+                    'success',
+                    'You have changed your password.'
+                );
+            }
+        }
+
         $me = $this->getUser();
 
         $me->setEmail($this->secret_mail($me->getEmail()));
-
-        $entity = new ChangePassword();
-        $form = $this->createForm(PasswordChange::class, $entity);
 
         return $this->render('security/settings.html.twig', array(
             'menu' => 'login',

@@ -7,7 +7,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PasswordChange extends AbstractType
@@ -26,21 +25,16 @@ class PasswordChange extends AbstractType
                     new Length(array('min' => 7,'max' => 30)),
                 ),
             ))
-            ->add('password', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
-                'options' => array('attr' => array('class' => 'password-field')),
-                'required' => true,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
+            ->add('password', PasswordType::class, array(
+                'required'    => true,
                 'constraints' => array(
                     new NotBlank(),
                     new Length(array('min' => 7,'max' => 30)),
                 ),
             ))
             ->add('save', SubmitType::class, array(
-                'label'=>'Update password',
-                'attr' => array('class' => 'btn btn-defualt'),
+                'label'=>'Change',
+                'attr' => array('class' => 'modal-action modal-close waves-effect waves-green btn-flat'),
             ))
         ;
     }

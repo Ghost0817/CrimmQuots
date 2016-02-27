@@ -42,53 +42,6 @@
                 <br/>
                 <div class="row">
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Change password</a>
-
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <h4>Change password</h4>
-                            {{ form_start(form, {'action': path('tutor_user_account_settings'), 'method': 'POST', 'autocomplete': 'off'}) }}
-                            <div class="form-group">
-                                {{ form_label(form.oldPassword) }}
-                                {{ form_widget(form.oldPassword, {'attr': {'class': 'form-control'}}) }}
-                                {% if(form.oldPassword.vars.errors|length) %}
-                                    <div class="msg-error">{{ form_errors(form.oldPassword) }}</div>
-                                {% endif %}
-                            </div>
-
-                            <div class="form-group">
-                                {{ form_label(form.password.first) }}
-                                {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
-                                {% if(form.password.first.vars.errors|length) %}
-                                    <div class="msg-error">{{ form_errors(form.password.first) }}</div>
-                                {% endif %}
-                            </div>
-
-                            <div class="form-group">
-                                {{ form_label(form.password.second) }}
-                                {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
-                                {% if(form.password.second.vars.errors|length) %}
-                                    <div class="msg-error">{{ form_errors(form.password.second) }}</div>
-                                {% endif %}
-                            </div>
-
-                            {% for flash_message in app.session.flashbag.get('success') %}
-                                <div class="msg-success">
-                                    {{ flash_message }}
-                                </div>
-                            {% endfor %}
-
-
-                            {{ form_widget(form._token) }}
-                            {{ form_widget(form.save) }}
-                            <a href="{{ path('tutor_forgot') }}">{%trans%}I forgot my password{%endtrans%}</a>
-                            {{ form_end(form) }}
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Change</a>
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>
@@ -98,6 +51,38 @@
         </div>
     </div>
 </div>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        {{ form_start(form, {'action': path('accountsettings'), 'method': 'POST', 'autocomplete': 'off'}) }}
+        <div class="modal-content">
+            <h4>Change password</h4>
+            <div class="form-group">
+                {{ form_label(form.oldPassword) }}
+                {{ form_widget(form.oldPassword, {'attr': {'class': 'form-control'}}) }}
+                {% if(form.oldPassword.vars.errors|length) %}
+                    <div class="msg-error">{{ form_errors(form.oldPassword) }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.password) }}
+                {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                {% if(form.password.vars.errors|length) %}
+                    <div class="msg-error">{{ form_errors(form.password) }}</div>
+                {% endif %}
+            </div>
+
+            {{ form_widget(form._token) }}
+            {{ form_errors(form) }}
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -106,11 +91,16 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/js/materialize.js"></script>
     <script src="/js/init.js"></script>
+
     <script>
 
         $(document).ready(function(){
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
+
+            {% for flash_message in app.session.flashbag.get('success') %}
+            Materialize.toast('<i class="fa fa-check"></i>&nbsp;{{ flash_message }}', 4000, 'green');
+            {% endfor %}
         });
 
     </script>

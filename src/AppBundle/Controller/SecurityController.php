@@ -160,6 +160,10 @@ class SecurityController extends Controller
     {
         $me = $this->getUser();
 
+        $topics = $this->getDoctrine()
+            ->getRepository('AppBundle:Topics')
+            ->findAll();
+
         $authors = $this->getDoctrine()
             ->getRepository('AppBundle:Userfavorites')
             ->findBy(array('user' => $me),array('createdAt' => 'DESC' ));
@@ -173,6 +177,7 @@ class SecurityController extends Controller
 
         return $this->render('security/usersfavorites.html.twig', array(
             'menu' => 'usersfavorites',
+            'topics' => $topics,
             'pagination' => $pagination
         ));
     }

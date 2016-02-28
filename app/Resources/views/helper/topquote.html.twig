@@ -13,7 +13,7 @@
                 <p>&nbsp;</p>
             </div>
             <div class="row center">
-                <a class="right-align" href="#"><i class="fa fa-heart fa-1x"></i></a>&nbsp;&nbsp;
+                <a class="right-align" onclick="addfavorite(311332)"><i class="fa fa-heart fa-1x"></i></a>&nbsp;&nbsp;
                 <a class="right-align" href="#"><i class="fa fa-plus-square fa-1x"></i></a>&nbsp;&nbsp;
                 <a class="right-align" href="#"><i class="fa fa-refresh fa-1x"></i></a>
             </div>
@@ -26,3 +26,11 @@
     </div>
     <div class="parallax"><img src="/background1.jpg" alt="Unsplashed background img 1"></div>
 </div>
+    <script>
+        function addfavorite(id){
+            $.post( "{{ path('apiEditFavorite') }}", { edit_favorite : {quoteId: id, makeFavorite: true }})
+            .done(function( data ){
+                Materialize.toast('<i class="fa fa-check"></i>&nbsp;' + data['data'], 4000, 'green');
+            });
+        }
+    </script>

@@ -3,14 +3,18 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\AppUsers;
+use AppBundle\Entity\Userfavorites;
 use AppBundle\Form\AppUsersType;
+use AppBundle\Form\Model\EditFavorite;
+use AppBundle\Form\Model\ChangePassword;
+use AppBundle\Form\Type\EditFavoriteType;
+use AppBundle\Form\Type\PasswordChange;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-
-use AppBundle\Form\Model\ChangePassword;
-use AppBundle\Form\Type\PasswordChange;
 
 class SecurityController extends Controller
 {
@@ -180,6 +184,64 @@ class SecurityController extends Controller
             'topics' => $topics,
             'pagination' => $pagination
         ));
+    }
+
+    /**
+     * @Route("/uapi/apiEditFavorite", name="apiEditFavorite")
+     * @Method("POST")
+     */
+    public function apieditfavoriteAction(Request $request)
+    {
+        $smg = "";
+        if($this->getUser()) {
+            $entity = new EditFavorite();
+
+            $form = $this->createForm(EditFavoriteType::class, $entity);
+
+            $form->handleRequest($request);
+
+            if ($request->isMethod('POST')) {
+                if ($form->isValid()) {
+                    $entity = $form->getData();
+                    $smg = "nothing there.";
+                    if($entity->getMakeFavorite() == 'true') {
+                        # TODO: favorite table deer baigaa esexiig shalgax
+                        $uf = new Userfavorites();
+
+                        $uf->setQuoteId(
+                            $this->getDoctrine()
+                                ->getRepository('AppBundle:Quotes')
+                                ->findOneBy(array('id' => $entity->getQuoteId()))
+                        );
+                        $uf->setUser($this->getUser());
+                        $uf->setCreatedAt();
+
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($entity);
+                        $em->flush();
+
+                        $smg = "A quote was added to your <a href='/users/favorites'>favorites</a>!";
+                    }
+                    if($entity->getMakeFavorite() == 'false') {
+                        $smg = "A quote was deleted from your <a href='/users/favorites'>favorites</a>.";
+                    }
+                } else {
+                    $smg = "Data is not a valid.";
+                }
+            } else {
+                $smg = "Request is not a valid.";
+            }
+        } else {
+            $smg = "You are not logged in.";
+        }
+        new Response();
+        $response = new Response();
+        $response->setContent(json_encode(array(
+            'data' => $smg,
+        )));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
     public function secret_mail($email)

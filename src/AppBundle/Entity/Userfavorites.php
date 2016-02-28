@@ -86,9 +86,9 @@ class Userfavorites
      * @param \DateTime $createdAt
      * @return Userfavorites
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createAt = new \DateTime();
 
         return $this;
     }

@@ -188,7 +188,7 @@ class SecurityController extends Controller
 
     /**
      * @Route("/uapi/apiEditFavorite", name="apiEditFavorite")
-     * @Method({"GET","POST"})
+     * @Method("POST")
      */
     public function apieditfavoriteAction(Request $request)
     {
@@ -254,6 +254,28 @@ class SecurityController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
+    }
+    /**
+     * @Route("/users/collections", name="userscollections")
+     * @Method("GET")
+     */
+    public function userscollectionsAction(Request $request)
+    {
+        $me = $this->getUser();
+
+        $topics = $this->getDoctrine()
+            ->getRepository('AppBundle:Topics')
+            ->findAll();
+
+        $collections = $this->getDoctrine()
+            ->getRepository('AppBundle:Collections')
+            ->findBy(array('user' => $me),array('createdAt' => 'DESC' ));
+
+        return $this->render('security/userscollections.html.twig', array(
+            'menu' => 'usersfavorites',
+            'topics' => $topics,
+            'collections' => $collections
+        ));
     }
 
     public function secret_mail($email)

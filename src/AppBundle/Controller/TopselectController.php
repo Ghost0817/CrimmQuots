@@ -48,7 +48,9 @@ class TopselectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $quote = $em->getRepository('AppBundle:Quotes')->findOneById('311332');
+        #$quote = $em->getRepository('AppBundle:Quotes')->findOneById('311332');
+        $quote = $em->getRepository('AppBundle:Quotes')->findBySlideHome();
+
         $makefov = array();
         $fov = $this->getDoctrine()
             ->getRepository('AppBundle:Userfavorites')
@@ -60,7 +62,6 @@ class TopselectController extends Controller
         if($fov){
             $makefov = array('quoteId' => $quote->getId(), 'makeFavorite' => 1);
         }
-        //dump($fov);die();
         $response = $this->render('helper/topquote.html.twig', array(
             'quote' => $quote,
             'makefov' => json_encode($makefov),

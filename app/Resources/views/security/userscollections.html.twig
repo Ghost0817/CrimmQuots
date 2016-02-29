@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}BrainyQuote - My Quotes{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col s12 m12 l12">
+            <ul class="tabs" style="margin-top: 20px;margin-bottom: 10px;">
+                <li class="tab col s2 disabled"><a href="{{ path('usersfavorites') }}"><i class="fa fa-heart-o fa-2x"></i><br/>
+                        Favorites</a></li>
+                <li class="tab col s2"><a class="active" href="{{ path('userscollections') }}"><i class="fa fa-plus-square-o fa-2x"></i><br/>
+                        Collections</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row sf_content">
+            <div class="col s12 m12 l9">
+                asdfasf
+            </div>
+        </div>
+        <div class="col s12 m12 l3">
+            <h5>Popular Topics</h5>
+            {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script src="/js/init.js"></script>
+{% endblock %}

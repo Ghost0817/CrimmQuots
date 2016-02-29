@@ -102,4 +102,19 @@ class QuotesRepository extends EntityRepository
 
         return $result;
     }
+
+    public function findBySlideHome()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+            ->addSelect('RAND() as HIDDEN rand')
+            ->from('AppBundle:Quotes', 'a')
+            ->orderBy('rand')
+            ->setMaxResults(1)
+        ;
+        $result = $qb->getQuery()->getSingleResult();
+
+        return $result;
+    }
 }

@@ -6,6 +6,9 @@ AppBundle\Entity\Userfavorites:
             columns:
                 - user_id
                 - quote_id
+        quote_id:
+            columns:
+                - quote_id
         IDX_2A24C195A76ED395:
             columns:
                 - user_id
@@ -18,16 +21,20 @@ AppBundle\Entity\Userfavorites:
             generator:
                 strategy: IDENTITY
     fields:
-        quoteId:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: quote_id
         createdAt:
             type: datetime
             nullable: false
             column: created_at
     manyToOne:
+        quote:
+            targetEntity: Quotes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                quote_id:
+                    referencedColumnName: id
+            orphanRemoval: false
         user:
             targetEntity: AppUsers
             cascade: {  }

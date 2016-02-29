@@ -188,41 +188,53 @@ class SecurityController extends Controller
 
     /**
      * @Route("/uapi/apiEditFavorite", name="apiEditFavorite")
-     * @Method("POST")
+     * @Method({"GET","POST"})
      */
     public function apieditfavoriteAction(Request $request)
     {
         $smg = "";
         if($this->getUser()) {
             $entity = new EditFavorite();
+            $entity->setQuoteId($request->request->get('quoteId'));
+            $entity->setMakeFavorite($request->request->get('makeFavorite'));
 
-            $form = $this->createForm(EditFavoriteType::class, $entity);
-
-            $form->handleRequest($request);
+            $validator = $this->get('validator');
+            $errors = $validator->validate($entity);
 
             if ($request->isMethod('POST')) {
-                if ($form->isValid()) {
-                    $entity = $form->getData();
+                if (count($errors) > 0) {
                     $smg = "nothing there.";
-                    if($entity->getMakeFavorite() == 'true') {
-                        # TODO: favorite table deer baigaa esexiig shalgax
-                        $uf = new Userfavorites();
+                    if($entity->getMakeFavorite() == '1') {
+                        $fc =  count($this->getDoctrine()
+                            ->getRepository('AppBundle:Userfavorites')
+                            ->findBy(array('quote' => $entity->getQuoteId(), 'user' => $this->getUser())));
+                        if($fc == 0) {
+                            $uf = new Userfavorites();
 
-                        $uf->setQuoteId(
-                            $this->getDoctrine()
-                                ->getRepository('AppBundle:Quotes')
-                                ->findOneBy(array('id' => $entity->getQuoteId()))
-                        );
-                        $uf->setUser($this->getUser());
-                        $uf->setCreatedAt();
+                            $uf->setQuote(
+                                $this->getDoctrine()
+                                    ->getRepository('AppBundle:Quotes')
+                                    ->findOneById($entity->getQuoteId())
+                            );
+                            $uf->setUser($this->getUser());
+                            $uf->setCreatedAt(new \DateTime());
 
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($entity);
-                        $em->flush();
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($uf);
+                            $em->flush();
 
-                        $smg = "A quote was added to your <a href='/users/favorites'>favorites</a>!";
+                            $smg = "A quote was added to your <a href='/users/favorites'>favorites</a>!";
+                        }
                     }
-                    if($entity->getMakeFavorite() == 'false') {
+                    if($entity->getMakeFavorite() == '0') {
+                        $fc =  $this->getDoctrine()
+                            ->getRepository('AppBundle:Userfavorites')
+                            ->findOneBy(array('quote' => $entity->getQuoteId(), 'user' => $this->getUser()));
+                        if(count($fc) == 1) {
+                            $em = $this->getDoctrine()->getManager();
+                            $em->remove($fc);
+                            $em->flush();
+                        }
                         $smg = "A quote was deleted from your <a href='/users/favorites'>favorites</a>.";
                     }
                 } else {
@@ -234,7 +246,7 @@ class SecurityController extends Controller
         } else {
             $smg = "You are not logged in.";
         }
-        new Response();
+
         $response = new Response();
         $response->setContent(json_encode(array(
             'data' => $smg,

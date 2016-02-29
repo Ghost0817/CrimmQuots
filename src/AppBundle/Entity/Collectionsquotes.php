@@ -29,16 +29,6 @@ class Collectionsquotes
     private $createAt;
 
     /**
-     * @var \AppBundle\Entity\Collections
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Collections")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="coll_id", referencedColumnName="id")
-     * })
-     */
-    private $coll;
-
-    /**
      * @var \AppBundle\Entity\Quotes
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Quotes")
@@ -57,6 +47,16 @@ class Collectionsquotes
      * })
      */
     private $user;
+
+    /**
+     * @var \AppBundle\Entity\Collections
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Collections")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="coll_id", referencedColumnName="id")
+     * })
+     */
+    private $coll;
 
 
 
@@ -91,29 +91,6 @@ class Collectionsquotes
     public function getCreateAt()
     {
         return $this->createAt;
-    }
-
-    /**
-     * Set coll
-     *
-     * @param \AppBundle\Entity\Collections $coll
-     * @return Collectionsquotes
-     */
-    public function setColl(\AppBundle\Entity\Collections $coll = null)
-    {
-        $this->coll = $coll;
-
-        return $this;
-    }
-
-    /**
-     * Get coll
-     *
-     * @return \AppBundle\Entity\Collections 
-     */
-    public function getColl()
-    {
-        return $this->coll;
     }
 
     /**
@@ -160,5 +137,28 @@ class Collectionsquotes
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set coll
+     *
+     * @param \AppBundle\Entity\Collections $coll
+     * @return Collectionsquotes
+     */
+    public function setColl(\AppBundle\Entity\Collections $coll = null)
+    {
+        $this->coll = $coll;
+
+        return $this;
+    }
+
+    /**
+     * Get coll
+     *
+     * @return \AppBundle\Entity\Collections 
+     */
+    public function getColl()
+    {
+        return $this->coll;
     }
 }

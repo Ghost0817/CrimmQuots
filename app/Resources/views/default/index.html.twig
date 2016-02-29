@@ -13,7 +13,8 @@
 
 {% include 'helper/letternavbar.html.twig' %}
 
-{% include 'helper/topquote.html.twig' %}
+  {{ render_esi(controller('AppBundle:Topselect:homequote')) }}
+
 <div class="container">
     <div class="row sf_content">
       <div class="col s12 m12 l8">

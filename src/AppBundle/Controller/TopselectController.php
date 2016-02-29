@@ -43,4 +43,30 @@ class TopselectController extends Controller
         #$response->setSharedMaxAge(600);
         return $response;
     }
+
+    public function homequoteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $quote = $em->getRepository('AppBundle:Quotes')->findOneById('311332');
+        $makefov = array();
+        $fov = $this->getDoctrine()
+            ->getRepository('AppBundle:Userfavorites')
+            ->findOneBy(array(
+                'quote' => $quote,
+                'user' => $this->getUser()
+            ));
+
+        if($fov){
+            $makefov = array('quoteId' => $quote->getId(), 'makeFavorite' => 1);
+        }
+        //dump($fov);die();
+        $response = $this->render('helper/topquote.html.twig', array(
+            'quote' => $quote,
+            'makefov' => json_encode($makefov),
+        ));
+        // set the shared max age - which also marks the response as public
+        #$response->setSharedMaxAge(600);
+        return $response;
+    }
 }

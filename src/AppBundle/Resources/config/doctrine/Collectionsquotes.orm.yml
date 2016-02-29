@@ -29,15 +29,6 @@ AppBundle\Entity\Collectionsquotes:
             nullable: false
             column: create_at
     manyToOne:
-        coll:
-            targetEntity: Collections
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                coll_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         quote:
             targetEntity: Quotes
             cascade: {  }
@@ -54,6 +45,15 @@ AppBundle\Entity\Collectionsquotes:
             inversedBy: null
             joinColumns:
                 user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        coll:
+            targetEntity: Collections
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                coll_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

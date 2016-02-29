@@ -31,19 +31,19 @@
                 {% if(line_c == 1) %}
                     <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
                 {% endif %}
-                <div class="card">
-                    {% if(item.image) %}
+                <div class="card" id="quote_{{ item.quote.id }}">
+                    {% if(item.quote.image) %}
                         <div class="card-image">
                             <img src="/uploads/{{ item.image }}">
                         </div>
                     {% endif %}
                     <div class="card-content">
-                        <p>{{ item.quote }}</p>
-                        <a href="">{{ item.author.name }}</a>
+                        <p>{{ item.quote.quote }}</p>
+                        <a href="">{{ item.quote.author.name }}</a>
                     </div>
-                    {% if(item.keywords) %}
+                    {% if(item.quote.keywords) %}
                         <div class="card-tags">
-                            {% set tags = item.keywords|split(', ') %}
+                            {% set tags = item.quote.keywords|split(', ') %}
                             {% for tag in tags %}
                                 {% set isTopic = false %}
                                 {% for i in topics %}
@@ -64,7 +64,7 @@
                         <a class="left-align" href="#" style="color:#803591;"><i class="fa fa-twitter-square fa-2x"></i></a>
 
                         <a class="right-align right" href="#" style="color:#333;"><i class="fa fa-plus-square-o fa-2x"></i></a>
-                        <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
+                        <a class="right-align right" href="#" style="color:#F52422;" onclick="addfavorite({{ item.quote.id }})"><i class="fa fa-heart fa-2x"></i></a>
                     </div>
                 </div>
                 {% if(line_c == 9)%}
@@ -95,4 +95,14 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="/js/materialize.js"></script>
 <script src="/js/init.js"></script>
+    <script>
+        function addfavorite(id){
+            $.post("{{ path('apiEditFavorite') }}", {quoteId: id, makeFavorite: 0})
+                .done(function (data) {
+                    $('#quote_'+ id).remove();
+                    Materialize.toast('<i class="fa fa-check"></i>&nbsp;' + data['data'], 4000, 'green');
+                });
+            return false;
+        }
+    </script>
 {% endblock %}

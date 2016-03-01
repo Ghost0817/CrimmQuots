@@ -1,6 +1,10 @@
 AppBundle\Entity\Collections:
     type: entity
     table: collections
+    indexes:
+        user_id:
+            columns:
+                - user_id
     id:
         id:
             type: integer
@@ -18,4 +22,14 @@ AppBundle\Entity\Collections:
             type: datetime
             nullable: false
             column: created_at
+    manyToOne:
+        user:
+            targetEntity: AppUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

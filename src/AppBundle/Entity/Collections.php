@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Collections
  *
- * @ORM\Table(name="collections")
+ * @ORM\Table(name="collections", indexes={@ORM\Index(name="user_id", columns={"user_id"})})
  * @ORM\Entity
  */
 class Collections
@@ -34,6 +34,16 @@ class Collections
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+
+    /**
+     * @var \AppBundle\Entity\AppUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
 
 
 
@@ -91,5 +101,28 @@ class Collections
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\AppUsers $user
+     * @return Collections
+     */
+    public function setUser(\AppBundle\Entity\AppUsers $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\AppUsers 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

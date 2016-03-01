@@ -1,0 +1,75 @@
+/* 1613945 */
+
+/* brainySquareGrid */
+.square {
+    float: left;
+    position: relative;
+    cursor: pointer;
+    padding: 5px 5px 5px 5px;
+    display: inline-block;
+    margin: 5px;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid #c2c2c2;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.square:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.square.sq-add {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border: 3px dashed #c2c2c2;
+    background-color: transparent;
+}
+
+.square:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.square-table {
+    table-layout: fixed;
+    width: auto;
+    margin: 15px 0;
+}
+
+.sq-cell {
+    height: 95px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.sq-cell-div {
+    width: 144px;
+    max-height: 95px;
+    overflow: hidden;
+}
+
+.square-table-add {
+    width: 140px;
+    height: 145px;
+}
+
+.is-mbl .sq-cell {
+    height: 70px;
+}
+
+.is-mbl .sq-cell-div {
+    max-height: 70px;
+    width: 122px;
+}
+
+.is-mbl .square-table-add {
+    width: 118px;
+    height: 121px;
+}

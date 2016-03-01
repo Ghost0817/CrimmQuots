@@ -112,48 +112,52 @@ class SecurityController extends Controller
      */
     public function accountsettingsAction(Request $request)
     {
+        if($this->getUser()) {
+            $entity = new ChangePassword();
 
-        $entity = new ChangePassword();
+            $form = $this->createForm(PasswordChange::class, $entity);
 
-        $form = $this->createForm(PasswordChange::class, $entity);
+            $form->handleRequest($request);
+            if ($request->isMethod('POST')) {
+                if ($form->isValid()) {
 
-        $form->handleRequest($request);
-        if ($request->isMethod('POST')) {
-            if ($form->isValid()) {
+                    $registration = $form->getData();
 
-                $registration = $form->getData();
+                    $entity = $this->getUser();
 
-                $entity = $this->getUser();
+                    //start Dynamically Encoding a Password
+                    $encoder = $this->container->get('security.password_encoder');
+                    $encoded = $encoder->encodePassword($entity, $registration->getPassword());
 
-                //start Dynamically Encoding a Password
-                $encoder = $this->container->get('security.password_encoder');
-                $encoded = $encoder->encodePassword($entity, $registration->getPassword());
+                    $entity->setPassword($encoded);
+                    // end Dynamically Encoding a Password
 
-                $entity->setPassword($encoded);
-                // end Dynamically Encoding a Password
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($entity);
+                    $em->flush();
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $em->flush();
+                    $this->addFlash(
+                        'success',
+                        'You have changed your password.'
+                    );
 
-                $this->addFlash(
-                    'success',
-                    'You have changed your password.'
-                );
-
-                return $this->redirect($this->generateUrl('accountsettings'));
+                    return $this->redirect($this->generateUrl('accountsettings'));
+                }
             }
+
+            $me = $this->getUser();
+
+            $me->setEmail($this->secret_mail($me->getEmail()));
+
+            return $this->render('security/settings.html.twig', array(
+                'menu' => 'login',
+                'form' => $form->createView(),
+                'me' => $me
+            ));
+        } else {
+            return $this->redirect($this->generateUrl('login'));
         }
 
-        $me = $this->getUser();
-
-        $me->setEmail($this->secret_mail($me->getEmail()));
-
-        return $this->render('security/settings.html.twig', array(
-            'menu' => 'login',
-            'form' => $form->createView(),
-            'me'   => $me
-        ));
     }
 
     /**

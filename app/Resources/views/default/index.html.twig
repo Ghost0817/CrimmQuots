@@ -141,9 +141,9 @@
 {% block javascripts %}
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/materialize.min.js"></script>
+  <script src="/js/init.js"></script>
   {% if app.session.flashBag.has('success') %}
       {% for msg in app.session.flashBag.get('success') %}
         <script>
@@ -161,13 +161,13 @@
   <script src="/js/lovefield/lovefield.min.js"></script>
   <script>
 
-    var schemaBuilder = lf.schema.create('todo', 1);
+    var schemaBuilder = lf.schema.create('brainyquote', 1);
 
-    schemaBuilder.createTable('Item').
+    schemaBuilder.createTable('populartopics').
     addColumn('id', lf.Type.INTEGER).
-    addColumn('description', lf.Type.STRING).
-    addColumn('deadline', lf.Type.DATE_TIME).
-    addColumn('done', lf.Type.BOOLEAN).
+    addColumn('name', lf.Type.STRING).
+    addColumn('slug', lf.Type.STRING).
+    addColumn('hits', lf.Type.INTEGER).
     addPrimaryKey(['id']).
     addIndex('idxDeadline', ['deadline'], false, lf.Order.DESC);
 
@@ -178,9 +178,9 @@
       item = db.getSchema().table('Item');
       var row = item.createRow({
         'id': 1,
-        'description': 'Get a cup of coffee',
-        'deadline': new Date(),
-        'done': false
+        'name': '',
+        'slug': '',
+        'hits': 0
       });
 
       return db.insertOrReplace().into(item).values([row]).exec();
@@ -189,8 +189,6 @@
     }).then(function(results) {
       results.forEach(function(row) {
         console.log(row['description'], 'before', row['deadline']);
-        document.body.textContent =
-                row['description'] + ' before ' + row['deadline'];
       });
     });
 

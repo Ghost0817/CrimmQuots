@@ -7337,9 +7337,10 @@ nav .nav-wrapper {
 
 nav .button-collapse {
   float: left;
-  position: relative;
+  position: absolute;
   z-index: 1;
   height: 56px;
+  left: 5px;
 }
 
 nav .button-collapse i {

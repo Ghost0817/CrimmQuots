@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v0.0.2
+# v0.3
 
 # start logo
 android-chrome-36x36.png
@@ -55,6 +55,7 @@ manifest.json
 /js/init.js
 /js/jquery.min.js
 /js/lovefield/lovefield.min.js
+
 
 NETWORK:
 *

@@ -58,6 +58,7 @@ p {
   background-image: -ms-linear-gradient(bottom, #383838 0%, #080808 100%);
   background-image: linear-gradient(to bottom, #383838 0%, #080808 100%);
   line-height: 30px;
+  height: auto;
 }
 .letter-navbar a:hover{
   text-decoration: underline;

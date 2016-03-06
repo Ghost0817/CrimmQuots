@@ -120,5 +120,25 @@
 
 
         {% block javascripts %}{% endblock %}
+
+      <script>
+          function online(event) {
+              var status = navigator.onLine ? 'online' : 'offline';
+              console.log(navigator.onLine);
+              if(status == 'online')
+              {
+                  Materialize.toast('<i class="fa fa-check"></i>&nbsp;Connected to the internet ', 4000, 'green');
+              }
+
+              if(status == 'offline')
+              {
+                  Materialize.toast('<i class="fa fa-check"></i>&nbsp;Cannot connect to the internet', 4000, 'red');
+              }
+          }
+
+          window.addEventListener('online', online);
+          window.addEventListener('offline', online);
+          online({ type: 'ready' });
+      </script>
     </body>
 </html>

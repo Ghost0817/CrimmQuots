@@ -72,23 +72,7 @@
           <!-- start pagenation -->
 
           <div class="row">
-            <ul class="pagination">
-              <li {% if(page == 1) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == 1) %}{% else %}href="{{ path('onetopicpage', {'slug' :topic.slug,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li class="waves-effect">
-              {% for i in 1..total_page %}
-                 <li{% if(page == i) %} class="active"{% else %}{% endif %}>
-                 <a {% if(page == i) %}{% else %}href="{{ path('onetopicpage', { 'page' : i ,'slug' :topic.slug,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
-                 </li>
-              {% endfor %}
-              <li {% if(page == total_page) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == total_page) %}{% else %}href="{{ path('onetopicpage', {'page': total_page ,'slug' :topic.slug,'_format':'html' }) }}"{% endif %} aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
+            <a class="waves-effect waves-teal btn-flat" style="width: 100%;text-align: center;">More ... </a>
           </div>
 
           <!-- end pagenation -->

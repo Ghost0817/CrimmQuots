@@ -21,7 +21,13 @@
         <div class="col s12 m12 l9">
           <div class="row">
             <ul class="bxslider">
-              <li><img src="/slideshow/quote_89.jpg" title="Funky roots" /></li>
+              <li>
+                <img src="/slideshow/quote_89.jpg" />
+                <div class="bx-caption">
+                  <span>Life is the art of drawing without an eraser.</span>
+                  <div class="caption1"><a id="img1a" href="#">John W. Gardner</a></div>
+                </div>
+              </li>
               <li><img src="/slideshow/quote_90.jpg" title="The long and winding road" /></li>
               <li><img src="/slideshow/quote_91.jpg" title="Happy trees" /></li>
               <li><img src="/slideshow/quote_92.jpg" title="Happy trees" /></li>
@@ -112,11 +118,11 @@
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
   <script src="/js/masonry/masonry.pkgd.min.js"></script>
-  <script src="/js/jquery.bxslider.min.js"></script>
+  <script src="/js/jquery.bxslider.js"></script>
   <script>
     $('.bxslider').bxSlider({
-      mode: 'fade',
-      captions: true
+      captions: true,
+      pager: false
     });
   </script>
 {% endblock %}

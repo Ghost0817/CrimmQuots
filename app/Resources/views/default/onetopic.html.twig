@@ -20,43 +20,10 @@
           <div class="row">
           <i class="fa fa-home fa-fw"></i>&nbsp; slider
           </div>
-          <!-- start top pagenation -->
 
-          <div class="row">
-            <ul class="pagination left">
-              <li {% if(page == 1) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == 1) %}{% else %}href="{{ path('onetopicpage', {'slug' :topic.slug,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li>
-              {% for i in 1..total_page %}
-                 <li{% if(page == i) %} class="active"{% else %} class="waves-effect"{% endif %}>
-                 <a {% if(page == i) %}{% else %}href="{{ path('onetopicpage', { 'page':i ,'slug':topic.slug,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
-                 </li>
-              {% endfor %}
-              <li {% if(page == total_page) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == total_page) %}{% else %}href="{{ path('onetopicpage', {'page': total_page ,'slug':topic.slug,'_format':'html' }) }}"{% endif %} aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
-            <div class="right">
-              <div class="btn-group">
-                <a type="button" class="btn"><i class="fa fa-th"></i></a>
-                <a type="button" class="btn-flat"><i class="fa fa-th-list"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- end top pagenation -->
-
-          <div class="row">
-            {% set line_c = 0 %}
+          <div class="row grid" data-masonry='{ "itemSelector": ".grid-item" }'>
             {% for item in quotes %}
-              {% set line_c = line_c + 1 %}
-              {% if(line_c == 1) %}
-                <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
-              {% endif %}
+              <div class="grid-item col s12 m4">
                 <div class="card">
                   {% if(item.image) %}
                     <div class="card-image">
@@ -98,15 +65,8 @@
                     <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
                   </div>
                 </div>
-              {% if(line_c == 9)%}
-                {% set line_c = 0 %}
-                </div>
-              {% endif %}
-            {% endfor %}
-
-            {% if(line_c != 9 and line_c != 0)%}
               </div>
-            {% endif %}
+            {% endfor %}
           </div>
 
           <!-- start pagenation -->
@@ -153,4 +113,5 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
+  <script src="/js/masonry/masonry.pkgd.min.js"></script>
 {% endblock %}

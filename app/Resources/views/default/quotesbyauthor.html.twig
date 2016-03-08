@@ -49,13 +49,9 @@
 
           <!-- end top pagenation -->
 
-        	<div class="row">
-            {% set line_c = 0 %}
+          <div class="row grid" data-masonry='{ "itemSelector": ".grid-item" }'>
             {% for item in quotes %}
-              {% set line_c = line_c + 1 %}
-              {% if(line_c == 1) %}
-                <div class="col s12 m4" style="float: left;vertical-align: top;display: inline-block;">
-              {% endif %}
+              <div class="grid-item col s12 m4">
                 <div class="card">
                   {% if(item.image) %}
                     <div class="card-image">
@@ -97,16 +93,9 @@
                     <a class="right-align right" href="#" style="color:#F52422;"><i class="fa fa-heart-o fa-2x"></i></a>
                   </div>
                 </div>
-              {% if(line_c == 9)%}
-                {% set line_c = 0 %}
-                </div>
-              {% endif %}
-            {% endfor %}
-
-            {% if(line_c != 9 and line_c != 0)%}
               </div>
-            {% endif %}
-        	</div>
+            {% endfor %}
+          </div>
 
           <!-- start pagenation -->
 
@@ -172,4 +161,5 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
+  <script src="/js/masonry/masonry.pkgd.min.js"></script>
 {% endblock %}

@@ -7,6 +7,8 @@
   <link href="/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <link href="/css/jquery.bxslider.css" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
@@ -18,7 +20,19 @@
 
         <div class="col s12 m12 l9">
           <div class="row">
-          <i class="fa fa-home fa-fw"></i>&nbsp; slider
+            <ul class="bxslider">
+              <li><img src="/slideshow/quote_89.jpg" title="Funky roots" /></li>
+              <li><img src="/slideshow/quote_90.jpg" title="The long and winding road" /></li>
+              <li><img src="/slideshow/quote_91.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_92.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_93.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_94.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_95.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_96.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_97.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_98.jpg" title="Happy trees" /></li>
+              <li><img src="/slideshow/quote_99.jpg" title="Happy trees" /></li>
+            </ul>
           </div>
 
           <div class="row grid" data-masonry='{ "itemSelector": ".grid-item" }'>
@@ -98,4 +112,11 @@
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
   <script src="/js/masonry/masonry.pkgd.min.js"></script>
+  <script src="/js/jquery.bxslider.min.js"></script>
+  <script>
+    $('.bxslider').bxSlider({
+      mode: 'fade',
+      captions: true
+    });
+  </script>
 {% endblock %}

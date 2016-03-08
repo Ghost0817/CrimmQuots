@@ -35,10 +35,10 @@
                 <object id="front-page-logo" type="image/svg+xml" data="/logo.svg">Logo</object>
               </a>
               <ul class="left hide-on-med-and-down">
-                <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
-                <li><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
-                <li><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
+                <li{% if (menu == '1') %} class="active"{% endif %}><a href="{{ path('homepage') }}">Home</a></li>
+                <li{% if (menu == '2') %} class="active"{% endif %}><a href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
+                <li{% if (menu == '3') %} class="active"{% endif %}><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
+                <li{% if (menu == '4') %} class="active"{% endif %}><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
               </ul>
 
               <ul class="right hide-on-med-and-down">
@@ -61,18 +61,18 @@
 
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="{{ path('usersfavorites') }}"><i class="fa fa-heart"></i> Favorites</a></li>
-                    <li><a href="{{ path('userscollections') }}"><i class="fa fa-plus-square-o"></i> Collections</a></li>
+                    <li{% if (menu == '7') %} class="active"{% endif %}><a href="{{ path('usersfavorites') }}"><i class="fa fa-heart"></i> Favorites</a></li>
+                    <li{% if (menu == '8') %} class="active"{% endif %}><a href="{{ path('userscollections') }}"><i class="fa fa-plus-square-o"></i> Collections</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('accountsettings') }}"><i class="fa fa-cog"></i> Account Settings</a></li>
+                    <li{% if (menu == '9') %} class="active"{% endif %}><a href="{{ path('accountsettings') }}"><i class="fa fa-cog"></i> Account Settings</a></li>
                     <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
 
               <ul id="nav-mobile" class="side-nav">
-                <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
-                <li><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
-                <li><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
+                <li{% if (menu == '1') %} class="active"{% endif %}><a href="{{ path('homepage') }}">Home</a></li>
+                <li{% if (menu == '2') %} class="active"{% endif %}><a href="{{ path('favorites',{'_format':'html'}) }}">Authors</a></li>
+                <li{% if (menu == '3') %} class="active"{% endif %}><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
+                <li{% if (menu == '4') %} class="active"{% endif %}><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
               </ul>
               <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>

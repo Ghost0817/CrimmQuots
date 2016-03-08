@@ -57,6 +57,7 @@ class SecurityController extends Controller
         // replace this example code with whatever you need
         return $this->render('security/index.html.twig', array(
             'form' => $form->createView(),
+            'menu'=> ''
         ));
     }
 
@@ -74,7 +75,7 @@ class SecurityController extends Controller
         return $this->render('security/login.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
-            'menu'          => 'login'
+            'menu'          => 'login',
         ));
     }
 

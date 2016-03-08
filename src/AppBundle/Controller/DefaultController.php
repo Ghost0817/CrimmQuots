@@ -1,4 +1,5 @@
 <?php
+# 1 - home, 2 - author ,3 - topics,4 - quotes of the day,5 - pictures,6
 
 namespace AppBundle\Controller;
 
@@ -46,7 +47,8 @@ class DefaultController extends Controller
             'topics' => $topics,
             'authors' => $authors,
             'birthdays' => $birthdays,
-            'homepic' => $homepic
+            'homepic' => $homepic,
+            'menu' => '1'
         ));
     }
 
@@ -66,6 +68,7 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/topics.html.twig', array(
             'topics' => $topics,
+            'menu' => '3'
         ));
     }
 
@@ -133,7 +136,8 @@ class DefaultController extends Controller
             'topic' => $topic,
             'quotes' => $quotes,
             'total_page' => $total_page,
-            'page' => $page
+            'page' => $page,
+            'menu' => '3'
         ));
     }
 
@@ -173,7 +177,8 @@ class DefaultController extends Controller
             'keyword' => $slug,
             'quotes' => $quotes,
             'total_page' => $total_page,
-            'page' => $page
+            'page' => $page,
+            'menu' => ''
         ));
     }
 
@@ -193,6 +198,7 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/profession.html.twig', array(
             'profession' => $profession,
+            'menu' => ''
         ));
     }
 
@@ -217,6 +223,7 @@ class DefaultController extends Controller
         return $this->render('default/oneprofession.html.twig', array(
             'profession' => $profession,
             'authors' => $authors,
+            'menu' => ''
         ));
     }
 
@@ -254,6 +261,7 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/birthdays.html.twig', array(
             'cal_days' => $cal_days,
+            'menu' => ''
         ));
     }
 
@@ -296,7 +304,8 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/birthdayson.html.twig', array(
             'date' => $date,
-            'authors' => $authors
+            'authors' => $authors,
+            'menu' => ''
         ));
     }
 
@@ -363,7 +372,8 @@ class DefaultController extends Controller
             'author' => $author,
             'quotes' => $quotes,
             'total_page' => $total_page,
-            'page' => $page
+            'page' => $page,
+            'menu' => '2'
         ));
     }
 
@@ -379,6 +389,7 @@ class DefaultController extends Controller
 
         return $this->render('default/nationality.html.twig', array(
             'nationality' => $nationality,
+            'menu' => ''
         ));
     }
 
@@ -424,6 +435,7 @@ class DefaultController extends Controller
         return $this->render('default/quotesbynationality.html.twig', array(
             'nationality' => $nationality,
             'authors' => $authors,
+            'menu' => ''
         ));
     }
 
@@ -443,6 +455,7 @@ class DefaultController extends Controller
 
         return $this->render('default/quotesofday.html.twig', array(
             'nationality' => $nationality,
+            'menu' => '4'
         ));
     }
 
@@ -569,6 +582,7 @@ class DefaultController extends Controller
             'o_authors' => $o_authors,
             'p_authors' => $p_authors,
 
+
             'q_authors' => $q_authors,
             'r_authors' => $r_authors,
             's_authors' => $s_authors,
@@ -577,6 +591,8 @@ class DefaultController extends Controller
             'w_authors' => $w_authors,
             'y_authors' => $y_authors,
             'z_authors' => $z_authors,
+
+            'menu' => '2'
         ));
     }
 
@@ -600,7 +616,8 @@ class DefaultController extends Controller
 
         return $this->render('default/authors.html.twig', array(
             'char' => $char,
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'menu' => ''
         ));
     }
 }

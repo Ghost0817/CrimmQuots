@@ -40,6 +40,7 @@ manifest.json
 /css/materialize.css
 /css/sq_grid.css
 /css/style.css
+/css/jquery.bxslider.css
 # end css
 
 
@@ -55,6 +56,10 @@ manifest.json
 /js/init.js
 /js/jquery.min.js
 /js/lovefield/lovefield.min.js
+/js/masonry/masonry.pkgd.min.js
+/js/plugins/jquery.easing.1.3.js
+/js/plugins/jquery.fitvids.js
+/js/jquery.bxslider.min.js
 
 
 NETWORK:

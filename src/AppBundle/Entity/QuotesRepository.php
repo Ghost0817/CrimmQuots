@@ -117,4 +117,39 @@ class QuotesRepository extends EntityRepository
 
         return $result;
     }
+
+    public function findBySlideTopicsHome($topic)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+            ->addSelect('RAND() as HIDDEN rand')
+            ->from('AppBundle:Quotes', 'a')
+            ->where('a.keywords LIKE :topic')
+            ->setParameter('topic', '%'.$topic.'%')
+            ->orderBy('rand')
+            ->setMaxResults(11)
+        ;
+        $result = $qb->getQuery()->execute();
+
+        return $result;
+    }
+
+    public function findBySlideAuthorHome($author)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+            ->addSelect('RAND() as HIDDEN rand')
+            ->from('AppBundle:Quotes', 'a')
+            ->where('a.author = :author')
+            ->setParameter('author', $author)
+            ->orderBy('rand')
+            ->setMaxResults(11)
+        ;
+        $result = $qb->getQuery()->execute();
+
+        return $result;
+    }
+
 }

@@ -7,6 +7,7 @@
   <link href="/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/jquery.bxslider.css" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
@@ -18,7 +19,17 @@
 
         <div class="col s12 m12 l9">
           <div class="row">
-          <i class="fa fa-home fa-fw"></i>&nbsp; slider
+            <ul class="bxslider">
+              {% for item in slidequotes %}
+                <li>
+                  <img src="/slideshow/quote_89.jpg" />
+                  <div class="bx-caption">
+                    <span><a href="#">{{ item.quote }}</a></span>
+                    <div class="author"><a href="#">{{ item.author.name }}</a></div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
           </div>
           <!-- start top pagenation -->
 
@@ -142,4 +153,11 @@
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
   <script src="/js/masonry/masonry.pkgd.min.js"></script>
+  <script src="/js/jquery.bxslider.js"></script>
+  <script>
+    $('.bxslider').bxSlider({
+      captions: true,
+      pager: false
+    });
+  </script>
 {% endblock %}

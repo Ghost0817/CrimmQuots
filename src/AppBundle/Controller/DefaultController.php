@@ -82,12 +82,12 @@ class DefaultController extends Controller
     public function onetopicAction(Request $request, $slug, $page)
     {
         $topics = $this->getDoctrine()
-        ->getRepository('AppBundle:Topics')
-        ->findAll();
+            ->getRepository('AppBundle:Topics')
+            ->findAll();
 
         $topic = $this->getDoctrine()
-        ->getRepository('AppBundle:Topics')
-        ->findOneBy(array('slug' => $slug, ));
+            ->getRepository('AppBundle:Topics')
+            ->findOneBy(array('slug' => $slug, ));
 
         if (!$topic) {
             throw $this->createNotFoundException('The topic does not exist');
@@ -100,8 +100,8 @@ class DefaultController extends Controller
         $ip = $request->getClientIp();
 
         $mycount = $this->getDoctrine()
-        ->getRepository('AppBundle:Topicshits')
-        ->findOneBy(array('topic' => $topic, 'ip' => $ip));
+            ->getRepository('AppBundle:Topicshits')
+            ->findOneBy(array('topic' => $topic, 'ip' => $ip));
 
         $topicshits = new Topicshits();
         if($mycount){
@@ -119,22 +119,27 @@ class DefaultController extends Controller
 
         $pageshow = 27;
         $quotes = $this->getDoctrine()
-        ->getRepository('AppBundle:Quotes')
-        ->findByTopic($topic->getName());
+            ->getRepository('AppBundle:Quotes')
+            ->findByTopic($topic->getName());
+
+        $slidequotes = $this->getDoctrine()
+            ->getRepository('AppBundle:Quotes')
+            ->findBySlideTopicsHome($topic->getName());
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
 
         $total_page= ceil( count($quotes) / $pageshow);
 
         $quotes = $this->getDoctrine()
-        ->getRepository('AppBundle:Quotes')
-        ->findByTopicPage( $topic->getName(), $pageshow, $page - 1);
+            ->getRepository('AppBundle:Quotes')
+            ->findByTopicPage( $topic->getName(), $pageshow, $page - 1);
 
         // replace this example code with whatever you need
         return $this->render('default/onetopic.html.twig', array(
             'topics' => $topics,
             'topic' => $topic,
             'quotes' => $quotes,
+            'slidequotes'=> $slidequotes,
             'total_page' => $total_page,
             'page' => $page,
             'menu' => '3'
@@ -151,8 +156,8 @@ class DefaultController extends Controller
     public function onekeywordAction(Request $request, $slug, $page)
     {
         $topics = $this->getDoctrine()
-        ->getRepository('AppBundle:Topics')
-        ->findAll();
+            ->getRepository('AppBundle:Topics')
+            ->findAll();
 
         if (!$topics) {
             throw $this->createNotFoundException('The topics does not exist');
@@ -160,22 +165,27 @@ class DefaultController extends Controller
 
         $pageshow = 27;
         $quotes = $this->getDoctrine()
-        ->getRepository('AppBundle:Quotes')
-        ->findByKeyword($slug);
+            ->getRepository('AppBundle:Quotes')
+            ->findByKeyword($slug);
+
+        $slidequotes = $this->getDoctrine()
+            ->getRepository('AppBundle:Quotes')
+            ->findBySlideTopicsHome($slug);
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
 
         $total_page= ceil( count($quotes) / $pageshow);
 
         $quotes = $this->getDoctrine()
-        ->getRepository('AppBundle:Quotes')
-        ->findByKeywordPage( $slug, $pageshow, $page - 1);
+            ->getRepository('AppBundle:Quotes')
+            ->findByKeywordPage( $slug, $pageshow, $page - 1);
 
         // replace this example code with whatever you need
         return $this->render('default/onekeyword.html.twig', array(
             'topics' => $topics,
             'keyword' => $slug,
             'quotes' => $quotes,
+            'slidequotes'=> $slidequotes,
             'total_page' => $total_page,
             'page' => $page,
             'menu' => ''
@@ -318,12 +328,12 @@ class DefaultController extends Controller
     public function quotesbyauthorAction(Request $request, $slug, $page)
     {
         $author = $this->getDoctrine()
-        ->getRepository('AppBundle:Authors')
-        ->findOneBy(array('slug' => $slug));
+            ->getRepository('AppBundle:Authors')
+            ->findOneBy(array('slug' => $slug));
 
         $topics = $this->getDoctrine()
-        ->getRepository('AppBundle:Topics')
-        ->findAll();
+            ->getRepository('AppBundle:Topics')
+            ->findAll();
 
         if (!$author) {
             throw $this->createNotFoundException('The author does not exist');
@@ -335,8 +345,8 @@ class DefaultController extends Controller
         $ip = $request->getClientIp();
 
         $mycount = $this->getDoctrine()
-        ->getRepository('AppBundle:Authorshits')
-        ->findOneBy(array('author' => $author, 'ip' => $ip));
+            ->getRepository('AppBundle:Authorshits')
+            ->findOneBy(array('author' => $author, 'ip' => $ip));
 
         $authorshits = new Authorshits();
         if($mycount){
@@ -352,18 +362,22 @@ class DefaultController extends Controller
             $em->flush();
         }
 
+        $slidequotes = $this->getDoctrine()
+            ->getRepository('AppBundle:Quotes')
+            ->findBySlideAuthorHome($author);
+
         # start pagenation
         $pageshow = 27;
         $quotes = $this->getDoctrine()
-        ->getRepository('AppBundle:Quotes')
-        ->findBy(array('author' => $author));
+            ->getRepository('AppBundle:Quotes')
+            ->findBy(array('author' => $author));
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
         $total_page= ceil( count($quotes) / $pageshow);
 
         $quotes = $this->getDoctrine()
-        ->getRepository('AppBundle:Quotes')
-        ->findByAuthorPage( $author->getId(), $pageshow, $page - 1);
+            ->getRepository('AppBundle:Quotes')
+            ->findByAuthorPage( $author->getId(), $pageshow, $page - 1);
         # end pagenation
 
         // replace this example code with whatever you need
@@ -371,6 +385,7 @@ class DefaultController extends Controller
             'topics' => $topics,
             'author' => $author,
             'quotes' => $quotes,
+            'slidequotes'=> $slidequotes,
             'total_page' => $total_page,
             'page' => $page,
             'menu' => '2'

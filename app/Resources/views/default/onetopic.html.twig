@@ -21,23 +21,15 @@
         <div class="col s12 m12 l9">
           <div class="row">
             <ul class="bxslider">
-              <li>
-                <img src="/slideshow/quote_89.jpg" />
-                <div class="bx-caption">
-                  <span><a href="#">Life is the art of drawing without an eraser.</a></span>
-                  <div class="author"><a href="#">John W. Gardner</a></div>
-                </div>
-              </li>
-              <li><img src="/slideshow/quote_90.jpg" title="The long and winding road" /></li>
-              <li><img src="/slideshow/quote_91.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_92.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_93.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_94.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_95.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_96.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_97.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_98.jpg" title="Happy trees" /></li>
-              <li><img src="/slideshow/quote_99.jpg" title="Happy trees" /></li>
+              {% for item in slidequotes %}
+                <li>
+                  <img src="/slideshow/quote_89.jpg" />
+                  <div class="bx-caption">
+                    <span><a href="#">{{ item.quote }}</a></span>
+                    <div class="author"><a href="#">{{ item.author.name }}</a></div>
+                  </div>
+                </li>
+              {% endfor %}
             </ul>
           </div>
 

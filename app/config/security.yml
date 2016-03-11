@@ -30,6 +30,7 @@ security:
                 login_path: login
                 always_use_default_target_path: true
                 default_target_path: homepage
+                require_previous_session: false
                 #csrf_provider: security.csrf.token_manager
                 #csrf_parameter: _csrf_security_token
                 #intention: a_private_string

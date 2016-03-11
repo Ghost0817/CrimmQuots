@@ -75,8 +75,23 @@
                 <li{% if (menu == '3') %} class="active"{% endif %}><a href="{{ path('topicspage',{'_format':'html'}) }}">Topics</a></li>
                 <li{% if (menu == '4') %} class="active"{% endif %}><a href="{{ path('quotesofday',{'_format':'html'}) }}">Quote of the Day</a></li>
                 <li{% if (menu == '4') %} class="active"{% endif %}><a href="{{ path('quotesofday',{'_format':'html'}) }}">Pictures</a></li>
+                  <li><a>
+                          <form>
+                              <div class="input-field">
+                                  <input id="search" type="search" required>
+                                  <label for="search"><i class="material-icons">search</i></label>
+                                  <i class="material-icons">close</i>
+                              </div>
+                          </form>
+                      </a></li>
+                  {% if app.user %}
+                      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My BrainyQuote <i class="fa fa-caret-down"></i></a></li>
+                  {% else %}
+                      <li><a href="{{ path('signup') }}">Sign Up</a></li>
+                      <li><a href="{{ path('login') }}">Login</a></li>
+                  {% endif %}
               </ul>
-              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="fa fa-bars">menu</i></a>
+              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="fa fa-bars"></i></a>
             </div>
         </nav>
 
@@ -124,6 +139,12 @@
         {% block javascripts %}{% endblock %}
 
       <script>
+
+          // Show sideNav
+          $('.button-collapse').sideNav('show');
+          // Hide sideNav
+          $('.button-collapse').sideNav('hide');
+          
           function online(event) {
               var status = navigator.onLine ? 'online' : 'offline';
               if(status == 'online')

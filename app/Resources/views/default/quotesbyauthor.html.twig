@@ -26,6 +26,11 @@
                     <span><a href="#">{{ item.quote }}</a></span>
                     <div class="author"><a href="#">{{ item.author.name }}</a></div>
                   </div>
+                  <div id="slideshow-fav-btns" style="position: absolute;z-index: 9999;right: 10px;bottom: 10px;">
+                    <a href="#"><i class="fa fa-heart fa-1x"></i></a>
+                    &nbsp;
+                    <a href="#"><i class="fa fa-plus-square fa-1x"></i></a>
+                  </div>
                 </li>
               {% endfor %}
             </ul>

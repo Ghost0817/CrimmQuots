@@ -22,12 +22,13 @@
             <ul class="bxslider">
               {% for item in slidequotes %}
                 <li>
-                  <img src="/slideshow/quote_89.jpg" />
+                  <img src="/slideshow/quote_{% if(rpic_num|length == 1 ) %}0{{ rpic_num }}{% else %}{{ rpic_num }}{% endif %}.jpg" />
                   <div class="bx-caption">
                     <span><a href="#">{{ item.quote }}</a></span>
                     <div class="author"><a href="#">{{ item.author.name }}</a></div>
                   </div>
                 </li>
+                {% set rpic_num = rpic_num + 1 %}
               {% endfor %}
             </ul>
           </div>

@@ -20,10 +20,8 @@
                     <h5>Most popular '{{ char|upper }}' authors</h5>
 
                     <h5>All '{{ char|upper }}' authors</h5>
-                    
-                    <div class="row" style="margin-right: 0px;">
-                        {{ knp_pagination_render(pagination) }}
-                    </div>
+
+                    {{ knp_pagination_render(pagination) }}
 
                     <table class="responsive-table">
                         <thead>

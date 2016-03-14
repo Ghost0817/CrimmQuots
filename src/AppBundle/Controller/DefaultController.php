@@ -118,33 +118,29 @@ class DefaultController extends Controller
             $em->flush();
         }
 
-        $pageshow = 27;
+        $slidequotes = $this->getDoctrine()
+            ->getRepository('AppBundle:Quotes')
+            ->findBySlideTopicsHome($topic->getName());
+
         $quotes = $this->getDoctrine()
             ->getRepository('AppBundle:Quotes')
             ->findByTopic($topic->getName());
 
-        $slidequotes = $this->getDoctrine()
-            ->getRepository('AppBundle:Quotes')
-            ->findBySlideTopicsHome($topic->getName());
-        // to get just one result:
-        // $product = $query->setMaxResults(1)->getOneOrNullResult();
-
-        $total_page= ceil( count($quotes) / $pageshow);
-
-        $quotes = $this->getDoctrine()
-            ->getRepository('AppBundle:Quotes')
-            ->findByTopicPage( $topic->getName(), $pageshow, $page - 1);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $quotes, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            27/*limit per page*/
+        );
 
         $rpic_num = rand( 1, 88);
         // replace this example code with whatever you need
         return $this->render('default/onetopic.html.twig', array(
             'topics' => $topics,
             'topic' => $topic,
-            'quotes' => $quotes,
+            'pagination' => $pagination,
             'slidequotes'=> $slidequotes,
             'rpic_num' => $rpic_num,
-            'total_page' => $total_page,
-            'page' => $page,
             'menu' => '3'
         ));
     }
@@ -177,22 +173,25 @@ class DefaultController extends Controller
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
 
-        $total_page= ceil( count($quotes) / $pageshow);
-
         $quotes = $this->getDoctrine()
             ->getRepository('AppBundle:Quotes')
-            ->findByKeywordPage( $slug, $pageshow, $page - 1);
+            ->findByKeyword($slug);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $quotes, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            27/*limit per page*/
+        );
 
         $rpic_num = rand( 1, 88);
         // replace this example code with whatever you need
         return $this->render('default/onekeyword.html.twig', array(
             'topics' => $topics,
             'keyword' => $slug,
-            'quotes' => $quotes,
+            'pagination' => $pagination,
             'slidequotes'=> $slidequotes,
             'rpic_num' => $rpic_num,
-            'total_page' => $total_page,
-            'page' => $page,
             'menu' => ''
         ));
     }
@@ -372,17 +371,16 @@ class DefaultController extends Controller
             ->findBySlideAuthorHome($author);
 
         # start pagenation
-        $pageshow = 27;
-        $quotes = $this->getDoctrine()
+        $authors = $this->getDoctrine()
             ->getRepository('AppBundle:Quotes')
-            ->findBy(array('author' => $author));
-        // to get just one result:
-        // $product = $query->setMaxResults(1)->getOneOrNullResult();
-        $total_page= ceil( count($quotes) / $pageshow);
+            ->findBy(array('author' => $author));;
 
-        $quotes = $this->getDoctrine()
-            ->getRepository('AppBundle:Quotes')
-            ->findByAuthorPage( $author->getId(), $pageshow, $page - 1);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $authors, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            27/*limit per page*/
+        );
         # end pagenation
 
         $rpic_num = rand( 1, 88);
@@ -390,11 +388,9 @@ class DefaultController extends Controller
         return $this->render('default/quotesbyauthor.html.twig', array(
             'topics' => $topics,
             'author' => $author,
-            'quotes' => $quotes,
+            'pagination' => $pagination,
             'slidequotes'=> $slidequotes,
             'rpic_num' => $rpic_num,
-            'total_page' => $total_page,
-            'page' => $page,
             'menu' => '2'
         ));
     }

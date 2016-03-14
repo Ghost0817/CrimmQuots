@@ -1,4 +1,5 @@
 <?php
+
 # 1 - home, 2 - author ,3 - topics,4 - quotes of the day,5 - pictures,6
 
 namespace AppBundle\Controller;
@@ -134,12 +135,14 @@ class DefaultController extends Controller
             ->getRepository('AppBundle:Quotes')
             ->findByTopicPage( $topic->getName(), $pageshow, $page - 1);
 
+        $rpic_num = rand( 1, 88);
         // replace this example code with whatever you need
         return $this->render('default/onetopic.html.twig', array(
             'topics' => $topics,
             'topic' => $topic,
             'quotes' => $quotes,
             'slidequotes'=> $slidequotes,
+            'rpic_num' => $rpic_num,
             'total_page' => $total_page,
             'page' => $page,
             'menu' => '3'
@@ -180,12 +183,14 @@ class DefaultController extends Controller
             ->getRepository('AppBundle:Quotes')
             ->findByKeywordPage( $slug, $pageshow, $page - 1);
 
+        $rpic_num = rand( 1, 88);
         // replace this example code with whatever you need
         return $this->render('default/onekeyword.html.twig', array(
             'topics' => $topics,
             'keyword' => $slug,
             'quotes' => $quotes,
             'slidequotes'=> $slidequotes,
+            'rpic_num' => $rpic_num,
             'total_page' => $total_page,
             'page' => $page,
             'menu' => ''
@@ -380,12 +385,14 @@ class DefaultController extends Controller
             ->findByAuthorPage( $author->getId(), $pageshow, $page - 1);
         # end pagenation
 
+        $rpic_num = rand( 1, 88);
         // replace this example code with whatever you need
         return $this->render('default/quotesbyauthor.html.twig', array(
             'topics' => $topics,
             'author' => $author,
             'quotes' => $quotes,
             'slidequotes'=> $slidequotes,
+            'rpic_num' => $rpic_num,
             'total_page' => $total_page,
             'page' => $page,
             'menu' => '2'

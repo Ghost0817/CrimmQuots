@@ -28,14 +28,31 @@
                     <span><a href="#">{{ item.quote }}</a></span>
                     <div class="author"><a href="#">{{ item.author.name }}</a></div>
                   </div>
+                  <div id="slideshow-fav-btns" style="position: absolute;z-index: 9999;right: 10px;bottom: 10px;">
+                    <a href="#"><i class="fa fa-heart fa-1x"></i></a>
+                    &nbsp;
+                    <a href="#"><i class="fa fa-plus-square fa-1x"></i></a>
+                  </div>
                 </li>
                 {% set rpic_num = rpic_num + 1 %}
               {% endfor %}
             </ul>
           </div>
 
+          <div class="row">
+            <div class="left">
+              {{ knp_pagination_render(pagination) }}
+            </div>
+            <div class="right">
+              <div class="btn-group">
+                <a type="button" class="btn"><i class="fa fa-th"></i></a>
+                <a type="button" class="btn-flat"><i class="fa fa-th-list"></i></a>
+              </div>
+            </div>
+          </div>
+
           <div class="row grid" data-masonry='{ "itemSelector": ".grid-item" }'>
-            {% for item in quotes %}
+            {% for item in pagination %}
               <div class="grid-item col s12 m4">
                 <div class="card">
                   {% if(item.image) %}
@@ -85,7 +102,7 @@
           <!-- start pagenation -->
 
           <div class="row">
-            <a class="waves-effect waves-teal btn-flat" style="width: 100%;text-align: center;">More ... </a>
+            {{ knp_pagination_render(pagination) }}
           </div>
 
           <!-- end pagenation -->

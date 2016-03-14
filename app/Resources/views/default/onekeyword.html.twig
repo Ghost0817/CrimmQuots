@@ -27,6 +27,11 @@
                     <span><a href="#">{{ item.quote }}</a></span>
                     <div class="author"><a href="#">{{ item.author.name }}</a></div>
                   </div>
+                  <div id="slideshow-fav-btns" style="position: absolute;z-index: 9999;right: 10px;bottom: 10px;">
+                    <a href="#"><i class="fa fa-heart fa-1x"></i></a>
+                    &nbsp;
+                    <a href="#"><i class="fa fa-plus-square fa-1x"></i></a>
+                  </div>
                 </li>
                 {% set rpic_num = rpic_num + 1 %}
               {% endfor %}
@@ -35,23 +40,9 @@
           <!-- start top pagenation -->
 
           <div class="row">
-            <ul class="pagination left">
-              <li {% if(page == 1) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == 1) %}{% else %}href="{{ path('onekeywordpage', {'slug' :keyword,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li class="waves-effect">
-              {% for i in 1..total_page %}
-                 <li{% if(page == i) %} class="active"{% else %} class="waves-effect"{% endif %}>
-                 <a {% if(page == i) %}{% else %}href="{{ path('onekeywordpage', { 'page' : i ,'slug' :keyword,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
-                 </li>
-              {% endfor %}
-              <li {% if(page == total_page) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == total_page) %}{% else %}href="{{ path('onekeywordpage', {'page': total_page ,'slug' :keyword,'_format':'html' }) }}"{% endif %} aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
+            <div class="left">
+              {{ knp_pagination_render(pagination) }}
+            </div>
             <div class="right">
               <div class="btn-group">
                 <a type="button" class="btn"><i class="fa fa-th"></i></a>
@@ -63,7 +54,7 @@
           <!-- end top pagenation -->
 
           <div class="row grid" data-masonry='{ "itemSelector": ".grid-item" }'>
-            {% for item in quotes %}
+            {% for item in pagination %}
               <div class="grid-item col s12 m4">
                 <div class="card">
                   {% if(item.image) %}
@@ -113,23 +104,7 @@
           <!-- start pagenation -->
 
           <div class="row">
-            <ul class="pagination">
-              <li {% if(page == 1) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == 1) %}{% else %}href="{{ path('onekeywordpage', {'slug' :keyword,'page': '1','_format':'html' }) }}"{% endif %} aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li class="waves-effect">
-              {% for i in 1..total_page %}
-                 <li{% if(page == i) %} class="active"{% else %}{% endif %}>
-                 <a {% if(page == i) %}{% else %}href="{{ path('onekeywordpage', { 'page' : i ,'slug' :keyword,'_format':'html' } ) }}"{% endif %}>{{ i }}</a>
-                 </li>
-              {% endfor %}
-              <li {% if(page == total_page) %}class="disabled"{% else %}class="waves-effect"{% endif %}>
-                <a {% if(page == total_page) %}{% else %}href="{{ path('onekeywordpage', {'page': total_page ,'slug' :keyword,'_format':'html' }) }}"{% endif %} aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
+            {{ knp_pagination_render(pagination) }}
           </div>
 
           <!-- end pagenation -->

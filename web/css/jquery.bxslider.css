@@ -215,3 +215,6 @@
 	font-weight: bold;
 	font-style: italic;
 }
+.bx-wrapper #slideshow-fav-btns a {
+	color: #fff;
+}

@@ -1,6 +1,10 @@
 CACHE MANIFEST
+<<<<<<< HEAD
 CACHE:
 # v0.4
+=======
+# v0.3.8
+>>>>>>> bc9747669e2709845443b7e52d9c746dbbe23abf
 
 # start logo
 /android-chrome-36x36.png
@@ -60,6 +64,10 @@ manifest.json
 /js/plugins/jquery.easing.1.3.js
 /js/plugins/jquery.fitvids.js
 /js/jquery.bxslider.min.js
+
+
+/css/images/bx_loader.gif
+/css/images/controls.png
 
 
 NETWORK:

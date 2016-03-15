@@ -9069,7 +9069,7 @@ textarea.materialize-textarea + label:after {
   cursor: pointer;
   font-size: 18px;
   transition: .3s color;
-  line-height: 32px;
+  line-height: inherit;
 }
 
 textarea {
@@ -9859,9 +9859,9 @@ select {
   color: #444;
   display: block;
   font-size: 1rem;
-  height: 64px;
+  height: 50px;
   float:none;
-  line-height: 64px;
+  line-height: 50px;
   padding: 0 15px;
 }
 

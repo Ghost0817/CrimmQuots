@@ -140,11 +140,6 @@
 
       <script>
 
-          // Show sideNav
-          $('.button-collapse').sideNav('show');
-          // Hide sideNav
-          $('.button-collapse').sideNav('hide');
-
           function online(event) {
               var status = navigator.onLine ? 'online' : 'offline';
               if(status == 'online')
@@ -161,6 +156,11 @@
           window.addEventListener('online', online);
           window.addEventListener('offline', online);
           online({ type: 'ready' });
+
+          // Show sideNav
+          $('.button-collapse').sideNav('show');
+          // Hide sideNav
+          $('.button-collapse').sideNav('hide');
       </script>
     </body>
 </html>

@@ -20,29 +20,39 @@
         <div class="col s12 m12 l8">
         	<div class="row">
 
-			{% for item in cal_days %}
-				<div class="well pull-left" style="margin:10px 20px 6px 0px; width:270px; background-color: #F1F1F1;float: left;display: inline-block;">
-					<table class="moCalendar">
-						<thead>
-							<tr><th colspan="7"><h2 class="bq_calmon">{{ item.month }}</h2></th></tr>
-						</thead>
-						<tbody>
-							{% set week = 0 %}
-							{% for i in 1..item.lday %}
-								{% if(week == 0) %}
-									<tr>
-								{% endif %}
-								<td><a href="{{ path('birthdaysonpage',{'_format':'html', 'date': (item.month ~ '_' ~ i) }) }}">{{ i }}</a></td>
-								{% set week = week + 1 %}
-								{% if(week == 7) %}
-									</tr>
-									{% set week = 0 %}
-								{% endif %}
-							{% endfor %}
-						</tbody>
-					</table>
+				{% for item in cal_days %}
+				<div class="col s12 m6 l6">
+
+					<div class="picker__box" style="box-shadow: none;border: none;">
+						<div class="picker__date-display">
+							<div class="picker__month-display" style="font-size: 19px;">
+								<div>{{ item.month }}</div></div>
+							</div>
+						<div class="picker__calendar-container">
+							<table class="picker__table" id="birthdate_table" role="grid" aria-controls="birthdate" aria-readonly="true">
+								<tbody>
+								{% set week = 0 %}
+								{% for i in 1..item.lday %}
+									{% if(week == 0) %}
+										<tr>
+									{% endif %}
+									<td role="presentation">
+										<div class="picker__day picker__day--infocus" role="gridcell" >
+											<a href="{{ path('birthdaysonpage',{'_format':'html', 'date': (item.month ~ '_' ~ i) }) }}">{{ i }}</a>
+										</div>
+									</td>
+									{% set week = week + 1 %}
+									{% if(week == 7) %}
+										</tr>
+										{% set week = 0 %}
+									{% endif %}
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
-			{% endfor %}
+				{% endfor %}
 
 
         	</div>

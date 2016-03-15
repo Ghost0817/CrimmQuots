@@ -458,7 +458,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/quotes_of_the_day_{page}.{_format}", 
+     * @Route("/quotes_of_the_day_{page}.{_format}",
      * name="quotesofday",
      * defaults={"page": "1"},
      * requirements={"page": "\d+"})
@@ -466,14 +466,39 @@ class DefaultController extends Controller
     public function quotesofdayAction(Request $request)
     {
         $nationality = $this->getDoctrine()
-        ->getRepository('AppBundle:Nationality')
-        ->findBy(array(),array('name' => 'ASC' ));
+            ->getRepository('AppBundle:Nationality')
+            ->findBy(array(),array('name' => 'ASC' ));
 
         //lkkjhgfasdfghjkl
 
         return $this->render('default/quotesofday.html.twig', array(
             'nationality' => $nationality,
             'menu' => '4'
+        ));
+    }
+
+    /**
+     * @Route("/quotes/quote_pictures{page}.{_format}",
+     * name="quotespictures",
+     * defaults={"page": "1"},
+     * requirements={"page": "\d+"})
+     */
+    public function quotespictureAction(Request $request)
+    {
+        $authors = $this->getDoctrine()
+            ->getRepository('AppBundle:Quotes')
+            ->findByPictures();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $authors, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            27/*limit per page*/
+        );
+
+        return $this->render('default/quotespicture.html.twig', array(
+            'pagination' => $pagination,
+            'menu' => '5'
         ));
     }
 

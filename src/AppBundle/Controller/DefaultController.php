@@ -493,7 +493,7 @@ class DefaultController extends Controller
         $pagination = $paginator->paginate(
             $authors, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            27/*limit per page*/
+            30/*limit per page*/
         );
 
         return $this->render('default/quotespicture.html.twig', array(

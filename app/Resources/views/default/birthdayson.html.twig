@@ -43,13 +43,18 @@
         	</div>
         </div>
 		<div class="col s12 m12 l4">
+
+            <div class="row">
+                <div style="margin: 0.82rem 0 0.656rem 0;"><a href="{{ path('signup') }}"><img src="/ads/18182572789517860383.png" /></a></div>
+            </div>
+
 			<h5>Popular Topics</h5>
 
-      {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
+            {{ render_esi(controller('AppBundle:Topselect:toptopics')) }}
       
-      <h5>Popular Authors</h5>
+            <h5>Popular Authors</h5>
 
-      {{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
+            {{ render_esi(controller('AppBundle:Topselect:topauthors')) }}
       
 		</div>
     </div>

@@ -106,9 +106,8 @@ class QuotesRepository extends EntityRepository
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();
         $qb->select('a')
-            ->addSelect('RAND() as HIDDEN rand')
             ->from('AppBundle:Quotes', 'a')
-            ->where('a.image is not null')
+            ->where('a.image != \'\'')
         ;
         $result = $qb->getQuery()->execute();
 

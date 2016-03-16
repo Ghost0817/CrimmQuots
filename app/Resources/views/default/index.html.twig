@@ -103,7 +103,7 @@
             {% endfor %}
           </div>
         </div>
-        <div class="col s12 m12 l12">
+        <!--<div class="col s12 m12 l12">
           <div class="row">
             <h5>Authors to Explore</h5>
             <div class="col s12 m6 l6">
@@ -121,9 +121,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="col s12 m12 l4">
+        <div class="row">
+          <div style="margin: 0.82rem 0 0.656rem 0;"><a href="{{ path('signup') }}"><img src="/ads/18182572789517860383.png" /></a></div>
+        </div>
         <div class="row">
           <h5>Today's Birthdays</h5>
           <ul>
@@ -132,6 +135,9 @@
             {% endfor %}
             <li><a href="{{ path('birthdaysonpage',{'_format':'html', 'date': "now"|date("F_d") }) }}">Birthdays on {{ "now"|date("F d") }}nd</a> | <a href="{{ path('birthdayspage',{'_format':'html'}) }}">All Birthdays</a></li>
           </ul>
+        </div>
+        <div class="row">
+          <div style="margin: 0.82rem 0 0.656rem 0;"><a href="{{ path('signup') }}"><img src="/ads/18182572789517860383.png" /></a></div>
         </div>
       </div>
     </div>

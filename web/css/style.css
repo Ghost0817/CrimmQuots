@@ -175,3 +175,36 @@ table.moCalendar tbody tr td a:hover{
 footer.page-footer {
   margin: 0;
 }
+
+
+.bq_s {
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 3px;
+}
+ul.topnav li a {
+    display: block;
+    color: #0000AA;
+    text-align: left;
+    padding: 12px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 16px;
+    border-radius: 3px;
+}
+.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
+    background-color: #4462CB;
+}
+.specialty-nav .nav > li.active > a {
+    color: #fff;
+    line-height: 1.25;
+}

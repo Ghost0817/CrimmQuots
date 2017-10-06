@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ currSlug.browserTitleEn }} - BrainyQuote{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}
+
+{% block body %}
+
+    {% include 'helper/letternavbar.html.twig' %}
+	<div class="container">
+        <div class="row sf_content">
+            <div class="col s12 m12 l8">
+                <div class="row" style="margin-right: 0px;">
+                    <h1>{{ currSlug.nameEn }}</h1>
+
+                        {% for about in abouts %}
+							<div class="bq_s">
+								{% if (about.title) %}<h2>{{ about.title}}</h2>{% endif %}
+								<div class="">{{ about.desc | raw }}</div>
+							</div>
+                        {% endfor %}
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div class="row" style="margin-right: 0px;">
+					<div class="bq_s">
+						<div class="sidebar-nav specialty-nav">
+							<ul class="topnav nav nav-list">
+								{% for item in slugs %}
+									<li {% if( item.id == currSlug.id ) %} class="active"{% endif %}><a href="{{ path('about',{'slug': item.slug}) }}">{{ item.browserTitleEn }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <!--  Scripts-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/materialize.min.js"></script>
+    <script src="/js/init.js"></script>
+{% endblock %}

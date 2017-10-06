@@ -1,0 +1,35 @@
+AppBundle\Entity\About:
+    type: entity
+    table: About
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: title
+        desc:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: desc
+    manyToOne:
+        slug:
+            targetEntity: Slug
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                slug_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

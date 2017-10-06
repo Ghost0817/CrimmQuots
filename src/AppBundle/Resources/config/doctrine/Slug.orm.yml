@@ -1,0 +1,50 @@
+AppBundle\Entity\Slug:
+    type: entity
+    table: Slug
+    uniqueConstraints:
+        slug:
+            columns:
+                - slug
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nameMn:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: name_mn
+        nameEn:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: name_en
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        sequence:
+            type: integer
+            nullable: false
+            unsigned: false
+        browserTitleMn:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: browser_title_mn
+        browserTitleEn:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: browser_title_en
+    lifecycleCallbacks: {  }

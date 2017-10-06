@@ -663,4 +663,32 @@ class DefaultController extends Controller
             'menu' => ''
         ));
     }
+
+    /**
+     * @Route("/about/{slug}",
+     * name="about")
+     */
+    public function aboutAction(Request $request, $slug)
+    {
+        $currSlug = $this->getDoctrine()
+            ->getRepository('AppBundle:Slug')
+            ->findOneBy(array('slug' => $slug));
+			
+        $abouts = $this->getDoctrine()
+            ->getRepository('AppBundle:About')
+            ->findBy(array('slug' => $currSlug));
+			
+		#var_dump($about);die();
+			
+        $slugs = $this->getDoctrine()
+            ->getRepository('AppBundle:Slug')
+            ->findAll();
+
+        return $this->render('default/about.html.twig', array(
+            'slugs' => $slugs,
+            'currSlug' => $currSlug,
+            'abouts' => $abouts,
+            'menu' => ''
+        ));
+    }
 }
